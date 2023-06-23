@@ -58,7 +58,7 @@ button:hover {
 .info_book img {
     width: 170px;
     height: 226.667px;
-    background: url("../assets/book_img/Rectangle\ 2.png"), lightgray 50% / cover no-repeat;
+    background: url("../assets/book_img/Rectangle_2.png"), lightgray 50% / cover no-repeat;
     box-shadow: 5px 5px 4px 0px rgba(0, 0, 0, 0.40);
     margin: 0px 45px 24.16px 45px;
 }

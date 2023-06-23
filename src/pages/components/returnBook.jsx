@@ -1,6 +1,6 @@
 import React from "react";
 
-const returnBook = () => {
+const ReturnBook = (props) => {
     return (
         <div className="returnBook">
             <h2>Книга на руках</h2>
@@ -17,10 +17,10 @@ const returnBook = () => {
                 </tr>
             </table>
             <div className="action">
-                <button type="submit" className="get">Сдать книгу</button>
+                <button type="submit" onClick={props.Click} className="get">Сдать книгу</button>
             </div>
         </div>
     );
 }
 
-export default returnBook;
+export default ReturnBook;
