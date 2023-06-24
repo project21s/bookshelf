@@ -1,4 +1,110 @@
-p {
+.home {
   text-align: center;
-  color: var(--color-main);
+  width: 90%;
+  padding: 0 40px;
+}
+
+.bookImg {
+  max-height: 150px;
+  max-width: 100;
+  margin: 10px 10px 0;
+}
+
+.param {
+  text-align: center;
+  height: 200px;
+  width: 140px;
+  border-style: solid;
+  border-radius: 10px;
+  border-width: 2px;
+  border-color: #aeaeae;
+  margin: 15px 10px;
+  display:inline-block;
+}
+
+.author {
+  /* max-width: 120px; */
+  font-size: 12px;
+  text-align: left;
+  color: #757575;
+  margin: 5px 0px 0px 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 120;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.title {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 120;
+  text-align: left;
+  /* max-width: 120px; */
+  font-weight: bold;
+  font-size: 12px;
+  margin: 0 10px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.addBook {
+  height: 36px;
+  width: 142px;
+  background-color: white;
+  float: right;
+  margin: 20px;
+  /* display:flexbox; */
+}
+
+.header {
+  text-align: left;
+  position: relative;
+  top: 50px;
+  /* display:inline-block; */
+  text-align: center;
+}
+
+.spaceman {
+  display: inline;
+  height: 150px;
+  width: auto;
+  margin: 10px 10px 10px 0px;
+}
+
+.hello {
+  position: relative;
+  top: -75px; 
+  display:inline;
+  text-align: left;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}
+
+.desc {
+  text-align: left;
+  color: #757575;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.bookId {
+  position: relative;
+  top: -23px;  
+  margin-bottom: -20px;
+  float: left;
+  left: 5px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}
+
+.isFree {
+  position: relative;
+  top: -20px;  
+  margin-bottom: -20px;
+  float: right;
+  right: 5px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: small;
+  color: #757575;
+  font-weight: bold;
 }
