@@ -1,0 +1,181 @@
+button {
+    border: 1px solid #000;
+    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.50);
+    cursor: pointer;
+    transition: 0.15s;
+}
+
+button:hover {
+    box-shadow: 0px 0px 0px 0px;
+}
+
+.goHome {
+    margin: 50px 0px 0px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    width: 142px;
+    height: 36px;
+}
+
+.info {
+    margin-left: auto;
+    margin-right: auto;
+    width: 260px;
+    height: 400px;
+    flex-shrink: 0;
+    margin-top: 45px;
+}
+
+.info_head {
+    padding: 0px 10px;
+    display: flex;
+    justify-content:space-between;
+}
+
+.info_head_number {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.info_head_onHands,
+.info_book_autor {
+    font-size: 20px;
+    font-weight: 300;
+}
+
+.info_book {
+    width: 260px;
+    height: auto;
+    flex-shrink: 0;
+    border-radius: 12px;
+    border: 1.529px solid #B0B0B0;
+    background: #FFF;
+    padding: 24.47px 0px 13.18px 0px;
+}
+
+.info_book img {
+    width: 170px;
+    height: auto;
+    background: lightgray 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    box-shadow: 5px 5px 4px 0px rgba(0, 0, 0, 0.40);
+    margin: 0px 45px 24.16px 45px;
+}
+
+.info_book_name {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.info_book_autor,
+.info_book_name {
+    margin-left: 18px;
+}
+
+.getBook,
+.returnBook {
+    margin-left: auto;
+    margin-right: auto;
+    width: 350px;
+    height: auto;
+    margin-top: 50px;
+}
+
+.input-div{
+    color: rgba(0, 0, 0, 0.50);
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.Name{
+    position: relative;
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    height: 30px;
+    font-size: 16px;
+    background: none;
+    border: none;
+    border-bottom: solid 1px #000;
+    outline: none;
+    box-shadow: none;
+}
+
+.Name::selection{
+    background-color: black;
+    color: white;
+}
+
+.bar::before{
+    display: block;
+    position: relative;
+    top: -30px;
+    content: '';
+    width: 0;
+    height: 2px;
+    background-color: black;
+    transition: 250ms;
+}
+
+.Name:focus ~ .bar::before{
+    height: 2px;
+    width: 100%;
+}
+
+label{
+    margin-left: 10px;
+    display: inline-block;
+    position: relative;
+    bottom: 32px;
+    transition: 200ms;
+    transform-origin: left;
+    cursor: text;
+}
+
+.Name:focus + label{
+    bottom: 50px;
+    transform: scale(.8);
+    font-weight: 400;
+    margin-left: 0px;
+}
+
+.Name:valid + label{
+    bottom: 50px;
+    transform: scale(.8);
+}
+
+.action {
+    text-align: center;
+}
+
+.action button {
+    width: 255px;
+    height: 42px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.returnBook .action {
+    margin-top: 34px;
+}
+
+.history {
+    margin-top: 68px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 350px;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid #000;
+    padding: 10px;
+}
+
+.history h2 {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+table {
+    margin: 10px;
+}
