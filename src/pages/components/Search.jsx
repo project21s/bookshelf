@@ -2,17 +2,20 @@ import { useState } from 'react';
 import "../Home.css";
 
 function BookRow({ book }) {
-  const Free = book.isFree ? "" :
-    <span style={{ color: 'red' }}>
+  const NoFree = book.isFree ? "" :
+    <span style={{ color: 'grey' }}>
       На руках
     </span>;
+
+const NOFreeImage = book.isFree ? <img class="bookImg" alt={book.title} src={book.img} />:
+<img class="bookImg grayscale" alt={book.title} src={book.img} />;
 
   return (
     
     <div class="param">
-          <div class="isFree">{Free}</div>
+          <div class="isFree">{NoFree}</div>
           <div class="bookId">{book.id}</div>
-          <img class="bookImg" alt={book.title} src={book.img}  />
+           {NOFreeImage}
           <div class="author">{book.author}</div>
           <div class="title">{book.title}</div>
     </div>
@@ -68,18 +71,18 @@ function SearchBar({
 }) {
   return (
     <form>
-      <input 
+      <input class="SearchInput"
         type="text" 
-        value={filterText} placeholder="Search..." 
+        value={filterText} placeholder="ПОИСК" 
         onChange={(e) => onFilterTextChange(e.target.value)} />
-      <label>
-        <input 
+        <div class="FreeBooksCheck">
+          <input 
           type="checkbox" 
           checked={inStockOnly} 
           onChange={(e) => onInStockOnlyChange(e.target.checked)} />
-        {' '}
-        Свободные книги
-      </label>
+          {' '} 
+          Свободные книги
+        </div>
     </form>
   );
 }
