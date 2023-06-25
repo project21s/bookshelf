@@ -1,5 +1,8 @@
 import { useState } from 'react';
 import "../Home.css";
+import { AiOutlineSearch } from 'react-icons/ai';
+
+
 
 function BookRow({ book }) {
   const NoFree = book.isFree ? "" :
@@ -71,10 +74,12 @@ function SearchBar({
 }) {
   return (
     <form>
+      
       <input class="SearchInput"
         type="text" 
         value={filterText} placeholder="ПОИСК" 
         onChange={(e) => onFilterTextChange(e.target.value)} />
+        <div class="iconSearch"><AiOutlineSearch /></div>
         <div class="FreeBooksCheck">
           <input 
           type="checkbox" 

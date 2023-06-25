@@ -118,6 +118,7 @@
   width: 100%;
   display:inline-block;
   font-weight: bold;
+  padding-left: 20px;
   
 }
 
@@ -131,6 +132,7 @@
   width: 100%;
   display:inline-block;
   font-weight: bold;
+  padding-left: 20px;
 }
 
 .FreeBooksCheck {
@@ -143,3 +145,9 @@
 .grayscale {
   filter: grayscale(100%);
  }
+
+.iconSearch {
+  position: relative;
+  top: -20px;
+  float: left;
+}
