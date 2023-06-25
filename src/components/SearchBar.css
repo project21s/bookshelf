@@ -1,0 +1,32 @@
+.SearchInput {
+    border-width: 0px 0px 2px 0px;
+    border-style: solid;
+    border-color: #c7c7c7;
+    color: #c7c7c7;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 100%;
+    display:inline-block;
+    font-weight: bold;
+    padding-left: 20px;
+    
+  }
+  
+  .SearchInput:focus {
+    outline: none;
+    border-width: 0px 0px 2px 0px;
+    border-style: solid;
+    border-color: #4b4b4b;
+    color: #4b4b4b;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 100%;
+    display:inline-block;
+    font-weight: bold;
+    padding-left: 20px;
+  }
+  
+  .FreeBooksCheck {
+    position: relative;
+    text-align: left;
+    margin: 10px 0;
+    font-family: Arial, Helvetica, sans-serif;
+  }

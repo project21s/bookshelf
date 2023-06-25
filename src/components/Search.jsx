@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import "../pages/Home.css";
 import BookTable from './BookTable';
 import SearchBar from './SearchBar';
 

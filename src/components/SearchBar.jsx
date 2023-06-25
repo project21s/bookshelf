@@ -1,4 +1,5 @@
 import { AiOutlineSearch } from 'react-icons/ai';
+import "./SearchBar.css"
 
 function SearchBar({
     filterText,

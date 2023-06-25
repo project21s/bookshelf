@@ -1,5 +1,6 @@
 import { books } from '../services/bookMockAPI';
-import "./Home.css";import Search from '../components/Search';
+import "./Home.css";
+import Search from '../components/Search';
 import { Player } from '@lottiefiles/react-lottie-player';
 import spaceman from "../assets/spaceman.json"
 
@@ -7,14 +8,8 @@ function Home() {
   return (
     <div class="home" >
       <button class="addBook">Добавить книгу</button>
-      <div class="header">        
-          <Player
-            autoplay
-            loop
-            src={spaceman}
-            class="spaceman"
-            >
-          </Player>
+      <div class="header">
+        <Player autoplay loop src={spaceman} class="spaceman"></Player>
         <p class="hello">Рады видеть тебя в нашей школьной библиотеке</p>
      </div>
        <p class="desc">

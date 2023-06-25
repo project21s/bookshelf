@@ -1,3 +1,5 @@
+import "./BookRow.css"
+
 function BookRow({ book }) {
     const NoFree = book.isFree ? "" :
       <span style={{ color: 'grey' }}>

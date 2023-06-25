@@ -5,48 +5,6 @@
   max-width: 500px;
 }
 
-.bookImg {
-  max-height: 150px;
-  max-width: 100;
-  margin: 10px 10px 0;
-}
-
-.param {
-  text-align: center;
-  height: 210px;
-  width: 140px;
-  border-style: solid;
-  border-radius: 10px;
-  border-width: 2px;
-  border-color: #aeaeae;
-  margin: 15px 10px;
-  display:inline-block;
-}
-
-.author {
-  font-size: 12px;
-  font-weight: bold;
-  text-align: left;
-  color: #757575;
-  margin: 7px 0px 0px 10px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-  width: 120;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.title {
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-  width: 120;
-  text-align: left;
-  font-weight: bold;
-  font-size: 14px;
-  margin: 3px 10px;
-  font-family: Arial, Helvetica, sans-serif;
-}
 
 .addBook {
   height: 36px;
@@ -86,65 +44,6 @@
   color: #757575;
   font-family: Arial, Helvetica, sans-serif;
 }
-
-.bookId {
-  position: relative;
-  top: -23px;  
-  margin-bottom: -20px;
-  float: left;
-  left: 5px;
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: bold;
-}
-
-.isFree {
-  position: relative;
-  top: -20px;  
-  margin-bottom: -20px;
-  float: right;
-  right: 5px;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: small;
-  color: #757575;
-  font-weight: bold;
-}
-
-.SearchInput {
-  border-width: 0px 0px 2px 0px;
-  border-style: solid;
-  border-color: #c7c7c7;
-  color: #c7c7c7;
-  font-family: Arial, Helvetica, sans-serif;
-  width: 100%;
-  display:inline-block;
-  font-weight: bold;
-  padding-left: 20px;
-  
-}
-
-.SearchInput:focus {
-  outline: none;
-  border-width: 0px 0px 2px 0px;
-  border-style: solid;
-  border-color: #4b4b4b;
-  color: #4b4b4b;
-  font-family: Arial, Helvetica, sans-serif;
-  width: 100%;
-  display:inline-block;
-  font-weight: bold;
-  padding-left: 20px;
-}
-
-.FreeBooksCheck {
-  position: relative;
-  text-align: left;
-  margin: 10px 0;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.grayscale {
-  filter: grayscale(100%);
- }
 
 .iconSearch {
   position: relative;
