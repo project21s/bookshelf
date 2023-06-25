@@ -3,6 +3,7 @@ import book2 from "../assets/book_img/2.png";
 import book3 from "../assets/book_img/3.jpeg";
 import book4 from "../assets/book_img/4.jpeg";
 import book5 from "../assets/book_img/5.png";
+import book6 from "../assets/book_img/6.png";
 
 export const books = [
   {
@@ -40,4 +41,11 @@ export const books = [
     img: book5,
     isFree: false,
   },
+  {
+    id: 6,
+    author: "Э. Голдратт",
+    title: "Критическая цепь",
+    img: book6,
+    isFree: false,
+  }
 ];
