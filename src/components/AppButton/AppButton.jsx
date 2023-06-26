@@ -2,12 +2,12 @@ import React from "react";
 import style from "./style.module.css";
 
 export function AppButton({ header, size = "s" }) {
-  let buttomClass = style.button;
+  let buttonClass = style.button;
   if (size === "m") {
-    buttomClass += " " + style.medium;
+    buttonClass += " " + style.medium;
   } else {
-    buttomClass += " " + style.small;
+    buttonClass += " " + style.small;
   }
 
-  return <button className={buttomClass}>{header}</button>;
+  return <button className={buttonClass}>{header}</button>;
 }
