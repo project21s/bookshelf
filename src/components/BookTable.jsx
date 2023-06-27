@@ -5,10 +5,15 @@ function BookTable({ books, filterText, inStockOnly }) {
   const rows = [];
 
   books.forEach((book) => {
-    if (book.title.toLowerCase().indexOf(filterText.toLowerCase()) === -1) {
-      if (book.author.toLowerCase().indexOf(filterText.toLowerCase()) === -1) {
-        return;
-      }
+    let bookSearchString =
+      book.title.toLowerCase() +
+      " " +
+      book.author.toLowerCase() +
+      " " +
+      book.id;
+
+    if (bookSearchString.indexOf(filterText.toLowerCase()) === -1) {
+      return;
     }
 
     if (inStockOnly && !book.isFree) {

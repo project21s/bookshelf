@@ -33,15 +33,15 @@ function Home() {
           <div>- Брать книгу на одну неделю, не больше</div>
           <div>- Книги просим возвращать в свою ячейку согласно её номеру</div>
         </div>
-      </div>
-
-      <div>
         <SearchBar
           filterText={filterText}
           inStockOnly={inStockOnly}
           onFilterTextChange={setFilterText}
           onInStockOnlyChange={setInStockOnly}
         />
+      </div>
+
+      <div>
         <BookTable
           books={books}
           filterText={filterText}

@@ -1,4 +1,5 @@
 .inputdiv {
+  position: relative;
   color: rgba(0, 0, 0, 0.5);
   font-size: 24px;
   font-weight: 700;
@@ -16,6 +17,7 @@
   border-bottom: solid 1px #000;
   outline: none;
   box-shadow: none;
+  z-index: 5;
 }
 
 .name::selection {
@@ -25,8 +27,8 @@
 
 .bar::before {
   display: block;
-  position: relative;
-  top: -30px;
+  position: absolute;
+  bottom: -1px;
   content: "";
   width: 0;
   height: 2px;
@@ -42,21 +44,22 @@
 .label {
   margin-left: 10px;
   display: inline-block;
-  position: relative;
-  bottom: 32px;
+  position: absolute;
+  bottom: 2px;
   transition: 200ms;
   transform-origin: left;
   cursor: text;
+  z-index: 1;
 }
 
 .name:focus + .label {
-  bottom: 50px;
+  bottom: 20px;
   transform: scale(0.8);
   font-weight: 400;
   margin-left: 0px;
 }
 
 .name:valid + .label {
-  bottom: 50px;
+  bottom: 20px;
   transform: scale(0.8);
 }
