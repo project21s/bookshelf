@@ -1,29 +1,33 @@
-import { AiOutlineSearch } from 'react-icons/ai';
-import "./SearchBar.css"
+import React from "react";
+import "./SearchBar.css";
+import { AppInput } from "./AppInput/AppInput";
 
 function SearchBar({
-    filterText,
-    inStockOnly,
-    onFilterTextChange,
-    onInStockOnlyChange
-  }) {
-    return (
+  filterText,
+  inStockOnly,
+  onFilterTextChange,
+  onInStockOnlyChange,
+}) {
+  return (
+    <>
       <form>
-        <input class="SearchInput"
-          type="text" 
-          value={filterText} placeholder="ПОИСК" 
-          onChange={(e) => onFilterTextChange(e.target.value)} />
-          <div class="iconSearch"><AiOutlineSearch /></div>
-          <div class="FreeBooksCheck">
-            <input 
-            type="checkbox" 
-            checked={inStockOnly} 
-            onChange={(e) => onInStockOnlyChange(e.target.checked)} />
-            {' '} 
-            Свободные книги
-          </div>
+        <AppInput
+          placeholder="Поиск"
+          onChange={(e) => onFilterTextChange(e.target.value)}
+          value={filterText}
+        ></AppInput>
+        <div className="FreeBooksCheck">
+          <input
+            type="checkbox"
+            name="check"
+            checked={inStockOnly}
+            onChange={(e) => onInStockOnlyChange(e.target.checked)}
+          />{" "}
+          <label>Свободные книги</label>
+        </div>
       </form>
-    );
-  }
+    </>
+  );
+}
 
-  export default SearchBar;
+export default SearchBar;

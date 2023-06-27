@@ -1,42 +1,39 @@
-import BookRow from "./BookRow";
+import React from "react";
+import Book from "./AppBook/Book";
 
 function BookTable({ books, filterText, inStockOnly }) {
-    const rows = [];
-  
-    books.forEach((book) => {
-      if (
-        book.title.toLowerCase().indexOf(
-          filterText.toLowerCase()
-        ) === -1
-      ) {
-        if (
-          book.author.toLowerCase().indexOf(
-            filterText.toLowerCase()
-          ) === -1
-        ) {
-          return;
-        }
-      }
-      
-      if (inStockOnly && !book.isFree) {
-        return;
-      }
-      rows.push(
-        <BookRow
-          book={book}
-          key={book.id} />
-      );
-    });
+  const rows = [];
 
-    return (
-        <table>
-          <thead>
-            <tr>
-            </tr>
-          </thead>
-          <tbody>{rows}</tbody>
-        </table>
-      );
+  books.forEach((book) => {
+    let bookSearchString =
+      book.title.toLowerCase() +
+      " " +
+      book.author.toLowerCase() +
+      " " +
+      book.id;
+
+    if (bookSearchString.indexOf(filterText.toLowerCase()) === -1) {
+      return;
     }
 
-    export default BookTable;
+    if (inStockOnly && !book.isFree) {
+      return;
+    }
+    rows.push(<Book book={book} key={book.id} />);
+  });
+
+  return (
+    <div
+      style={{
+        display: "flex",
+        gap: "10px",
+        flexWrap: "wrap",
+        justifyContent: "center",
+      }}
+    >
+      {rows}
+    </div>
+  );
+}
+
+export default BookTable;
