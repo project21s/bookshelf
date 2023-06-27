@@ -1,22 +1,21 @@
 import React /*, { useState }*/ from "react";
 import { AppInput } from "./AppInput/AppInput";
+import { AppButton } from "./AppButton/AppButton";
 
 const GetBook = (props) => {
   // const [nickname, setNickname] = useState('');
 
-  // const handleSubmit = (/*event*/) => {
-  //     // alert('A name was submitted: ' + value);
-  //     // event.preventDefault();
-
-  // };
+  const handleSubmit = (event) => {
+    // alert("A name was submitted: " + value);
+    event.preventDefault();
+  };
 
   return (
-    <form className="getBook" onSubmit={props.Click}>
-      <AppInput title="Ник"></AppInput>
+    <form className="getBook" onSubmit={handleSubmit}>
+      <AppInput placeholder="Ник"></AppInput>
+      <br />
       <div className="action">
-        <button type="submit" className="get">
-          Взять книгу
-        </button>
+        <AppButton onClick={props.Click} header="Взять книгу"></AppButton>
       </div>
     </form>
   );

@@ -10,9 +10,13 @@ export function AppInput(props) {
         required
         autoComplete="off"
         value={props.value}
-        onChange={(e) => {
-          props.onChange(e);
-        }}
+        onChange={
+          props.onChange
+            ? (e) => {
+                props.onChange(e);
+              }
+            : null
+        }
       />
       <label className={style.label}>{props.placeholder}</label>
       <div className={style.bar}></div>
