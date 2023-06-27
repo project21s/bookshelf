@@ -4,6 +4,7 @@
     width: 200px;
     position: relative;
     top: -260px;
+    border-style: solid 5px #000;
   }
 
 .LoadButton {
@@ -13,9 +14,14 @@
     width: 200px;
     opacity: 0;
     margin: 0 auto;
+    border-style: solid 5px #000;
 }
 
 .LoadImage {
     height: 260px;
     width: 200px;
+    border: rgba(0, 0, 0, 0.5);
+    border-width: 1px;
+    border-style: solid;
+    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.5);
 }

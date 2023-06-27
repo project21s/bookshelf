@@ -19,7 +19,7 @@ const AddBook = () => {
         </div>
         <br />
         <form>
-          <div className={style.BeforeLoad}> Загрузка фото кники
+          <div className={style.BeforeLoad}> Загрузить<br />фото кники
             </div>
           <AppImageDownload />
           <br />
