@@ -1,8 +1,12 @@
 import React, { useState } from "react";
+import style from "./style.module.css";
+import { AppButton } from "../../components/AppButton/AppButton";
+import { AppInput } from "../../components/AppInput/AppInput";
+
 import "./Book.css";
 import GetBook from "../../components/GetBook";
 import ReturnBook from "../../components/ReturnBook";
-import Table from "../../components/Table";
+import HistoryTable from "../../components/HistoryTable/HistoryTable";
 import { books } from "../../services/bookMockAPI";
 
 const Book = () => {
@@ -14,8 +18,8 @@ const Book = () => {
   };
 
   return (
-    <>
-      <button className="goHome">На главную</button>
+    <div className={style.main}>
+      <AppButton header="На главную" />
 
       <div className="info">
         <div className="info_head">
@@ -39,8 +43,8 @@ const Book = () => {
         <GetBook Click={Click} />
       )}
 
-      <Table />
-    </>
+      <HistoryTable />
+    </div>
   );
 };
 
