@@ -1,8 +1,10 @@
 import React from "react";
 import Book from "./AppBook/Book";
+import { useNavigate } from "react-router-dom";
 
 function BookTable({ books, filterText, inStockOnly }) {
   const rows = [];
+  let navigate = useNavigate();
 
   books.forEach((book) => {
     let bookSearchString =
@@ -19,7 +21,20 @@ function BookTable({ books, filterText, inStockOnly }) {
     if (inStockOnly && !book.isFree) {
       return;
     }
-    rows.push(<Book book={book} key={book.id} />);
+
+    const goBook = (id) => {
+      navigate("/book/" + id);
+    };
+
+    rows.push(
+      <Book
+        book={book}
+        key={book.id}
+        onClick={() => {
+          goBook(book.id);
+        }}
+      />
+    );
   });
 
   return (

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import style from "./style.module.css";
 import { AppButton } from "../../components/AppButton/AppButton";
 import { AppInput } from "../../components/AppInput/AppInput";
@@ -10,7 +11,16 @@ import HistoryTable from "../../components/HistoryTable/HistoryTable";
 import { books } from "../../services/bookMockAPI";
 
 const Book = () => {
-  const [ShowReturnBook, setShowReturnBook] = useState(false);
+  let navigate = useNavigate();
+
+  const goHome = () => {
+    navigate("/");
+  };
+
+  const { id } = useParams();
+  const bookid = id - 1;
+
+  const [ShowReturnBook, setShowReturnBook] = useState(!books[bookid].isFree);
 
   const Click = () => {
     setShowReturnBook(!ShowReturnBook);
@@ -19,21 +29,21 @@ const Book = () => {
 
   return (
     <div className={style.main}>
-      <AppButton header="На главную" />
+      <AppButton header="На главную" onClick={goHome} />
 
       <div className="info">
         <div className="info_head">
-          <h1 className="info_head_number">{books[5].id}</h1>
-          {books[5].isFree ? (
+          <h1 className="info_head_number">{books[bookid].id}</h1>
+          {!books[bookid].isFree ? (
             <p className="info_head_onHands">на руках</p>
           ) : (
             <p className="info_head_onHands"></p>
           )}
         </div>
         <div className="info_book">
-          <img src={books[5].img} alt={books[5].title} />
-          <h2 className="info_book_autor">{books[5].author}</h2>
-          <h2 className="info_book_name">{books[5].title}</h2>
+          <img src={books[bookid].img} alt={books[bookid].title} />
+          <h2 className="info_book_autor">{books[bookid].author}</h2>
+          <h2 className="info_book_name">{books[bookid].title}</h2>
         </div>
       </div>
 
