@@ -1,14 +1,15 @@
 import React from "react";
 import style from "./style.module.css";
 
-function Book({ book }) {
+function Book(props) {
+  let book = props.book;
   const noFree = book.isFree ? "" : "На руках";
 
   const noFreeImage = book.isFree
     ? style.bookImg
     : style.bookImg + " " + style.grayscale;
   return (
-    <div>
+    <div onClick={props.onClick ? props.onClick : null}>
       <div className={style.status}>
         <div className={style.bookId}>{book.id}</div>
         <div className={style.isFree}>{noFree}</div>

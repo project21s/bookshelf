@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import style from "./style.module.css";
 import { AppButton } from "../../components/AppButton/AppButton";
@@ -11,14 +12,20 @@ import BookTable from "../../components/BookTable";
 import SearchBar from "../../components/SearchBar";
 
 function Home() {
-  useState();
   const [filterText, setFilterText] = useState("");
   const [inStockOnly, setInStockOnly] = useState(false);
+
+  let navigate = useNavigate();
+
+  const goAddBook = () => {
+    navigate("/addbook");
+  };
+
   return (
     <div>
       <div className={style.main}>
         <div className={style.addbook}>
-          <AppButton size="s" header="Добавить книгу" />
+          <AppButton size="s" header="Добавить книгу" onClick={goAddBook} />
         </div>
         <div className={style.header}>
           <Player autoplay loop src={spaceman}></Player>
