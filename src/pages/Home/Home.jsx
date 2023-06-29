@@ -26,7 +26,7 @@ function Home() {
     <div>
       <div className={style.main}>
         <div className={style.addbook}>
-        <img src="../../assets/logo.svg"  alt="За стеклом" width="300px" height="200px" />
+        {/* <img src="../../assets/logo.svg"  alt="За стеклом" width="300px" height="200px" /> */}
           <AppButton size="s" header="Добавить книгу" onClick={goAddBook} />
         </div>
         <div className={style.header}>
