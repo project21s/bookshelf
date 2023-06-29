@@ -10,6 +10,7 @@ import { books } from "../../services/bookMockAPI";
 
 import BookTable from "../../components/BookTable";
 import SearchBar from "../../components/SearchBar";
+// import logo from "../../assets/logo.svg";
 
 function Home() {
   const [filterText, setFilterText] = useState("");
@@ -25,6 +26,7 @@ function Home() {
     <div>
       <div className={style.main}>
         <div className={style.addbook}>
+        <img src="../../assets/logo.svg"  alt="За стеклом" width="300px" height="200px" />
           <AppButton size="s" header="Добавить книгу" onClick={goAddBook} />
         </div>
         <div className={style.header}>
