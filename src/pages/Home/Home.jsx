@@ -10,11 +10,12 @@ import { books } from "../../services/bookMockAPI";
 
 import BookTable from "../../components/BookTable";
 import SearchBar from "../../components/SearchBar";
-// import logo from "../../assets/logo.svg";
+import AppTheme from "../../components/AppTheme/AppTheme";
 
 function Home() {
   const [filterText, setFilterText] = useState("");
   const [inStockOnly, setInStockOnly] = useState(false);
+
 
   let navigate = useNavigate();
 
@@ -25,9 +26,13 @@ function Home() {
   return (
     <div>
       <div className={style.main}>
-        <div className={style.addbook}>
-        {/* <img src="../../assets/logo.svg"  alt="За стеклом" width="300px" height="200px" /> */}
-          <AppButton size="s" header="Добавить книгу" onClick={goAddBook} />
+        <div className={style.mode}>
+          <div>
+        <AppTheme />
+        </div>
+          <div className={style.addbook}>
+            <AppButton size="s" header="Добавить книгу" onClick={goAddBook} />
+          </div>
         </div>
         <div className={style.header}>
           <Player autoplay loop src={spaceman}></Player>
