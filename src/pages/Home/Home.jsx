@@ -27,13 +27,11 @@ function Home() {
     <div>
       <div className={style.main}>
         <div className={style.mode}>
-          <div>
-        <AppTheme />
-        </div>
+          <AppTheme />
           <div className={style.addbook}>
             <AppButton size="s" header="Добавить книгу" onClick={goAddBook} />
           </div>
-        </div>
+          </div>
         <div className={style.header}>
           <Player autoplay loop src={spaceman}></Player>
           <span>Рады видеть тебя в нашей школьной библиотеке</span>

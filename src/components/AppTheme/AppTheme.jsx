@@ -18,7 +18,7 @@ function AppTheme() {
     document.body.className = theme;
   }, [theme]);
   return (
-    <div className={`${theme}`}>
+    <div className={`AppTheme ${theme}`}>
       <div onClick={toggleTheme}><AppModeSwitch /></div>
     </div>
   );
