@@ -9,7 +9,7 @@ import style from "./style.module.css";
     }
     return (
     <div className={style.LoaderImage} onChange={handleChange}>
-        <img className={style.LoadImage} src={file} />
+        <img className={style.LoadImage} src={file}  alt="inputImg"/>
         <input className={style.LoadButton} type="file" accept="image/png, image/jpeg, image/jpg"/>
     </div>
     );

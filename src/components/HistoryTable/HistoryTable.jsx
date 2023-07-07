@@ -1,21 +1,21 @@
-import React, { useState } from "react";
-import style from "./style.module.css";
+import React from "react";
+// import style from "./style.module.css";
 
 const HistoryTable = (props) => {
-  const [rows, setRows] = useState(props.initialRows);
+  // const [rows, setRows] = useState(props.initialRows);
 
-  const addRow = () => {
-    if (rows.length < 5) {
-      setRows([
-        ...rows,
-        <tr>
-          <td>Lowellda</td>
-          <td>20.01.2022</td>
-          <td>27.01.2022</td>
-        </tr>,
-      ]);
-    }
-  };
+  // const addRow = () => {
+  //   if (rows.length < 5) {
+  //     setRows([
+  //       ...rows,
+  //       <tr>
+  //         <td>Lowellda</td>
+  //         <td>20.01.2022</td>
+  //         <td>27.01.2022</td>
+  //       </tr>,
+  //     ]);
+  //   }
+  // };
 
   return (
     <div className="history">
