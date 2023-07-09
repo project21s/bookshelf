@@ -1,18 +1,12 @@
 import React from "react";
 import style from "./style.module.css";
+import clsx from "clsx";
 
 export function AppButton(props) {
-  let buttonClass = style.button;
-  if (props.size === "m") {
-    buttonClass += " " + style.medium;
-  } else {
-    buttonClass += " " + style.small;
-  }
-
   return (
     <button
       onClick={props.onClick ? props.onClick : null}
-      className={buttonClass}
+      className={clsx(style.button, {[style.red]: props.red})}
     >
       {props.header}
     </button>
