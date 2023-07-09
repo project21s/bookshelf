@@ -3,13 +3,28 @@
   padding: 0;
   box-sizing: border-box;
   font-family: Montserrat, sans-serif;
+  color: var(--text-main);
+  font-weight: 300;
+  line-height: normal;
 }
 :root {
   --color-main: tomato;
+  --background-light: #EBECF4;
+  --text-main:#212121;
+  --text-gray: #656565;
+  --green: #44EB99;
+  --gray: #C6CFDA;
 }
 
 body {
   max-width: 960px;
-  margin: 0 auto;
-  padding: 20px;
+  /*margin: 0 auto;*/
+  /*padding: 20px;*/
+}
+
+
+button {
+  cursor: pointer;
+  border: none;
+  background: transparent;
 }
