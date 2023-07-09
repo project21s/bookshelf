@@ -8,26 +8,25 @@ export function AppInput(props) {
 
   //ниже функция для автоматического ресайза textarea,это нужно, так как в описании книги предположительно будет много текста
   const textareaRef = useRef();
-  useEffect(() => {
+    const [height, setHeight] = useState(0)
+    useEffect(() => {
     const element = textareaRef.current;
+    if (!element) return
+    setHeight(element.scrollHeight)
     const autoResizeTextarea = () => {
-      if (element) {
-        element.style.height = element.scrollHeight + "px";
-        if (element.style.height > "50px") {
-          element.style.overflowY = "scroll";
-        }
-      }
+        setHeight(element.scrollHeight)
     };
-    element && document.addEventListener("input", autoResizeTextarea);
+    document.addEventListener("input", autoResizeTextarea);
     return () => {
-      if (element) document.removeEventListener("input", autoResizeTextarea);
+   document.removeEventListener("input", autoResizeTextarea);
     };
   }, []);
 
   return (
-    <div className={style.inputContainer}>
+    <div className={clsx(style.inputContainer, {[style.scroll] : height > 50})}>
       {props.description ? (
         <textarea
+            style={{height:`${height}px`}}
           ref={textareaRef}
           placeholder={props.title}
           onChange={(event) => setText(event.target.value)}

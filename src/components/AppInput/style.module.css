@@ -3,6 +3,9 @@
   overflow-y: hidden;
   max-height: 100px;
 }
+.inputContainer.scroll textarea{
+  overflow-y: scroll;
+}
 .inputContainer input,
 textarea {
   width: 100%;
