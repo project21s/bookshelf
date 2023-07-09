@@ -1,57 +1,130 @@
 .card {
-  min-height: 180px;
-  width: 160px;
-  border: 1px solid #b0b0b0;
+  /* min-height: 321px; */
+  /* max-height: 321px; */
+  height: 350px;
+  width: 195px;
+  border: 1px solid #fff;
+  background: #fff;
   border-radius: 8px;
-  padding: 10px;
   margin-bottom: 10px;
-  transition: 0.3s;
-  transition-timing-function: ease-in;
+  /* transition: 0.3s;
+  transition-timing-function: ease-in; */
+  padding: 18px;
 }
 
-.card:hover {
+/* .card:hover {
   transform: scale(0.95);
+} */
+
+.bookId {
+  display: flex;
+  position: relative;
+  max-width: 35px;
+  max-height: 35px;
+  width: 35px;
+  height: 35px;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 50%;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  z-index: 40;
 }
 
-.status {
+.bookIdFree {
+  background: #44EB99;
+}
+
+.bookIdNoFree {
+  background: #C6CFDA;
+}
+
+.divImage {
   display: flex;
-  justify-content: space-between;
-  padding: 0 6px;
+  position: relative;
+  top: -18px;
+  padding: auto;
+  height: 170px;
+  width: 129;
+  background: none;
+  z-index: 1;
 }
 
 .bookImg {
-  display: block;
-  max-height: 150px;
-  max-width: 112px;
+  display: flex;
+  height: auto;
+  width: auto;
   margin: 0 auto;
   box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.4);
+  z-index: 1;
 }
 
 .author {
-  font-size: 14px;
-  font-weight: 300;
+  height: 16px;
+  font-size: 16px;
+  font-weight: bold;
   text-overflow: ellipsis;
+  white-space: nowrap;
   overflow: hidden;
   margin-top: 6px;
+  background: #fff;
 }
 
 .title {
   text-overflow: ellipsis;
+  min-height: 50px;
   overflow: hidden;
-  font-weight: 700;
+  font-weight: 300;
   font-size: 14px;
+  background: #fff;
+  
 }
 
-.bookId {
-  font-size: 16px;
-  font-weight: 700;
+.freeFavorite {
+  display: flex;
+  justify-content: space-between;
+  background: #fff;
+  margin-top: 10px;
 }
 
 .isFree {
-  font-size: 14px;
-  font-weight: 300;
+  display:flex;
+  width: 74px;
+  height: 27px;
+  font-size: 12px;
+  font-weight: 400;
+  background: #C6CFDA;
+  border-radius: 15px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.noFree {
+  display: flex;
+  width: 74px;
+  height: 27px;
+  font-size: 12px;
+  font-weight: 400;
+  background: #fff;
+  color: #fff;
+  border-radius: 15px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
 }
 
 .grayscale {
   filter: grayscale(100%);
 }
+
+.favorite {
+  display:flex;
+  width: 24px;
+  height: 24px;
+  margin: auto 0;
+  background: #fff;
+}
+
+
