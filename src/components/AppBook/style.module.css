@@ -78,7 +78,6 @@
   font-weight: 300;
   font-size: 14px;
   background: #fff;
-  
 }
 
 .freeFavorite {
@@ -88,7 +87,7 @@
   margin-top: 10px;
 }
 
-.isFree {
+.StatusFree {
   display:flex;
   width: 74px;
   height: 27px;
@@ -101,30 +100,10 @@
   align-items: center;
 }
 
-.noFree {
-  display: flex;
-  width: 74px;
-  height: 27px;
-  font-size: 12px;
-  font-weight: 400;
-  background: #fff;
-  color: #fff;
-  border-radius: 15px;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
+.StatusNoFree {
+  opacity: 0;
 }
 
 .grayscale {
   filter: grayscale(100%);
 }
-
-.favorite {
-  display:flex;
-  width: 24px;
-  height: 24px;
-  margin: auto 0;
-  background: #fff;
-}
-
-
