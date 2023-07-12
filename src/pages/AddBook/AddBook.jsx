@@ -17,7 +17,7 @@ const AddBook = () => {
     <div>
       <div className={style.main}>
         <div>
-          <AppButton size="s" header="На главную" onClick={goHome} />
+          <AppButton header="На главную" onClick={goHome} />
         </div>
         <br />
         <div>
