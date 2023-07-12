@@ -11,11 +11,15 @@ function Home() {
   const [filterText, setFilterText] = useState("");
   const [inStockOnly, setInStockOnly] = useState(false);
 
+  const isMobile = true;
+
+  const main = (isMobile) ? style.mobile : style.dekstop;
+
   // let navigate = useNavigate();
 
   return (
-    <div className={style.main}>
-      <div className={style.blockLeft}>
+    <div className={main}>
+      <div className={style.blockLeft} id="one">
         <div className={style.hello}>
           <span>Рады видеть тебя в нашей школьной библиотеке</span>
         </div>
@@ -34,11 +38,15 @@ function Home() {
           onFilterTextChange={setFilterText}
           onInStockOnlyChange={setInStockOnly}
         />
-      </div>        <BookTable className={style.bookTable}
+      </div>
+      <div className={style.bookTable}>
+      <BookTable 
           books={books}
           filterText={filterText}
           inStockOnly={inStockOnly}
         />
+      </div>        
+      
     </div>
   );
 }

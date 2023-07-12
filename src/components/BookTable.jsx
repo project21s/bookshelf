@@ -40,6 +40,7 @@ function BookTable({ books, filterText, inStockOnly }) {
   return (
     <div
       style={{
+        position: "relative",
         display: "flex",
         gap: "10px",
         flexWrap: "wrap",

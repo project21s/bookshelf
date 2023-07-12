@@ -1,14 +1,25 @@
-.main {
-  display: inline;
+.mobile {
+  display: flex;
   flex-wrap: wrap;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+
+.dekstop {
+  display: flex;
+  /* flex-wrap: wrap; */
   max-width: 1280px;
   margin: 0 auto;
   margin-bottom: 20px; 
 }
 
-.blockLeft {
+.dekstop .blockLeft {
   display: flex;
-  position: static;
+  position: fixed;
+  flex: 2 1 300px;
   flex-direction: row;
   min-width: 320px;
   max-width: 320px;
@@ -17,6 +28,12 @@
   margin: 0 auto;
   align-content: flex-start;
 }
+
+.mobile .blockLeft {
+  display: flex;
+  flex-direction: column;
+}
+
 
 .hello {
   display: flex;
@@ -28,7 +45,6 @@
 }
 
 .info {
-
 display: flex;
 flex-direction: column;
 font-family: Roboto;
@@ -40,17 +56,7 @@ text-align: left;
 margin-top: 20px;
 }
 
-.bookTable {
-  display: flex;
-  width: auto;
-}
-
-.bookTable #bookTable {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin: auto;
-  justify-content: center;
-  text-align: center;
+.dekstop .bookTable {
+  margin-left: 320px;
 }
 
