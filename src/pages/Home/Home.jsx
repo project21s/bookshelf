@@ -23,6 +23,7 @@ function Home() {
 
   return (
     <div>
+      <h1>22-{process.env.REACT_APP_TEXT}</h1>
       <div className={style.main}>
         <div className={style.addbook}>
           <AppButton size="s" header="Добавить книгу" onClick={goAddBook} />
