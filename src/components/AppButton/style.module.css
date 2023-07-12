@@ -1,5 +1,6 @@
 .button {
   color: #212121;
+  background-color: #44eb99;
 
   font-size: 14px;
   font-weight: 400;
@@ -17,10 +18,6 @@
   box-shadow: 0px 0px 0px 0px;
 }
 
-.green {
-  background-color: #44EB99;
-}
-
 .red {
-  background-color: #FF4A50;
+  background-color: #ff4a50;
 }
