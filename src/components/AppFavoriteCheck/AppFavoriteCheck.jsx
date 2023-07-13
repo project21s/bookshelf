@@ -8,13 +8,14 @@ function Checkbox(props) {
 
   return (
     <label>
-      <input
+      <input className={style.favoriteCheck}
         type="checkbox"
         onChange={() => {
           setIsChecked(!isChecked);
         }}
       />
         <img className={style.checkbox} alt="" src={isChecked ? favoriteChecked : favoriteNoChecked} />
+        {props.title}
     </label>
   );
 }

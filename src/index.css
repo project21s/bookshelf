@@ -4,9 +4,17 @@
   box-sizing: border-box;
   font-family: Roboto;
   background: #EBECF4;
+  color: var(--text-main);
+  font-weight: 300;
+  line-height: normal;
 }
 :root {
   --color-main: tomato;
+  --background-light: #EBECF4;
+  --text-main:#212121;
+  --text-gray: #656565;
+  --green: #44EB99;
+  --gray: #C6CFDA;
 }
 
 body {

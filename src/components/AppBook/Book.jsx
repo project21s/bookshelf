@@ -28,7 +28,7 @@ function Book(props) {
         <div className={style.title} onClick={props.onClick ? props.onClick : null}>{book.title}</div>
         <div className={style.freeFavorite}>
           <div className={StatusFree} onClick={props.onClick ? props.onClick : null}>Читают</div>
-        <Checkbox checked={isFavorite} />
+        <Checkbox checked={isFavorite}/>
         </div>
       </div>
   );

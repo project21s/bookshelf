@@ -1,4 +1,4 @@
-input[type="checkbox"] {
+.favoriteCheck {
   height: 1px;
   overflow: hidden;
   position: absolute;
