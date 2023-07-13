@@ -9,6 +9,7 @@ import Header from "./components/Header/Header";
 
 export const App = () => {
   const { isMobile } = useScreen();
+
   return (
     <div className={clsx({ ["mobile"]: isMobile })}>
       <BrowserRouter>

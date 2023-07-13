@@ -45,3 +45,21 @@ a {
   overflow-x: hidden;
 }
 
+.dark-background {
+  z-index: 1;
+  transition: 0.3s;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background: black;
+  opacity: 0;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+}
+.fade-enter {
+  opacity: 0.5;
+}
+.fade-exit {
+  opacity: 0;
+}
