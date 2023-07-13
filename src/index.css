@@ -2,29 +2,46 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Montserrat, sans-serif;
+  font-family: "SB Sans Display Semibold", sans-serif;
   color: var(--text-main);
   font-weight: 300;
   line-height: normal;
 }
 :root {
   --color-main: tomato;
-  --background-light: #EBECF4;
-  --text-main:#212121;
+  --background-light: #ebecf4;
+  --text-main: #212121;
   --text-gray: #656565;
-  --green: #44EB99;
-  --gray: #C6CFDA;
+  --green: #44eb99;
+  --mint: #00ffaf;
+  --gray: #c6cfda;
+  --light-gray: #BEBEBE;
+  --background-dark: #1d2633;
 }
 
 body {
+  background: var(--background-light);
   max-width: 960px;
   /*margin: 0 auto;*/
   /*padding: 20px;*/
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
-
 
 button {
   cursor: pointer;
   border: none;
   background: transparent;
 }
+:focus,
+:active {
+  outline: none;
+}
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+.mobile {
+  overflow-x: hidden;
+}
+
