@@ -1,9 +1,10 @@
 .inputContainer textarea {
   resize: none;
   overflow-y: hidden;
+  min-height: 45px;
   max-height: 100px;
 }
-.inputContainer.scroll textarea{
+.inputContainer.scroll textarea {
   overflow-y: scroll;
 }
 .inputContainer input,
@@ -17,6 +18,7 @@ textarea {
   background: white;
   color: var(--text-main);
   font-weight: 400;
+  filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.25));
 }
 .inputContainer input::placeholder,
 textarea::placeholder {
@@ -24,6 +26,22 @@ textarea::placeholder {
   font-weight: 400;
   font-size: 20px;
 }
-.mobile {
-  border: none !important;
+
+
+:global(.mobile) .inputContainer input,
+:global(.mobile) .inputContainer textarea {
+  font-size: 14px;
+  padding: 13px 25px;
 }
+:global(.mobile).inputContainer textarea {
+  max-height: 300px;
+}
+:global(.mobile) .inputContainer input::placeholder,
+:global(.mobile) .inputContainer textarea::placeholder {
+  font-size: 14px;
+}
+:global(.mobile) .inputContainer input,
+:global(.mobile) .inputContainer textarea {
+  border: none;
+}
+
