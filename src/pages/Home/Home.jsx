@@ -7,12 +7,12 @@ import { books } from "../../services/bookMockAPI";
 
 import BookTable from "../../components/BookTable";
 import AppSearch from "../../components/AppSearch/AppSearch";
-import { toHaveFormValues } from "@testing-library/jest-dom/dist/matchers";
+// import { toHaveFormValues } from "@testing-library/jest-dom/dist/matchers";
 function Home() {
   const [filterText, setFilterText] = useState("");
   const [inStockOnly, setInStockOnly] = useState(false);
 
-  const isMobile = toHaveFormValues;
+  const isMobile = true;
 
   const main = (isMobile) ? style.mobile : style.dekstop;
 
@@ -34,14 +34,16 @@ function Home() {
         </div>
       </div>
       <div className={style.search}>
-        <AppSearch 
+        <a href="#test">
+          <AppSearch 
           filterText={filterText}
           inStockOnly={inStockOnly}
           onFilterTextChange={setFilterText}
           onInStockOnlyChange={setInStockOnly}
         />
+        </a>
       </div>
-      <div className={style.bookTable}>
+      <div id="test" className={style.bookTable}>
       <BookTable 
           books={books}
           filterText={filterText}

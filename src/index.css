@@ -22,3 +22,11 @@ body {
   margin: 0 auto;
   padding: 20px;
 }
+
+html {
+  scroll-behavior: smooth;
+  }
+
+a {
+  text-decoration: none;
+}
