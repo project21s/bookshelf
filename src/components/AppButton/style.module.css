@@ -1,26 +1,39 @@
 .button {
-  color: #000;
-  background-color: #fff;
-  border: 1px solid #000;
-  font-weight: 500;
-  box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.5);
+  color: #212121;
+  background-color: #44eb99;
+
+  font-size: 14px;
+  font-weight: 400;
+  padding: 12px 25px 12px 25px;
+
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
   cursor: pointer;
-  transition: 0.15s;
+  transition: 0.1s;
   transition-timing-function: ease;
 }
+
+.scrollUp {
+  /* display: flex; */
+  position: fixed;
+  font-size: 20px;
+  /* margin: auto 0; */
+  bottom: 5%;
+  right: 5%;
+  z-index: 100;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  background-image: url("../../assets/baseline-keyboard-arrow-up.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  }
 
 .button:hover {
   box-shadow: 0px 0px 0px 0px;
 }
 
-.small {
-  font-size: 14px;
-  height: 36px;
-  padding: 0 14px;
-}
-
-.medium {
-  font-size: 20px;
-  height: 42px;
-  padding: 0 20px;
+.red {
+  background-color: #ff4a50;
 }

@@ -1,8 +1,10 @@
 import React from "react";
-import Book from "./AppBook/Book";
+import Book from "../AppBook/Book";
 import { useNavigate } from "react-router-dom";
+import style from "./style.module.css"
 
 function BookTable({ books, filterText, inStockOnly }) {
+
   const rows = [];
   let navigate = useNavigate();
 
@@ -38,15 +40,7 @@ function BookTable({ books, filterText, inStockOnly }) {
   });
 
   return (
-    <div
-      style={{
-        position: "relative",
-        display: "flex",
-        gap: "10px",
-        flexWrap: "wrap",
-        justifyContent: "center",
-      }}
-    >
+    <div className={style.bookTabke} >
       {rows}
     </div>
   );

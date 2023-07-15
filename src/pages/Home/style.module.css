@@ -1,55 +1,64 @@
-.mobile {
+.main {
   display: flex;
   flex-wrap: wrap;
-  max-width: 320px;
-  display: flex;
-  flex-direction: column;
   margin: 0 auto;
-  
 }
 
-.mobile .search {
-  padding: 10px;
-  position: sticky;
-  top: 0;
-  left: 0;
-  z-index: 100;
+@media screen and (width <= 600px) {
+  .main {
+    max-width: 320px;
+    flex-direction: column;
+  }
+
+  .search {
+    position: sticky;
+    top: 10px;
+    bottom: 10px;
+    left: 0;
+    z-index: 100;
+    margin: 10px 0;
+    background: #656565 ;
+  }
+  /* .search::-webkit-textfield-decoration-container {
+    position: sticky;
+    top: 10px;
+    left: 0;
+    z-index: 100;
+    margin: 10px 0;
+    background-color: blue;
+  } */
+
+  .blockLeft {
+    display: flex;
+    flex-direction: column;
+  }
+
 }
 
 
-.dekstop .search {
-  position: fixed;
-  top: 300px;
+@media screen and (width > 600px) {
+  .main {
+    max-width: 1280px;
+    margin-bottom: 20px; 
+  }
+
+  .search {
+    position: fixed;
+    top: 300px;
+  }
+
+  .blockLeft {
+    display: flex;
+    position: fixed;
+    flex-direction: row;
+    min-width: 320px;
+    max-width: 320px;
+    height: auto;
+    flex-wrap: wrap;
+    margin: 0 auto;
+  }
+
 }
-
-
-
-.dekstop {
-  display: flex;
-  /* flex-wrap: wrap; */
-  max-width: 1280px;
-  margin: 0 auto;
-  margin-bottom: 20px; 
-}
-
-.dekstop .blockLeft {
-  display: flex;
-  position: fixed;
-  flex: 2 1 300px;
-  flex-direction: row;
-  min-width: 320px;
-  max-width: 320px;
-  height: auto;
-  flex-wrap: wrap;
-  margin: 0 auto;
-  align-content: flex-start;
-}
-
-.mobile .blockLeft {
-  display: flex;
-  flex-direction: column;
-}
-
 
 .hello {
   display: flex;
@@ -71,8 +80,3 @@ letter-spacing: 0em;
 text-align: left;
 margin-top: 20px;
 }
-
-.dekstop .bookTable {
-  margin-left: 320px;
-}
-

@@ -12,10 +12,10 @@ function AppSearch({
 }) {
   return (
     <>
-      <form className={style.fixed}>
+      <form>
         <div className={clsx(style.inputContainer)}>
         <input
-          type="text"
+          type="search"
           placeholder="Поиск"
           className={clsx(style.inputContainer)}
           required
@@ -23,6 +23,9 @@ function AppSearch({
           value={filterText}
           onChange={(e) => onFilterTextChange(e.target.value)
           }
+          onClick={() => {
+            window.scrollTo({top: 300, left: 0});
+          }}
         />
         <img className={style.icon} src={searchIcon} alt="icon"/>
       </div>

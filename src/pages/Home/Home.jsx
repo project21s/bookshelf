@@ -1,25 +1,30 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 // import { useNavigate } from "react-router-dom";
 
 import style from "./style.module.css";
 import { books } from "../../services/bookMockAPI";
 
-import BookTable from "../../components/BookTable";
+import BookTable from "../../components/BookTabke/BookTable";
 import AppSearch from "../../components/AppSearch/AppSearch";
 // import { toHaveFormValues } from "@testing-library/jest-dom/dist/matchers";
+import AppButton from "../../components/AppButton/AppButton"
+
 function Home() {
+
+  const ref = useRef(null);
+
+  const handleClick = () => {
+    ref.current?.scrollIntoView({behavior: 'smooth', position: 'fixed'});
+  };
+
   const [filterText, setFilterText] = useState("");
   const [inStockOnly, setInStockOnly] = useState(false);
 
-  const isMobile = true;
-
-  const main = (isMobile) ? style.mobile : style.dekstop;
-
   // let navigate = useNavigate();
   return (
-    <div className={main}>
-      <div className={style.blockLeft}>
+    <div ref={ref} className={style.main}>      
+      <div ref={ref} className={style.blockLeft}> 
         <div className={style.hello}>
           <span>Рады видеть тебя в нашей школьной библиотеке</span>
         </div>
@@ -33,23 +38,24 @@ function Home() {
             <div>- Книги просим возвращать в свою ячейку согласно её номеру</div>
         </div>
       </div>
-      <div className={style.search}>
-        <a href="#test">
+      <div  className={style.search} >
           <AppSearch 
           filterText={filterText}
           inStockOnly={inStockOnly}
           onFilterTextChange={setFilterText}
           onInStockOnlyChange={setInStockOnly}
         />
-        </a>
+      
       </div>
-      <div id="test" className={style.bookTable}>
+      <AppButton scrollUp onClick={handleClick} />
+      {/* <div className={style.BookTable}> */}
       <BookTable 
           books={books}
           filterText={filterText}
           inStockOnly={inStockOnly}
-        />
-      </div> 
+        /> 
+        {/* </div> */}
+
     </div>       
 
 
