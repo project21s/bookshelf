@@ -38,9 +38,9 @@ function BookTable({ books, filterText, inStockOnly }) {
       />
     );
   });
-
   return (
     <div className={style.bookTabke} >
+      
       {rows}
     </div>
   );
