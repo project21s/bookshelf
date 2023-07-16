@@ -9,15 +9,14 @@
   border: 1px solid #fff;
   background: #fff;
   border-radius: 8px;
-  margin-bottom: 10px;
-  /* transition: 0.3s;
-  transition-timing-function: ease-in; */
+  transition: 0.3s;
+  transition-timing-function: ease-in;
   padding: 14px;
 }
 
-/* .card:hover {
-  transform: scale(0.95);
-} */
+.card:hover {
+  transform: scale(1.02);
+}
 
 .bookId {
   display: flex;
@@ -36,11 +35,11 @@
 }
 
 .bookIdFree {
-  background: #44EB99;
+  background: #44eb99;
 }
 
 .bookIdNoFree {
-  background: #C6CFDA;
+  background: #c6cfda;
 }
 
 .divImage {
@@ -49,7 +48,7 @@
   top: -18px;
   padding: auto;
   /* height: 170px; */
-    /* mobile */
+  /* mobile */
   height: 145px;
   width: 129;
   background: none;
@@ -72,13 +71,13 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  margin-top: 6px;
+  margin: 6px 0;
   background: #fff;
 }
 
 .title {
   text-overflow: ellipsis;
-  min-height: 50px;
+  height: 32px;
   overflow: hidden;
   font-weight: 300;
   font-size: 14px;
@@ -93,12 +92,12 @@
 }
 
 .StatusFree {
-  display:flex;
+  display: flex;
   width: 74px;
   height: 27px;
   font-size: 12px;
   font-weight: 400;
-  background: #C6CFDA;
+  background: #c6cfda;
   border-radius: 15px;
   text-align: center;
   justify-content: center;

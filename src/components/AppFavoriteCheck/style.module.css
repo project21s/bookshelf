@@ -17,7 +17,10 @@
   background-color: #fff;
 }
 
+.checkbox:hover {
+  cursor: pointer;
+}
+
 label {
   background-color: #fff;
 }
-
