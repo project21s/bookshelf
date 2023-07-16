@@ -1,27 +1,45 @@
-.LoaderImage {
-    margin: 0 auto -260px;
-    height: 260px;
-    width: 200px;
-    position: relative;
-    top: -260px;
-    border-style: solid 5px #000;
-  }
-
-.LoadButton {
-    position: relative;
-    top: -260px;
-    height: 260px;
-    width: 200px;
-    opacity: 0;
-    margin: 0 auto;
-    border-style: solid 5px #000;
+.loadImage {
+  overflow: hidden;
+  position: relative;
+  width: 200px;
+  height: 260px;
+  box-shadow: 5px 5px 4px 0 #00000066;
+  background: var(--gray);
+  display: flex;
+  align-items: center;
 }
-
-.LoadImage {
-    height: 260px;
-    width: 200px;
-    border: rgba(0, 0, 0, 0.5);
-    border-width: 1px;
-    border-style: solid;
-    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.5);
+.loadImage p {
+  text-align: center;
+  padding: 20px;
+  font-size: 24px;
+}
+.loadImage img {
+  width: inherit;
+}
+.inputFile {
+  position: absolute;
+  top: 0;
+  height: inherit;
+  width: inherit;
+  opacity: 0;
+  margin: 0 auto;
+  cursor: pointer;
+}
+@media(max-width: 480px){
+   .loadImage{
+       width: 160px;
+       height: 220px;
+   }
+    .loadImage p{
+        font-size: 18px;
+    }
+}
+@media(max-width: 400px){
+  .loadImage{
+    width: 140px;
+    height: 200px;
+  }
+  .loadImage p{
+    font-size: 16px;
+  }
 }
