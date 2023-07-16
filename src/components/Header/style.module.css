@@ -6,7 +6,10 @@
   justify-content: space-between;
   align-items: center;
   padding: 0 50px;
-  position: relative;
+  position: fixed;
+  z-index: 200;
+  top: 0;
+  left: 0;
 }
 .logo {
   display: flex;
@@ -21,7 +24,7 @@
 .navigation {
   display: flex;
   justify-content: space-between;
-  gap: 20px;
+  gap: 36px;
 }
 :global(.mobile) .navigation,
 :global(.mobile) .user {
@@ -36,7 +39,7 @@
   line-height: 15px;
   font-size: 20px;
   color: white;
-  font-weight: 400;
+  font-weight: 300;
   display: block;
   text-decoration: none;
 }
@@ -127,30 +130,30 @@
   display: flex;
   align-items: center;
 }
-.mobileNavigationHide{
+.mobileNavigationHide {
   right: -330px;
   transition: 0.3s;
 }
-.auth{
+.auth {
   font-size: 22px;
   margin: 35px;
   display: flex;
   flex-direction: column;
 }
-.auth a{
+.auth a {
   padding: 5px 20px;
 }
-.footer{
+.footer {
   margin-left: 55px;
 }
-.footer p{
+.footer p {
   color: var(--light-gray);
   font-size: 14px;
 }
-.footer p:last-child{
+.footer p:last-child {
   font-size: 16px;
 }
-.mobileContainer{
+.mobileContainer {
   display: flex;
   flex-direction: column;
   justify-content: space-between;

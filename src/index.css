@@ -1,13 +1,13 @@
 * {
   margin: 0;
   padding: 0;
-  background: var(--background-light);
   box-sizing: border-box;
-  font-family: "SB Sans Display Semibold", sans-serif;
+  font-family: Roboto, sans-serif;
   color: var(--text-main);
-  font-weight: 300;
   line-height: normal;
+  font-weight: 300;
 }
+
 :root {
   --color-main: tomato;
   --background-light: #ebecf4;
@@ -16,17 +16,13 @@
   --green: #44eb99;
   --mint: #00ffaf;
   --gray: #c6cfda;
-  --light-gray: #BEBEBE;
+  --light-gray: #bebebe;
   --background-dark: #1d2633;
 }
 
 body {
   background: var(--background-light);
-  max-width: 960px;
-  /*margin: 0 auto;*/
-  /*padding: 20px;*/
-  overflow-y: hidden;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
 }
 
 button {
@@ -39,13 +35,14 @@ button {
 :active {
   outline: none;
 }
+
 a {
   text-decoration: none;
   cursor: pointer;
 }
-.mobile {
+/* .mobile {
   overflow-x: hidden;
-}
+} */
 
 .dark-background {
   z-index: 1;
@@ -59,12 +56,20 @@ a {
   top: 0;
   pointer-events: none;
 }
+
 .fade-enter {
   opacity: 0.5;
 }
+
 .fade-exit {
   opacity: 0;
+}
 
 html {
   scroll-behavior: smooth;
+}
+
+.content {
+  margin-top: 80px;
+  padding: 0 20px;
 }

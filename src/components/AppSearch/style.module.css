@@ -5,7 +5,7 @@
   background: none;
 }
 
-.FreeBooksCheck label{
+.FreeBooksCheck label {
   background: none;
 }
 
@@ -14,24 +14,23 @@
   height: 45px;
   border-radius: 10px;
   padding: 10px 45px;
-  font-size: 20px;
-  border: 1px solid #44EB99;
-  background: #44EB99;
+  font-size: 14px;
+  border: 1px solid #44eb99;
+  background: #44eb99;
   color: var(--text-man);
-  font-weight: 400;
+  font-weight: 300;
   filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.25));
   display: flex;
   position: relative;
   outline: none;
-  line-height: 23px; 
+  line-height: 23px;
   letter-spacing: 0em;
-
 }
 
-.inputContainer input::placeholder{
+.inputContainer::placeholder {
   color: var(--text-gray);
-  font-weight: 400;
-  font-size: 20px;
+  font-weight: 300;
+  font-size: 14px;
   line-height: 23px;
   letter-spacing: 0em;
 }
@@ -45,12 +44,10 @@
   background: none;
 }
 
-
-
 :global(.mobile) .inputContainer input,
 :global(.mobile) .inputContainer textarea {
   font-size: 14px;
-  padding: 13px 25px;
+  padding: 13px 38px;
 }
 :global(.mobile).inputContainer textarea {
   max-height: 300px;
