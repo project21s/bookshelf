@@ -1,0 +1,19 @@
+@media screen and (width <= 750px) {
+  .bookTabke {
+    position: relative;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+@media screen and (width > 750px) {
+  .bookTabke {
+    margin-left: 340px;
+    position: relative;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}

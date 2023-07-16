@@ -1,55 +1,28 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-
 import style from "./style.module.css";
-import { AppButton } from "../../components/AppButton/AppButton";
-import { AppInput } from "../../components/AppInput/AppInput";
 import { AppImageDownload } from "../../components/AppImageDownload/AppImageDownload";
+import AddBookReduxForm from "./AddBookForm";
 
 const AddBook = () => {
-  let navigate = useNavigate();
-
-  const goHome = () => {
-    navigate("/");
+  const onSubmit = (formData) => {
+    console.log(formData);
   };
-
   return (
-    <div>
-      <div className={style.main}>
+    <div className={style.main}>
+      <div className={style.areaForPic}>
         <div>
-          <AppButton size="s" header="На главную" onClick={goHome} />
+          <p>Тут ты можешь внести в Школьную библиотеку свою книгу</p>
+          <p>Заполни данные ниже и поставь книгу на полку</p>
         </div>
-        <br />
-        <div>
-          Тут ты можешь внести в Школьную библиотеку свою книгу Заполни данные
-          ниже и поставь книгу на полку
-        </div>
-        <br />
-        <form>
-          <div className={style.BeforeLoad}>
-            {" "}
-            Загрузить
-            <br />
-            фото кники
+        <AppImageDownload />
+      </div>
+      <div className={style.container}>
+        <div className={style.wrapper}>
+          <div>
+            <p>Тут ты можешь внести в Школьную библиотеку свою книгу</p>
+            <p>Заполни данные ниже и поставь книгу на полку</p>
           </div>
-          <AppImageDownload />
-          <br />
-          <AppInput placeholder="Номер" />
-          <br />
-          <AppInput placeholder="Автор" />
-          <br />
-          <AppInput placeholder="Название" />
-          <br />
-          <AppInput placeholder="Ник" />
-        </form>
-        <br />
-        <div>
-          Не забудь прикрепить малярный скочт на книгу с указанием порядкогово
-          номера и своего ника
-        </div>
-        <br />
-        <div className={style.ButtonAddBook}>
-          <AppButton size="m" header="Добавить книгу" />
+          <AddBookReduxForm onSubmit={onSubmit} />
         </div>
       </div>
     </div>

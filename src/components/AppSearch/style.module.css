@@ -1,0 +1,62 @@
+.FreeBooksCheck {
+  position: relative;
+  text-align: left;
+  margin: 10px 0;
+  background: none;
+}
+
+.FreeBooksCheck label {
+  background: none;
+}
+
+.inputContainer input {
+  width: 100%;
+  height: 45px;
+  border-radius: 10px;
+  padding: 10px 45px;
+  font-size: 14px;
+  border: 1px solid #44eb99;
+  background: #44eb99;
+  color: var(--text-man);
+  font-weight: 300;
+  filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.25));
+  display: flex;
+  position: relative;
+  outline: none;
+  line-height: 23px;
+  letter-spacing: 0em;
+}
+
+.inputContainer::placeholder {
+  color: var(--text-gray);
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 23px;
+  letter-spacing: 0em;
+}
+
+.icon {
+  position: absolute;
+  left: 14px;
+  top: 14px;
+  width: 20px;
+  height: 20px;
+  background: none;
+}
+
+:global(.mobile) .inputContainer input,
+:global(.mobile) .inputContainer textarea {
+  font-size: 14px;
+  padding: 13px 38px;
+}
+:global(.mobile).inputContainer textarea {
+  max-height: 300px;
+}
+:global(.mobile) .inputContainer input::placeholder,
+:global(.mobile) .inputContainer textarea::placeholder {
+  font-size: 14px;
+}
+:global(.mobile) .inputContainer input,
+:global(.mobile) .inputContainer textarea {
+  border: none;
+}

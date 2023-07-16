@@ -1,0 +1,161 @@
+.container {
+  width: 100vw;
+  height: 80px;
+  background: var(--background-dark);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 50px;
+  position: fixed;
+  z-index: 200;
+  top: 0;
+  left: 0;
+}
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  background: var(--mint);
+  border-radius: 10px;
+}
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  gap: 36px;
+}
+:global(.mobile) .navigation,
+:global(.mobile) .user {
+  display: none;
+}
+:global(.mobile) .container {
+  padding: 0 30px;
+}
+.container h1,
+.navlink {
+  text-align: center;
+  line-height: 15px;
+  font-size: 20px;
+  color: white;
+  font-weight: 300;
+  display: block;
+  text-decoration: none;
+}
+
+.navlink.active {
+  position: relative;
+}
+.navlink.active:after {
+  content: "";
+  display: block;
+  height: 3px;
+  transform: translateY(10px);
+  background: var(--mint);
+}
+:global(.mobile) .navlink.active:after {
+  display: none;
+}
+
+.user,
+.mobileUser {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.user div,
+.mobileUser div:first-child {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.user img {
+  width: 50px;
+}
+.mobileUser {
+  justify-content: space-between;
+  align-items: start;
+  height: 80px;
+}
+.mobileNavigation {
+  transition: 0.3s;
+  overflow: hidden;
+  border-radius: 15px 0 0 15px;
+  padding: 35px 20px;
+  z-index: 1;
+  position: absolute;
+  background: white;
+  width: 90%;
+  max-width: 330px;
+  height: 100vh;
+  top: 0;
+  right: 0;
+}
+.mobileUser div:first-child {
+  width: 80px;
+  height: 80px;
+}
+.usernameContainer {
+  justify-content: end;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+}
+.usernameContainer p {
+  font-size: 20px;
+}
+.usernameContainer h2 {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.mobileRoutes {
+  margin: 50px 0 50px 35px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+:global(.mobile) .navlink {
+  color: var(--text-main);
+  font-size: 22px;
+  padding: 15px 20px;
+}
+:global(.mobile) .navlink.active {
+  width: 300px;
+  background: var(--mint);
+  border-radius: 25px 0 0 25px;
+  display: flex;
+  align-items: center;
+}
+.mobileNavigationHide {
+  right: -330px;
+  transition: 0.3s;
+}
+.auth {
+  font-size: 22px;
+  margin: 35px;
+  display: flex;
+  flex-direction: column;
+}
+.auth a {
+  padding: 5px 20px;
+}
+.footer {
+  margin-left: 55px;
+}
+.footer p {
+  color: var(--light-gray);
+  font-size: 14px;
+}
+.footer p:last-child {
+  font-size: 16px;
+}
+.mobileContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 35px;
+}

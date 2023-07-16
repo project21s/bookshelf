@@ -1,35 +1,27 @@
 import React from "react";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useRef } from "react";
 
 import style from "./style.module.css";
-import { AppButton } from "../../components/AppButton/AppButton";
-import { Player } from "@lottiefiles/react-lottie-player";
-import spaceman from "../../assets/spaceman.json";
 import { books } from "../../services/bookMockAPI";
 
-import BookTable from "../../components/BookTable";
-import SearchBar from "../../components/SearchBar";
+import BookTable from "../../components/BookTabke/BookTable";
+import AppSearch from "../../components/AppSearch/AppSearch";
+import AppButton from "../../components/AppButton/AppButton";
 
 function Home() {
+  const ref = useRef(null);
+
+  const handleClick = () => {
+    ref.current?.scrollIntoView({ behavior: "smooth", position: "fixed" });
+  };
+
   const [filterText, setFilterText] = useState("");
   const [inStockOnly, setInStockOnly] = useState(false);
 
-  let navigate = useNavigate();
-
-  const goAddBook = () => {
-    navigate("/addbook");
-  };
-
   return (
-    <div>
-      <h1>22-{process.env.REACT_APP_TEXT}</h1>
-      <div className={style.main}>
-        <div className={style.addbook}>
-          <AppButton size="s" header="Добавить книгу" onClick={goAddBook} />
-        </div>
-        <div className={style.header}>
-          <Player autoplay loop src={spaceman}></Player>
+    <div ref={ref} className={style.main}>
+      <div ref={ref} className={style.blockLeft}>
+        <div className={style.hello}>
           <span>Рады видеть тебя в нашей школьной библиотеке</span>
         </div>
         <div className={style.info}>
@@ -41,21 +33,21 @@ function Home() {
           <div>- Брать книгу на одну неделю, не больше</div>
           <div>- Книги просим возвращать в свою ячейку согласно её номеру</div>
         </div>
-        <SearchBar
+      </div>
+      <div className={style.search}>
+        <AppSearch
           filterText={filterText}
           inStockOnly={inStockOnly}
           onFilterTextChange={setFilterText}
           onInStockOnlyChange={setInStockOnly}
         />
       </div>
-
-      <div>
-        <BookTable
-          books={books}
-          filterText={filterText}
-          inStockOnly={inStockOnly}
-        />
-      </div>
+      <AppButton scrollUp onClick={handleClick} />
+      <BookTable
+        books={books}
+        filterText={filterText}
+        inStockOnly={inStockOnly}
+      />
     </div>
   );
 }
