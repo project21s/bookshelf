@@ -2,8 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Roboto;
-  background: #EBECF4;
+  font-family: Montserrat, sans-serif;
   color: var(--text-main);
   font-weight: 300;
   line-height: normal;
@@ -18,9 +17,16 @@
 }
 
 body {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 20px;
+  max-width: 960px;
+  /*margin: 0 auto;*/
+  /*padding: 20px;*/
+}
+
+
+button {
+  cursor: pointer;
+  border: none;
+  background: transparent;
 }
 
 html {
