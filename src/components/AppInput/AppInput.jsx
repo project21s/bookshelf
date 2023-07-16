@@ -24,6 +24,7 @@ export function AppInput({ title, description = false, heightLimit = 100 }) {
             setText(event.target.value);
             autoResizeTextarea(event);
           }}
+
           value={text}
         />
       ) : (
@@ -31,6 +32,7 @@ export function AppInput({ title, description = false, heightLimit = 100 }) {
           className={clsx(style.inputContainer)}
           type="text"
           placeholder={title}
+
           onChange={(event) => setText(event.target.value)}
           value={text}
         />
