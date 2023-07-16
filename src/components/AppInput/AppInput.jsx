@@ -1,42 +1,38 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import style from "./style.module.css";
 import { clsx } from "clsx";
 
-export function AppInput(props) {
+export function AppInput({ title, description = false, heightLimit = 100 }) {
   const [text, setText] = useState("");
-  const isMobile = false;
-
-  //ниже функция для автоматического ресайза textarea,это нужно, так как в описании книги предположительно будет много текста
-  const textareaRef = useRef();
-    const [height, setHeight] = useState(0)
-    useEffect(() => {
-    const element = textareaRef.current;
-    if (!element) return
-    setHeight(element.scrollHeight)
-    const autoResizeTextarea = () => {
-        setHeight(element.scrollHeight)
-    };
-    document.addEventListener("input", autoResizeTextarea);
-    return () => {
-   document.removeEventListener("input", autoResizeTextarea);
-    };
-  }, []);
-
+  const textarea = useRef();
+  const height = +textarea.current?.style.height.replace("px", "");
+  const autoResizeTextarea = (event) => {
+    event.target.style.height = "45px";
+    event.target.style.height = event.target.scrollHeight + "px";
+  };
   return (
-    <div className={clsx(style.inputContainer, {[style.scroll] : height > 50})}>
-      {props.description ? (
+    <div
+      className={clsx(style.inputContainer, {
+        [style.scroll]: height > heightLimit,
+      })}
+    >
+      {description ? (
         <textarea
-            style={{height:`${height}px`}}
-          ref={textareaRef}
-          placeholder={props.title}
-          onChange={(event) => setText(event.target.value)}
+          ref={textarea}
+          placeholder={title}
+          onChange={(event) => {
+            setText(event.target.value);
+            autoResizeTextarea(event);
+          }}
+
           value={text}
         />
       ) : (
         <input
-          className={clsx(style.inputContainer, { [style.mobile]: isMobile })}
+          className={clsx(style.inputContainer)}
           type="text"
-          placeholder={props.title}
+          placeholder={title}
+
           onChange={(event) => setText(event.target.value)}
           value={text}
         />

@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  background: var(--background-light);
   box-sizing: border-box;
   font-family: "SB Sans Display Semibold", sans-serif;
   color: var(--text-main);
@@ -33,6 +34,7 @@ button {
   border: none;
   background: transparent;
 }
+
 :focus,
 :active {
   outline: none;
@@ -62,4 +64,7 @@ a {
 }
 .fade-exit {
   opacity: 0;
+
+html {
+  scroll-behavior: smooth;
 }
