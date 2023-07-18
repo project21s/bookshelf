@@ -20,12 +20,11 @@ const goToTop = () => {
 };
 
 return (
-    <div>
-    {" "}
-            {showTopBtn && (
-         
-      <AppButton scrollUp onClick={goToTop} />)}{" "}
-    </div>
+    <>
+        {" "}
+        {showTopBtn && (
+        <AppButton scrollUp onClick={goToTop} />)}{" "}
+    </>
 );
 }
 

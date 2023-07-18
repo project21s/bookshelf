@@ -1,29 +1,34 @@
 import React from "react";
 import style from "./style.module.css";
-// import { AppSearch } from "./AppSearch/AppSearch";
 import { clsx } from "clsx";
 import searchIcon from "../../assets/material-symbols-search.svg";
-
+import { useScreen } from "../../hooks"
 function AppSearch({
   filterText,
   inStockOnly,
   onFilterTextChange,
   onInStockOnlyChange,
 }) {
+  const {isMobile}  = useScreen();
+
+  const goToTop = () => {
+    window.scrollTo (
+      isMobile ? 
+      {top: 292, behavior: "smooth",} : 
+      null);
+};
   return (
     <>
-      <form>
         <div className={clsx(style.inputContainer)}>
           <input
+            type="search"
             placeholder="Название, автор или номер"
             className={clsx(style.inputContainer)}
             required
             autoComplete="off"
             value={filterText}
             onChange={(e) => onFilterTextChange(e.target.value)}
-            onClick={() => {
-              window.scrollTo({ top: 300, left: 0 });
-            }}
+            onClick={goToTop}
           />
           <img className={style.icon} src={searchIcon} alt="icon" />
         </div>
@@ -36,7 +41,6 @@ function AppSearch({
           />{" "}
           <label>Свободные книги</label>
         </div> */}
-      </form>
     </>
   );
 }

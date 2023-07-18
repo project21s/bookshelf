@@ -14,7 +14,7 @@
 
   .search {
     position: sticky;
-    top: 100px;
+    top: 90px;
     z-index: 100;
     margin: 10px 0;
   }
