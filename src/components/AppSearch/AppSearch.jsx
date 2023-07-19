@@ -9,6 +9,7 @@ function AppSearch({
   onFilterTextChange,
   onInStockOnlyChange,
 }) {
+
   const {isMobile}  = useScreen();
 
   const goToTop = () => {
@@ -17,6 +18,7 @@ function AppSearch({
       {top: 292, behavior: "smooth",} : 
       null);
 };
+
   return (
     <>
         <div className={clsx(style.inputContainer)}>
@@ -29,6 +31,7 @@ function AppSearch({
             value={filterText}
             onChange={(e) => onFilterTextChange(e.target.value)}
             onClick={goToTop}
+            onInput={goToTop}
           />
           <img className={style.icon} src={searchIcon} alt="icon" />
         </div>
