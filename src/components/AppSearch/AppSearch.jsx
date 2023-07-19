@@ -2,7 +2,8 @@ import React from "react";
 import style from "./style.module.css";
 import { clsx } from "clsx";
 import searchIcon from "../../assets/material-symbols-search.svg";
-import { useScreen } from "../../hooks"
+import { useScreen} from "../../hooks";
+
 function AppSearch({
   filterText,
   inStockOnly,
@@ -10,14 +11,16 @@ function AppSearch({
   onInStockOnlyChange,
 }) {
 
-  const {isMobile}  = useScreen();
+  const { isMobile }  = useScreen();
 
   const goToTop = () => {
-    window.scrollTo (
-      isMobile ? 
-      {top: 292, behavior: "smooth",} : 
-      null);
-};
+   
+    if (isMobile) {
+      window.scrollTo ({top: 292 , behavior: "smooth",});
+    } else {
+      window.scrollTo ({top: 0, behavior: "smooth",});
+    }
+  };
 
   return (
     <>

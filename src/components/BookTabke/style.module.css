@@ -1,20 +1,4 @@
-@media screen and (width <= 750px) {
-  .bookTabke {
-    position: relative;
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  .noResult {
-    text-align: center;
-    margin: 0 auto;
-    padding: 20px;
-    font-size: 22px;
-  }
-}
-@media screen and (width > 750px) {
-  .bookTabke {
+  :global(.dekstop) .bookTabke {
     margin-left: 340px;
     position: relative;
     display: flex;
@@ -22,7 +6,7 @@
     flex-wrap: wrap;
     justify-content: center;
   }
-  .noResult {
+  :global(.dekstop) .noResult {
     margin-left: 340px;
     position: relative;
     display: flex;
@@ -32,4 +16,17 @@
     max-width: 1280px;
     width: 1280px;
   }
-}
+
+  :global(.mobile) .bookTabke {
+    position: relative;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  :global(.mobile) .noResult {
+    text-align: center;
+    margin: 0 auto;
+    padding: 20px;
+    font-size: 22px;
+  }

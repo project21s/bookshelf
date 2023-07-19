@@ -3,7 +3,7 @@ import style from "./style.module.css";
 import { routes } from "../../routes/routes";
 import { NavLink } from "react-router-dom";
 import { SvgSelector } from "../SvgSelector/SvgSelector";
-import noAvatar from "../../assets/img/noavatar.png";
+// import noAvatar from "../../assets/img/noavatar.png";
 import { clsx } from "clsx";
 import { useLocation } from "react-router";
 import { useScreen } from "../../hooks";
@@ -45,9 +45,9 @@ const Header = () => {
       {!isMobile ? (
         <div className={style.user}>
           <h1>Username</h1>
-          <div>
+          {/* <div>
             <img src={noAvatar} alt="" />
-          </div>
+          </div> */}
         </div>
       ) : (
         <button onClick={() => handleToggleNavigation(true)}>

@@ -15,10 +15,8 @@
 }
 
 .scrollUp {
-  /* display: flex; */
   position: fixed;
   font-size: 20px;
-  /* margin: auto 0; */
   bottom: 5%;
   right: 5%;
   z-index: 100;
