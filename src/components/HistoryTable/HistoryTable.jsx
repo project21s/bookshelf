@@ -23,13 +23,13 @@ const HistoryTable = (props) => {
       <table width={"100%"}>
         <thead>
           <tr>
-            <th align="left" width={"40%"}>
+            <th align="left" width={"30%"}>
               nickname
             </th>
-            <th align="left" width={"30%"}>
+            <th align="left" width={"35%"}>
               взял
             </th>
-            <th align="left" width={"30%"}>
+            <th align="left" width={"35%"}>
               сдал
             </th>
           </tr>

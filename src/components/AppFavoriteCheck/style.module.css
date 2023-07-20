@@ -10,11 +10,13 @@
 }
 
 .checkbox {
-  display: flex;
+  /* display: flex; */
   height: 24px;
   width: 24px;
   padding: none;
   background-color: #fff;
+  vertical-align: middle;
+  margin-right: 5px;
 }
 
 .checkbox:hover {
