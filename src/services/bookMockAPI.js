@@ -16,7 +16,19 @@ export const books = [
     title: "7 навыков высокоэффективных людей",
     img: book1,
     isFree: true,
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
+    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+    prev_nick: ['stironni',
+                'lowellda'],
+    prev_start: ['20.01.2023', 
+                 '28.02.2023'],
+    prev_end: ['27.01.2023', 
+               '19.03.2023'],
+    review_nick: ['stironni', 
+                  'lowellda'],
+    review_date: ['27.01.2023', 
+                  '19.03.2023'],
+    review: ['Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum',
+             'Пушка'],
   },
   {
     id: 2,
@@ -24,6 +36,10 @@ export const books = [
     title: "От хорошего к великому",
     img: book2,
     isFree: true,
+    desc: "",
+    prev_nicknames: ['jenellep', 'snappmas'],
+    prev_start: ['20.11.2023', '28.11.2023'],
+    prev_end: ['27.03.2023', '19.06.2023'],
   },
   {
     id: 3,
@@ -81,4 +97,11 @@ export const books = [
     img: book10,
     isFree: true,
   },
+];
+
+export const history = [
+  {
+    id: 1,
+    nickname: ['stironni', 'lawellda'],
+  }
 ];

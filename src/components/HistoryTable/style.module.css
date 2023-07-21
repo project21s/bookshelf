@@ -1,0 +1,17 @@
+.prev {
+    margin-left: 20px;
+    margin-bottom: 5px;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.history {
+    background-color: #fff;
+    padding: 5px 10px;
+    border-radius: 15px;
+}
+
+th {
+    font-weight: 500;
+    font-size: 16px;
+}

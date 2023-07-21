@@ -1,15 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import {  useParams } from "react-router-dom";
 import style from "./style.module.css";
 import { AppButton } from "../../components/AppButton/AppButton";
-// import { AppInput } from "../../components/AppInput/AppInput";
+// import AppInput from "../../components/AppInput/AppInput";
 
 import "./Book.css";
 // import GetBook from "../../components/GetBook";
 // import ReturnBook from "../../components/ReturnBook";
 import HistoryTable from "../../components/HistoryTable/HistoryTable";
+import AppReviews from "../../components/AppReviews/AppReviews";
 import { books } from "../../services/bookMockAPI";
 import Checkbox from "../../components/AppFavoriteCheck/AppFavoriteCheck";
+// import GetBook from "../../components/GetBook";
 
 const Book = () => {
   // let navigate = useNavigate();
@@ -17,6 +19,10 @@ const Book = () => {
   // const goHome = () => {
   //   navigate("/");
   // };
+
+  const [textareaValue, setTextareaValue] = useState('');
+
+  // console.log(setValue);
 
   const { id } = useParams();
   const book = id - 1;
@@ -42,7 +48,24 @@ const Book = () => {
     <div className={style.main}>
       <div className={style.historyTable}>
         <div >
-        <HistoryTable />  
+        <HistoryTable id={id} />  
+        </div>
+        <div >
+        <AppReviews id={id} />
+        </div>
+        <div>
+          <div className={style.countReview}> {textareaValue.length}/500</div>
+          <textarea className={style.comment} 
+          placeholder="Оставить отзыв о книге"
+          value={textareaValue} 
+                onChange={(event) => setTextareaValue(prevTextareaValue => {
+                  const newTextareaValue =  event.target.value;
+                  if(newTextareaValue.length > 500) return prevTextareaValue;
+                  return newTextareaValue;
+                })} />
+        </div>
+        <div className={style.addReview}>
+          <AppButton header="Добавить" />
         </div>
       </div>
       <div className={style.container}>
@@ -63,6 +86,7 @@ const Book = () => {
         </div>  
         <div className={style.desc}>{books[book].desc}</div>
         <div className={style.getBook}>
+          {/* <GetBook /> */}
           <AppButton header="Взять книгу" />
         </div>
       </div>  
