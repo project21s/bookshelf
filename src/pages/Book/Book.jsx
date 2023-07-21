@@ -4,7 +4,7 @@ import style from "./style.module.css";
 import { AppButton } from "../../components/AppButton/AppButton";
 // import AppInput from "../../components/AppInput/AppInput";
 
-import "./Book.css";
+// import "./Book.css";
 // import GetBook from "../../components/GetBook";
 // import ReturnBook from "../../components/ReturnBook";
 import HistoryTable from "../../components/HistoryTable/HistoryTable";
@@ -21,8 +21,6 @@ const Book = () => {
   // };
 
   const [textareaValue, setTextareaValue] = useState('');
-
-  // console.log(setValue);
 
   const { id } = useParams();
   const book = id - 1;
@@ -64,14 +62,12 @@ const Book = () => {
                   return newTextareaValue;
                 })} />
         </div>
-        <div className={style.addReview}>
+        <div className={style.addReviewButton}>
           <AppButton header="Добавить" />
         </div>
       </div>
-      <div className={style.container}>
+      <div className={style.about}>
         <div className={style.wrapper}>
-          <div>
-          </div>
           <div className={style.divImage}>
             <img className={noFreeImage} alt={books[book].title} src={books[book].img} />
           </div>

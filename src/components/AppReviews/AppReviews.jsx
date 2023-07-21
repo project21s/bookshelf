@@ -1,4 +1,3 @@
-// import { style } from "make/src/log";
 import React from "react";
 import style from "./style.module.css";
 import { books } from "../../services/bookMockAPI";
@@ -31,7 +30,9 @@ const AppReviews = () => {
         Комментарии
       </div>
       <div className={style.reviews}>
-        {rows.map(row => row)}
+        {rows.length > 0 ?
+        rows.map(row => row) :
+         "Комментариев пока нет"}
       </div>
     </div>
   );

@@ -29,6 +29,7 @@ const HistoryTable = () => {
     <div>
       <div className={style.prev}>Ранее брали</div>
       <div className={style.history}>
+        {rows.length > 0 ? 
         <table width={"100%"}>
           <thead>
             <tr>
@@ -46,7 +47,7 @@ const HistoryTable = () => {
           <tbody>
             {rows.map(row => row)}
           </tbody>
-        </table>
+        </table> : "Книгу еще не брали"}
       </div>
     </div>
   );
