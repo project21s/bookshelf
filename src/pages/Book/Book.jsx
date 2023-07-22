@@ -80,7 +80,7 @@ const Book = () => {
             <Checkbox checked={isFavorite} title="Добавить в избраанное" /> 
           </div>
         </div>  
-        <div className={style.desc}>{books[book].desc}</div>
+        <div className={style.desc}>{books[book].desc === "" ? "Описание еще не добавили" : books[book].desc}</div>
         <div className={style.getBook}>
           {/* <GetBook /> */}
           <AppButton header="Взять книгу" />

@@ -15,7 +15,6 @@
 }
 
 .about {
-  padding: 60px 22px 60px 42px;
   display: flex;
   background: white;
   flex-direction: column;
@@ -25,82 +24,84 @@
 }
 
 :global(.dekstop) .about {
+  padding: 60px 22px 60px 42px;
   width: 60%;
   border-radius: 15px 0 0 15px;
 }
 
 :global(.mobile) .about {
+  padding: 60px 22px 60px 22px;
   width: 100%;
   border-radius: 15px;
 }
 
-:global(.dekstop) .wrapper {
+.wrapper {
   gap: 15px;
   display: flex;
-  flex-direction: row;
   width: 100%;
 }
 
-@media screen and (width > 560px) {
-  :global(.mobile) .wrapper {
-  gap: 15px;
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-}
-
-:global(.mobile) .divImage {
+.divImage {
   display: flex;
   position: relative;
-  height: 250px;
-  width: auto;
   background: none;
   z-index: 1;
+}
+
+.bookImg {
+  display: flex;
+  margin: 0 auto;
+  box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+:global(.dekstop) .wrapper {
+  flex-direction: row;
+}
+
+:global(.dekstop) .divImage {
+  height: 250px;
+  width: auto;
   margin-right: 20px;
 }
+
+:global(.dekstop) .bookImg {
+  height: auto;
+  width: auto;
+}
+
+@media screen and (width <= 850px) and (width > 560px) {
+  :global(.mobile) .wrapper {
+  flex-direction: row;
+  }
+
+  :global(.mobile) .divImage {
+    height: 250px;
+    width: auto;
+    margin-right: 20px;
+  }
+
+  :global(.mobile) .bookImg {
+    height: auto;
+    width: auto;
+  }
 }
 
 @media screen and (width <= 560px) {
   :global(.mobile) .wrapper {
-    gap: 15px;
-    display: flex;
     flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    width: 100%;
   }
 
   :global(.mobile) .divImage {
-    display: flex;
-    position: relative;
-    height: 150px;
-    width: auto;
-    background: none;
-    z-index: 1;
-    margin-right: 20px;
+    height: auto;
+    width: 150px;
+    margin: 0 auto;
   }
-}
 
-
-:global(.dekstop) .divImage {
-  display: flex;
-  position: relative;
-  height: 250px;
-  width: auto;
-  background: none;
-  z-index: 1;
-  margin-right: 20px;
-}
-
-
-
-.bookImg {
-  display: flex;
-  height: auto;
-  width: auto;
-  margin: 0 auto;
-  box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.4);
-  z-index: 1;
+  :global(.mobile) .bookImg {
+    width: 150px;
+    height: auto;
+  }
 }
 
 .bookId {
@@ -144,10 +145,6 @@
   background: #fff;
   margin: 10px 0;
 }
-/* 
-:global(.mobile) label, .author, .title {
-  max-width: 190px;
-} */
 
 .info {
   display: flex;
@@ -170,7 +167,6 @@
   margin-top: 20px;
   width: 100%;
 }
-
 
 .desc {
   margin-top: 40px;
