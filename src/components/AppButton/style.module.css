@@ -32,6 +32,10 @@
   box-shadow: 0px 0px 0px 0px;
 }
 
+.button:disabled {
+  background: #c6cfda;
+  box-shadow: none;
+}
 .red {
   background-color: #ff4a50;
 }

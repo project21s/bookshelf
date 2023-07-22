@@ -83,7 +83,7 @@ const Book = () => {
         <div className={style.desc}>{books[book].desc === "" ? "Описание еще не добавили" : books[book].desc}</div>
         <div className={style.getBook}>
           {/* <GetBook /> */}
-          <AppButton header="Взять книгу" />
+          {books[book].isFree ? <AppButton header="Взять книгу" /> : <AppButton header="Книга занята" disabled="disabled" />}
         </div>
       </div>  
     </div>  

@@ -9,7 +9,9 @@ function Book(props) {
   [style.bookId, style.bookIdFree].join(" ") : 
   [style.bookId, style.bookIdNoFree].join(" ");
 
-  const StatusFree = book.isFree ? [style.StatusFree, style.StatusNoFree].join(" ") : style.StatusFree;
+  const StatusFree = book.isFree ? 
+  [style.StatusFree, style.StatusNoFree].join(" ") : 
+  style.StatusFree;
 
   // пока как заглушка по четному id книги
   const isFavorite = (book.id % 2 === 0) ? true : false;
@@ -27,7 +29,7 @@ function Book(props) {
         <div className={style.author} onClick={props.onClick ? props.onClick : null}>{book.author}</div>
         <div className={style.title} onClick={props.onClick ? props.onClick : null}>{book.title}</div>
         <div className={style.freeFavorite}>
-          <div className={StatusFree} onClick={props.onClick ? props.onClick : null}>Читают</div>
+          <div className={StatusFree} onClick={props.onClick ? props.onClick : null}>{book.isFree ? "Читать" : "Читают"}</div>
         <Checkbox checked={isFavorite}/>
         </div>
       </div>
