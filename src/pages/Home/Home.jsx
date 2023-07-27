@@ -37,11 +37,13 @@ function Home() {
         />
       </div>
       <AppScrollToUp />
-      <BookTable
-        books={books}
-        filterText={filterText}
-        inStockOnly={inStockOnly}
+      <div className={style.marginBookTable}>
+        <BookTable
+          books={books}
+          filterText={filterText}
+          inStockOnly={inStockOnly}
       />
+      </div>
     </div>
   );
 }

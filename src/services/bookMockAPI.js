@@ -115,9 +115,11 @@ export const books = [
   },
 ];
 
-export const history = [
+export const users = [
   {
-    id: 1,
-    nickname: ['stironni', 'lawellda'],
+    user: 'stironni',
+    readNow: [],
+    favoriteBook: [1, 3],
+    addBook: [5],
   }
 ];
