@@ -1,52 +1,84 @@
-.main {
+:global(.dekstop) .main {
   display: flex;
   flex-wrap: wrap;
   margin: 0 auto;
-  padding: 30px 0;
+  padding: 30px 20px;
+  max-width: 1280px;
+  margin-bottom: 20px;
 }
 
-@media screen and (width <= 750px) {
-  .main {
-    max-width: 340px;
-    flex-direction: column;
-    min-height: 1000px;
+:global(.mobile) .main {
+  max-width: 850px;
+  flex-direction: column;
+  min-height: 1000px;
+  padding: 30px 20px;
+}
+
+:global(.dekstop) .search {
+  position: fixed;
+  top: 390px;
+  width: 340px;
   }
 
-  .search {
+@media screen and (width < 850px) {
+  :global(.mobile) .search {
     position: sticky;
-    top: 100px;
+    top: 90px;
     z-index: 100;
-    margin: 10px 0;
+    margin: 10px auto;
+    max-width: 680px;
   }
 
-  .blockLeft {
+  :global(.mobile) .blockLeft {
+    max-width: 680px;
     display: flex;
     flex-direction: column;
-  }
-}
-
-@media screen and (width > 750px) {
-  .main {
-    max-width: 1280px;
-    margin-bottom: 20px;
-  }
-
-  .search {
-    position: fixed;
-    top: 390px;
-    width: 320px;
-  }
-
-  .blockLeft {
-    display: flex;
-    position: fixed;
-    flex-direction: row;
-    min-width: 320px;
-    max-width: 320px;
-    height: auto;
-    flex-wrap: wrap;
     margin: 0 auto;
   }
+}
+
+@media screen and (width < 737px) {
+  :global(.mobile) .search {
+    position: sticky;
+    top: 90px;
+    z-index: 100;
+    margin: 10px auto;
+    max-width: 505px;
+  }
+
+  :global(.mobile) .blockLeft {
+    max-width: 505px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (width < 560px) {
+  :global(.mobile) .search {
+    position: sticky;
+    top: 90px;
+    z-index: 100;
+    margin: 10px auto;
+    max-width: 340px;
+  }
+
+  :global(.mobile) .blockLeft {
+    max-width: 340px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+  }
+}
+
+:global(.dekstop) .blockLeft {
+  display: flex;
+  position: fixed;
+  flex-direction: row;
+  max-width: 340px;
+  height: auto;
+  flex-wrap: wrap;
+  margin: 0 auto;
 }
 
 .hello {

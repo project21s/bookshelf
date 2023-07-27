@@ -73,8 +73,8 @@ const MobileNavigation = () => {
                 ))}
             </div>
             <div className={style.auth}>
-              <a>Sign In</a>
-              <a>Registration</a>
+              <p>Sign In</p>
+              <p>Registration</p>
             </div>
             <div className={style.footer}>
               <p>Powered by</p>

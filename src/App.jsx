@@ -11,7 +11,7 @@ export const App = () => {
   const { isMobile } = useScreen();
 
   return (
-    <div className={clsx("content", { ["mobile"]: isMobile })}>
+    <div className={clsx('content', { mobile: isMobile }, { dekstop: !isMobile })}>
       <BrowserRouter>
         <Header />
         <Routes>
