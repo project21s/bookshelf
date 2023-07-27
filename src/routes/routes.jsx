@@ -5,18 +5,11 @@ import AddBook from "../pages/AddBook/AddBook";
 
 export const routes = [
   {
-    path: "/main",
-    label: "Главная",
-    param: "",
-    element: <Home />,
-    isDisplay: true,
-  },
-  {
     path: "/",
     label: "Главная",
     param: "",
     element: <Home />,
-    isDisplay: false,
+    isDisplay: true,
   },
   {
     path: "/book",

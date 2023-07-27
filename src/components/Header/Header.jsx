@@ -25,7 +25,9 @@ const Header = () => {
   return (
     <div className={style.container}>
       <div className={style.logo}>
-        <SvgSelector id="logo" />
+        <NavLink to="/">
+          <SvgSelector id="logo" />
+        </NavLink>
       </div>
       <div className={style.navigation}>
         {routes

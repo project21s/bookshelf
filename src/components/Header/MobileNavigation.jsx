@@ -62,6 +62,7 @@ const MobileNavigation = () => {
                 .filter((route) => route.isDisplay)
                 .map((route, index) => (
                   <NavLink
+                    onClick={() => handleToggleNavigation(false)}
                     key={index}
                     to={route.path}
                     className={clsx(style.navlink, {
