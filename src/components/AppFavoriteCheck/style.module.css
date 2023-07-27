@@ -1,0 +1,28 @@
+.favoriteCheck {
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+
+.checkbox {
+  /* display: flex; */
+  height: 24px;
+  width: 24px;
+  padding: none;
+  background-color: #fff;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+.checkbox:hover {
+  cursor: pointer;
+}
+
+label {
+  background-color: #fff;
+}
