@@ -115,11 +115,20 @@ export const books = [
   },
 ];
 
-export const users = [
+
+export const user = [
   {
-    user: 'stironni',
-    readNow: [],
-    favoriteBook: [1, 3],
-    addBook: [5],
-  }
+  id: 2,
+  nickname: 'stironni',
+  books: {
+    favorite: {
+      id: ['1', '6'],
+    },
+    read: {
+      id: [],
+      dateStart: [],
+      dateFinish: [],
+    },
+  },
+},
 ];

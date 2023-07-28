@@ -3,7 +3,7 @@ import Book from "../AppBook/Book";
 import { useNavigate } from "react-router-dom";
 import style from "./style.module.css";
 
-function BookTable({ books, filterText, inStockOnly, users, myboo }) {
+function BookTable({ books, filterText, inStockOnly, user, favoriteBook, addBook, users }) {
 
   const rows = [];
   let navigate = useNavigate();

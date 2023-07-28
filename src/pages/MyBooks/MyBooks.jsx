@@ -1,7 +1,7 @@
 import React, { useState} from "react";
 
 import style from "./style.module.css";
-import { books } from "../../services/bookMockAPI";
+import { books, users } from "../../services/bookMockAPI";
 
 import BookTable from "../../components/BookTabke/BookTable";
 // import AppSearch from "../../components/AppSearch/AppSearch";
@@ -13,8 +13,15 @@ function MyBooks() {
   const [filterText] = useState("");
   const [inStockOnly] = useState(false);
   const [favoriteBook] = useState(true);
-  const [addBook] = useState(true);
+  const [addBook] = useState(false);
   const [user] = 'stironni';
+
+  const rows = [];
+
+  books.forEach((book) => { 
+  
+  }
+  );
 
 
   return (
@@ -24,9 +31,10 @@ function MyBooks() {
         books={books}
         filterText={filterText}
         inStockOnly={inStockOnly}
-        users={user}
+        user={user}
         favoriteBook={favoriteBook}
         addBook={addBook}
+        users={users}
       />
     </div>
   );
