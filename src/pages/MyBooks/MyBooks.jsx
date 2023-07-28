@@ -13,27 +13,21 @@ function MyBooks() {
   const [filterText] = useState("");
   const [inStockOnly] = useState(false);
   const [favoriteBook] = useState(true);
-  const [addBook] = useState(false);
-  const [user] = 'stironni';
-
-  const rows = [];
-
-  books.forEach((book) => { 
-  
-  }
-  );
+  const [user] = useState("stironni");
 
 
   return (
     <div className={style.main}>
       <AppScrollToUp />
+      <div className={style.favorites}>
+        Хочу прочесть
+      </div>
       <BookTable
         books={books}
         filterText={filterText}
         inStockOnly={inStockOnly}
-        user={user}
+        who={user}
         favoriteBook={favoriteBook}
-        addBook={addBook}
         users={users}
       />
     </div>

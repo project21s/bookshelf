@@ -70,6 +70,13 @@ export const books = [
     title: "Дао Toyota",
     img: book4,
     isFree: true,
+    desc: "",
+    prev_nick: [],
+    prev_start: [],
+    prev_end: [],
+    review_nick: [],
+    review_date: [],
+    review: [],
   },
   {
     id: 5,
@@ -77,6 +84,13 @@ export const books = [
     title: "Развитие лидеров",
     img: book5,
     isFree: false,
+    desc: "",
+    prev_nick: [],
+    prev_start: [],
+    prev_end: [],
+    review_nick: [],
+    review_date: [],
+    review: [],
   },
   {
     id: 6,
@@ -84,6 +98,13 @@ export const books = [
     title: "Критическая цепь",
     img: book6,
     isFree: false,
+    desc: "",
+    prev_nick: [],
+    prev_start: [],
+    prev_end: [],
+    review_nick: [],
+    review_date: [],
+    review: [],
   },
   {
     id: 7,
@@ -91,6 +112,13 @@ export const books = [
     title: "Язык программирования C++",
     img: book7,
     isFree: true,
+    desc: "",
+    prev_nick: [],
+    prev_start: [],
+    prev_end: [],
+    review_nick: [],
+    review_date: [],
+    review: [],
   },
   {
     id: 8,
@@ -98,6 +126,13 @@ export const books = [
     title: "БУДЬ лучшей версией себя",
     img: book8,
     isFree: true,
+    desc: "",
+    prev_nick: [],
+    prev_start: [],
+    prev_end: [],
+    review_nick: [],
+    review_date: [],
+    review: [],
   },
   {
     id: 9,
@@ -105,6 +140,13 @@ export const books = [
     title: "Джедайские техники",
     img: book9,
     isFree: false,
+    desc: "",
+    prev_nick: [],
+    prev_start: [],
+    prev_end: [],
+    review_nick: [],
+    review_date: [],
+    review: [],
   },
   {
     id: 10,
@@ -112,14 +154,21 @@ export const books = [
     title: "Getting Things Done",
     img: book10,
     isFree: true,
+    desc: "",
+    prev_nick: [],
+    prev_start: [],
+    prev_end: [],
+    review_nick: [],
+    review_date: [],
+    review: [],
   },
 ];
 
 
-export const user = [
+export const users = [
   {
   id: 2,
-  nickname: 'stironni',
+  nickname: "stironni",
   books: {
     favorite: {
       id: ['1', '6'],

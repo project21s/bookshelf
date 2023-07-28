@@ -5,6 +5,8 @@
     padding: 30px 20px;
     max-width: 1280px;
     margin-bottom: 20px;
+    flex-direction: column;
+    align-content: flex-start;
   }
   
   :global(.mobile) .main {
@@ -100,5 +102,14 @@
     letter-spacing: 0em;
     text-align: left;
     margin-top: 20px;
+  }
+
+  .favorites {
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-weight: 500;
+    font-size: 24px;
+    margin-left: 20px;
   }
   

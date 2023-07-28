@@ -14,7 +14,9 @@ function Book(props) {
   style.StatusFree;
 
   // пока как заглушка по четному id книги
-  const isFavorite = (book.id % 2 === 0) ? true : false;
+  // const isFavorite = props.isFavorite ? true : false;
+  
+  // (book.id % 2 === 0) ? true : false;
 
   const noFreeImage = book.isFree
     ? style.bookImg
@@ -30,7 +32,7 @@ function Book(props) {
         <div className={style.title} onClick={props.onClick ? props.onClick : null}>{book.title}</div>
         <div className={style.freeFavorite}>
           <div className={StatusFree} onClick={props.onClick ? props.onClick : null}>{book.isFree ? "Читать" : "Читают"}</div>
-        <Checkbox checked={isFavorite}/>
+        <Checkbox checked={props.isFavorite}/>
         </div>
       </div>
   );
