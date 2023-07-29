@@ -171,7 +171,7 @@ export const users = [
   nickname: "stironni",
   books: {
     favorite: {
-      id: ['1', '6'],
+      id: ['1', '4', '6', '10'],
     },
     read: {
       id: [],

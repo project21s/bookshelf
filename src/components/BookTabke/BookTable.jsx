@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import Book from "../AppBook/Book";
 import { useNavigate } from "react-router-dom";
 import style from "./style.module.css";
+import { useUser } from "../../hooks"
 
-function BookTable({ books, filterText, inStockOnly, who, favoriteBook, users }) {
+function BookTable({ books, filterText, inStockOnly, favoriteBook, users }) {
+
+  const [who]  = useState(useUser());
+
 
   const rows = [];
   let favorites = [];
@@ -38,7 +42,6 @@ function BookTable({ books, filterText, inStockOnly, who, favoriteBook, users })
       for (let i = 0; i < favorites.length; i++) {
         if (book.id == favorites[i]) { 
           let isFavorite = true;
-      console.log(book.id);
           rows.push(
             <Book
               book={book}

@@ -6,6 +6,8 @@ import { books, users } from "../../services/bookMockAPI";
 import BookTable from "../../components/BookTabke/BookTable";
 // import AppSearch from "../../components/AppSearch/AppSearch";
 import AppScrollToUp from "../../components/AppScrollToUp/AppScrollToUp"
+import { useUser } from "../../hooks";
+
 
 
 function MyBooks() {
@@ -13,7 +15,7 @@ function MyBooks() {
   const [filterText] = useState("");
   const [inStockOnly] = useState(false);
   const [favoriteBook] = useState(true);
-  const [user] = useState("stironni");
+  const [user]  = useState(useUser());
 
 
   return (

@@ -1,6 +1,6 @@
 import { clsx } from "clsx";
 import { NavLink } from "react-router-dom";
-import React from "react";
+import React, { useState } from "react";
 import style from "./style.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useScreen } from "../../hooks";
@@ -11,8 +11,10 @@ import { routes } from "../../routes/routes";
 import { useLocation } from "react-router";
 import { getRoute } from "../../utils";
 import { CSSTransition } from "react-transition-group";
+import { useUser } from "../../hooks"
 
 const MobileNavigation = () => {
+  const [ who ] = useState(useUser());
   const { isMobile } = useScreen();
   const currentPage = useLocation().pathname;
   const title = getRoute(currentPage)?.label;
@@ -45,12 +47,12 @@ const MobileNavigation = () => {
           })}
         >
           <div className={style.mobileUser}>
-            <div>
+            {/* <div>
               <img src={noAvatar} alt="" />
-            </div>
+            </div> */}
             <div className={style.usernameContainer}>
               <p>Привет,</p>
-              <h2>Username</h2>
+              <h2>{who}</h2>
             </div>
             <button onClick={() => handleToggleNavigation(false)}>
               <SvgSelector id="close" />

@@ -9,9 +9,11 @@ import { AppButton } from "../../components/AppButton/AppButton";
 // import ReturnBook from "../../components/ReturnBook";
 import HistoryTable from "../../components/HistoryTable/HistoryTable";
 import AppReviews from "../../components/AppReviews/AppReviews";
-import { books } from "../../services/bookMockAPI";
+import { books, users } from "../../services/bookMockAPI";
 import Checkbox from "../../components/AppFavoriteCheck/AppFavoriteCheck";
 // import GetBook from "../../components/GetBook";
+import { useUser } from "../../hooks";
+
 
 const Book = () => {
   // let navigate = useNavigate();
@@ -19,6 +21,7 @@ const Book = () => {
   // const goHome = () => {
   //   navigate("/");
   // };
+  const [who]  = useState(useUser());
 
   const [textareaValue, setTextareaValue] = useState('');
 
@@ -40,7 +43,20 @@ const Book = () => {
   ? style.bookImg
   : style.bookImg + " " + style.grayscale;
 
-  const isFavorite = (book.id % 2 === 0) ? true : false;
+  let favorites = [];
+
+  users.forEach((user) => {
+    if (user.nickname === who) {
+      favorites = user.books.favorite.id;
+    }
+  })
+
+  let isFavorite = false;
+  for (let i = 0; i < favorites.length; i++) {
+    if (id == favorites[i]) { 
+      isFavorite = true;
+    }
+  }
 
   return (
     <div className={style.main}>

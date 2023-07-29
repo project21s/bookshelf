@@ -13,3 +13,8 @@ export const useScreen = () => {
   });
   return { width: width, isMobile: width <= 850 };
 };
+
+export const useUser = () => {
+  const [user] = useState("stironni");
+  return  user;
+}

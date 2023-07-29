@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import style from "./style.module.css";
 import { routes } from "../../routes/routes";
 import { NavLink } from "react-router-dom";
@@ -11,8 +11,10 @@ import { useDispatch } from "react-redux";
 import { appActions } from "../../reducers/AppReducer";
 import { getRoute } from "../../utils";
 import MobileNavigation from "./MobileNavigation";
+import { useUser } from "../../hooks"
 
 const Header = () => {
+  const [who] = useState(useUser());
   const { isMobile } = useScreen();
   const currentPage = useLocation().pathname;
   const title = getRoute(currentPage)?.label;
@@ -44,7 +46,7 @@ const Header = () => {
       </div>
       {!isMobile ? (
         <div className={style.user}>
-          <h1>Username</h1>
+          <h1>{who}</h1>
           {/* <div>
             <img src={noAvatar} alt="" />
           </div> */}
