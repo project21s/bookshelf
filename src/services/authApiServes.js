@@ -9,61 +9,64 @@ import {
   signOut,
 } from "firebase/auth";
 
+import { createUserData, getUserData } from "./userApiServes"
+
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 // регистрация нового пользователя
-export const createUser = (email, password) => {
-  createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      const user = userCredential.user;
-      console.log(user);
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log(errorCode);
-      console.log(errorMessage);
-    });
+export const createUser = async (email, password) => {
+  try {
+    let userCredential = await createUserWithEmailAndPassword(auth, email, password)
+    const user = userCredential.user;
+    await createUserData(user.uid, email);
+    console.log("user done");
+  } catch (error) {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    console.log(errorCode);
+    console.log(errorMessage);
+  };
 };
 
 // выполнить вход
-export const logIn = (email, password) => {
-  signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      const user = userCredential.user;
-      console.log(user);
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log(errorCode);
-      console.log(errorMessage);
-    });
+export const logIn = async (email, password) => {
+  try {
+    let userCredential = await signInWithEmailAndPassword(auth, email, password)
+    const user = userCredential.user;
+    console.log(user);
+  } catch (error) {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    console.log(errorCode);
+    console.log(errorMessage);
+  }
 };
 
 export const logOut = () => {
-  signOut(auth)
-    .then(() => {
-      console.log(" successful.");
-    })
-    .catch((error) => {
-      // An error happened.
-    });
+  return signOut(auth)
 };
 
 // статус авторизации
-export const userStatus = () => {
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      const uid = user.uid;
-      console.log("log-", uid);
-      return user;
-    } else {
-      console.log("log-out");
-    }
-  });
+export const userStatus = async () => {
+  let user = await new Promise((resolve) => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const uid = user.uid;
+        console.log("log-", uid);
+        resolve(user);
+      } else {
+        resolve(null);
+        console.log("log-out");
+      }
+    });
+  })
+  if (user) {
+    let userData = await getUserData(user.uid)
+    return userData;
+  }
 };
+
 // сбросить пароль
 export const resetPassword = (newPassword) => {
   let user = auth.currentUser;

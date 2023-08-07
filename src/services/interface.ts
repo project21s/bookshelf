@@ -26,6 +26,7 @@ interface Book {
 interface User {
   id: string;
   nickname: string;
+  role: "reader" | "admin";
   books: {
     favorite: {
       id: string;
