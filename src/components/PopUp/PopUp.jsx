@@ -29,6 +29,7 @@ export const PopUp = (props) => {
             </button>
           </div>
           <AppInput title="email" setInput={setMail}></AppInput>
+          <br />
           <AppInput title="пароль" setInput={setPassword}></AppInput>
           <br />
           <div className={style.header}>
@@ -72,7 +73,9 @@ export const PopUpReg = (props) => {
             </button>
           </div>
           <AppInput title="email" setInput={setMail}></AppInput>
+          <br />
           <AppInput title="пароль" setInput={setPassword}></AppInput>
+          <br />
           <AppInput title="повтори пароль" setInput={setRepeatePass}></AppInput>
           <br />
           <div className={style.header}>

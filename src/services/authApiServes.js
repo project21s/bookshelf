@@ -14,6 +14,8 @@ import { createUserData, getUserData } from "./userApiServes"
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
+export let userData;
+
 // регистрация нового пользователя
 export const createUser = async (email, password) => {
   try {
@@ -62,7 +64,7 @@ export const userStatus = async () => {
     });
   })
   if (user) {
-    let userData = await getUserData(user.uid)
+    userData = await getUserData(user.uid)
     return userData;
   }
 };

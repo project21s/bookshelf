@@ -14,7 +14,7 @@ function BookTable({ books, filterText, inStockOnly }) {
       " " +
       book.author.toLowerCase() +
       " " +
-      book.id;
+      book.number;
 
     if (bookSearchString.indexOf(filterText.toLowerCase()) === -1) {
       return;
@@ -38,17 +38,17 @@ function BookTable({ books, filterText, inStockOnly }) {
       />
     );
   });
-  return rows.length > 0  ?
+  return rows.length > 0 ?
     (
-    <div className={style.bookTabke} >
-      {rows}
-    </div>
-    ) : 
+      <div className={style.bookTabke} >
+        {rows}
+      </div>
+    ) :
     (
-    <div className={style.noResult}>
-      Поиск не дал результатов
-    </div>
-);
+      <div className={style.noResult}>
+        Поиск не дал результатов
+      </div>
+    );
 }
 
 export default BookTable;

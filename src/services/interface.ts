@@ -3,20 +3,29 @@ interface Book {
   number: number;
   author: string;
   title: string;
+  description: string;
+  donatedFromUser: {
+    userId: string;
+    userEmail: string;
+    date: string;
+  },
   img: string;
   status: "free" | "onHands" | "archive";
   RFID: string;
-  comment: {
+  comments: {
+    userId: string;
     nickname: string;
     date: string;
     text: string;
   }[];
   readNow: {
+    userId: string;
     nickname: string;
     dateStart: string;
     dateFinish: string;
   };
   readBefore: {
+    userId: string;
     nickname: string;
     dateStart: string;
     dateFinish: string;

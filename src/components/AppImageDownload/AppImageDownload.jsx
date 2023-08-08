@@ -1,14 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import style from "./style.module.css";
 
-export function AppImageDownload() {
-  const [file, setFile] = useState();
+
+export function AppImageDownload({ file, setFile }) {
   function handleChange(e) {
-    setFile(URL.createObjectURL(e.target.files[0]));
+    let img = e.target.files[0];
+    setFile(img);
   }
   return (
     <div className={style.loadImage} onChange={handleChange}>
-      {file ? <img src={file} alt="" /> : <p>Загрузить фото книги</p>}
+      {file ? <img src={URL.createObjectURL(file)} alt="" /> : <p>Загрузить фото книги</p>}
       <input
         className={style.inputFile}
         type="file"
