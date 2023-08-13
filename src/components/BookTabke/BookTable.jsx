@@ -1,22 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import Book from "../AppBook/Book";
 import { useNavigate } from "react-router-dom";
 import style from "./style.module.css";
-import { useUser } from "../../hooks"
 
-function BookTable({ books, filterText, inStockOnly, favoriteBook, users }) {
-
-  const [who]  = useState(useUser());
-
+function BookTable({ books, filterText, inStockOnly }) {
 
   const rows = [];
-  let favorites = [];
   let navigate = useNavigate();
-    users.forEach((user) => {
-      if (user.nickname === who) {
-        favorites = user.books.favorite.id;
-      }
-    })
 
   books.forEach((book) => {
     let bookSearchString =
@@ -24,7 +14,7 @@ function BookTable({ books, filterText, inStockOnly, favoriteBook, users }) {
       " " +
       book.author.toLowerCase() +
       " " +
-      book.id;
+      book.number;
 
     if (bookSearchString.indexOf(filterText.toLowerCase()) === -1) {
       return;
@@ -38,55 +28,27 @@ function BookTable({ books, filterText, inStockOnly, favoriteBook, users }) {
       navigate("/book/" + id);
     };
 
-    if (favoriteBook) {
-      for (let i = 0; i < favorites.length; i++) {
-        if (book.id == favorites[i]) { 
-          let isFavorite = true;
-          rows.push(
-            <Book
-              book={book}
-              key={book.id}
-              isFavorite={isFavorite}
-              onClick={() => {
-                goBook(book.id);
-              }}
-            />
-          );
-
-        }
-      }
-    } else {
-      let isFavorite = false;
-      for (let i = 0; i < favorites.length; i++) {
-        if (book.id == favorites[i]) { 
-          isFavorite = true;
-        }
-      }
-
     rows.push(
       <Book
         book={book}
         key={book.id}
-        isFavorite={isFavorite}
         onClick={() => {
           goBook(book.id);
         }}
       />
     );
-      }
   });
-
-  return rows.length > 0  ?
+  return rows.length > 0 ?
     (
-    <div className={style.bookTabke} >
-      {rows}
-    </div>
-    ) : 
+      <div className={style.bookTabke} >
+        {rows}
+      </div>
+    ) :
     (
-    <div className={style.noResult}>
-      Поиск не дал результатов
-    </div>
-);
+      <div className={style.noResult}>
+        Поиск не дал результатов
+      </div>
+    );
 }
 
 export default BookTable;

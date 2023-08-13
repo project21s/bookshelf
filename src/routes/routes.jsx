@@ -6,33 +6,26 @@ import MyBooks from "../pages/MyBooks/MyBooks";
 
 export const routes = [
   {
-    path: "/main",
+    path: "/",
     label: "Главная",
     param: "",
     element: <Home />,
     isDisplay: true,
   },
   {
-    path: "/",
-    label: "Главная",
-    param: "",
-    element: <Home />,
-    isDisplay: false,
-  },
-  {
-    path: "/mybooks",
+    path: "/mybook",
     label: "Твои книги",
     param: "",
     element: <MyBooks />,
     isDisplay: true,
   },
-  {
-    path: "/rules",
-    label: "Правила",
-    param: "",
-    element: <div>404 page</div>,
-    isDisplay: true,
-  },
+  // {
+  //   path: "/rules",
+  //   label: "Правила",
+  //   param: "",
+  //   element: <div>404 page</div>,
+  //   isDisplay: true,
+  // },
   {
     path: "/addbook",
     label: "Добавить книгу",

@@ -1,9 +1,8 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import style from "./style.module.css";
 import { clsx } from "clsx";
 
-export function AppInput({ title, description = false, heightLimit = 100 }) {
-  const [text, setText] = useState("");
+export function AppInput({ title, description = false, heightLimit = 100, setInput }) {
   const textarea = useRef();
   const height = +textarea.current?.style.height.replace("px", "");
   const autoResizeTextarea = (event) => {
@@ -21,11 +20,9 @@ export function AppInput({ title, description = false, heightLimit = 100 }) {
           ref={textarea}
           placeholder={title}
           onChange={(event) => {
-            setText(event.target.value);
+            setInput(event.target.value);
             autoResizeTextarea(event);
           }}
-
-          value={text}
         />
       ) : (
         <input
@@ -33,8 +30,7 @@ export function AppInput({ title, description = false, heightLimit = 100 }) {
           type="text"
           placeholder={title}
 
-          onChange={(event) => setText(event.target.value)}
-          value={text}
+          onChange={(event) => setInput(event.target.value)}
         />
       )}
     </div>

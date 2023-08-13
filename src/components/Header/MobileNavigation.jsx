@@ -1,6 +1,6 @@
 import { clsx } from "clsx";
 import { NavLink } from "react-router-dom";
-import React, { useState } from "react";
+import React from "react";
 import style from "./style.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useScreen } from "../../hooks";
@@ -11,10 +11,10 @@ import { routes } from "../../routes/routes";
 import { useLocation } from "react-router";
 import { getRoute } from "../../utils";
 import { CSSTransition } from "react-transition-group";
-import { useUser } from "../../hooks"
+import { PopUp } from "../PopUp/PopUp";
+import { logOut } from "../../services/authApiServes";
 
-const MobileNavigation = () => {
-  const [ who ] = useState(useUser());
+const MobileNavigation = ({ user, setUser, setOpenLogin, openLogin }) => {
   const { isMobile } = useScreen();
   const currentPage = useLocation().pathname;
   const title = getRoute(currentPage)?.label;
@@ -26,9 +26,9 @@ const MobileNavigation = () => {
   const handleToggleNavigation = (open) => {
     dispatch(appActions.setOpenNavigation(open));
   };
-
   return (
     <>
+      {openLogin && <PopUp close={setOpenLogin} />}
       <CSSTransition
         in={openMobileNavigate}
         timeout={300}
@@ -47,12 +47,11 @@ const MobileNavigation = () => {
           })}
         >
           <div className={style.mobileUser}>
-            {/* <div>
-              <img src={noAvatar} alt="" />
-            </div> */}
             <div className={style.usernameContainer}>
-              <p>Привет,</p>
-              <h2>{who}</h2>
+              {user ? (<div><p>Привет,</p>
+                <h2>{user.email}</h2></div>)
+                : ("")}
+
             </div>
             <button onClick={() => handleToggleNavigation(false)}>
               <SvgSelector id="close" />
@@ -64,6 +63,7 @@ const MobileNavigation = () => {
                 .filter((route) => route.isDisplay)
                 .map((route, index) => (
                   <NavLink
+                    onClick={() => handleToggleNavigation(false)}
                     key={index}
                     to={route.path}
                     className={clsx(style.navlink, {
@@ -75,8 +75,11 @@ const MobileNavigation = () => {
                 ))}
             </div>
             <div className={style.auth}>
-              <p>Sign In</p>
-              <p>Registration</p>
+              {user
+                ? (<p onClick={() => logOut().then(() => {
+                  setUser(null)
+                })}>Выйти</p>)
+                : (<p onClick={() => setOpenLogin(true)}>Войти</p>)}
             </div>
             <div className={style.footer}>
               <p>Powered by</p>

@@ -1,4 +1,5 @@
   :global(.dekstop) .bookTabke {
+    margin-left: 350px;
     position: relative;
     display: flex;
     gap: 20px;

@@ -91,3 +91,14 @@ form {
 :global(.mobile) .areaForPic div:first-child p {
   font-size: 18px;
 }
+
+.info {
+    z-index: 300;
+    position: fixed;
+    top: 100px;
+    left: 20px;
+    border-radius: 10px;
+    padding: 10px 45px;
+    font-size: 20px;
+    background: white;
+}

@@ -12,13 +12,15 @@ export const App = () => {
   const { isMobile } = useScreen();
 
   return (
-    <div className={clsx('content', { mobile: isMobile }, { dekstop: !isMobile })}>
+    <div
+      className={clsx("content", { mobile: isMobile }, { dekstop: !isMobile })}
+    >
       <BrowserRouter>
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/mybook" element={<MyBooks />} />
           <Route path="/book/:id" element={<Book />} />
-          <Route path="/mybooks" element={<MyBooks />} />
           <Route path="/addbook" element={<AddBook />} />
           <Route path="*" element={<Home />} />
         </Routes>

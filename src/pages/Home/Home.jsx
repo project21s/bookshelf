@@ -1,17 +1,34 @@
-import React, { useState} from "react";
+import React, { useState, useEffect } from "react";
 
 import style from "./style.module.css";
-import { books, users } from "../../services/bookMockAPI";
 
 import BookTable from "../../components/BookTabke/BookTable";
 import AppSearch from "../../components/AppSearch/AppSearch";
-import AppScrollToUp from "../../components/AppScrollToUp/AppScrollToUp";
+import AppScrollToUp from "../../components/AppScrollToUp/AppScrollToUp"
+
+import { getAllBook } from "../../services/bookApiServes";
 
 function Home() {
+  let [books, setBooks] = useState(null);
+
+
+  let getBooks = async () => {
+    let booksTmp = await getAllBook()
+    setBooks(booksTmp);
+    console.log(booksTmp)
+
+  }
+
+  useEffect(() => {
+    if (!books) {
+      getBooks()
+    }
+  }, [books])
+
+
 
   const [filterText, setFilterText] = useState("");
   const [inStockOnly, setInStockOnly] = useState(false);
-  const [favoriteBook] = useState(false);
 
   return (
     <div className={style.main}>
@@ -38,15 +55,12 @@ function Home() {
         />
       </div>
       <AppScrollToUp />
-      <div className={style.marginBookTable}>
-        <BookTable
-          books={books}
-          filterText={filterText}
-          inStockOnly={inStockOnly}
-          favoriteBook={favoriteBook}
-          users={users}
-      />
-      </div>
+      {books && <BookTable
+        books={books}
+        filterText={filterText}
+        inStockOnly={inStockOnly}
+      />}
+
     </div>
   );
 }

@@ -2,9 +2,34 @@ import React,{ useState } from "react";
 import style from "./style.module.css";
 import favoriteChecked  from "../../assets/baseline-star.svg"
 import favoriteNoChecked from "../../assets/baseline-star-border.svg"
+// import { userStatus } from "../../services/authApiServes";
+import { addToFavorite, delFromFavorite } from "../../services/userApiServes";
+
+
 
 function Checkbox(props) {
+
+
+
+  const getBookFavorite = async () => {
+    console.log("getBookFavorite");
+    await addToFavorite(props.userId, props.bookId)
+    // await getBook()
+    // setUser(null)
+  }
+
+  const outBookFavorite = async () => {
+    console.log("outBookFavorite");
+    await delFromFavorite(props.userId, props.bookId)
+    // await getBook()
+    // setUser(null)
+  }
+
   const [isChecked, setIsChecked] = useState(props.checked);
+  if (props.userId) {
+    if (isChecked) outBookFavorite();
+    else getBookFavorite();
+  }
 
   return (
     <label>
