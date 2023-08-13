@@ -49,7 +49,7 @@ const MobileNavigation = ({ user, setUser, setOpenLogin, openLogin }) => {
           <div className={style.mobileUser}>
             <div className={style.usernameContainer}>
               {user ? (<div><p>Привет,</p>
-                <h2>{user.email}</h2></div>)
+                <h2>{user.nickname}</h2></div>)
                 : ("")}
 
             </div>

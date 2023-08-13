@@ -3,7 +3,7 @@ import Book from "../AppBook/Book";
 import { useNavigate } from "react-router-dom";
 import style from "./style.module.css";
 
-function BookTable({ books, filterText, inStockOnly }) {
+function BookTable({ user, books, filterText, inStockOnly, favoriteBook = false }) {
 
   const rows = [];
   let navigate = useNavigate();
@@ -22,6 +22,12 @@ function BookTable({ books, filterText, inStockOnly }) {
 
     if (inStockOnly && !book.isFree) {
       return;
+    }
+
+    if (favoriteBook && user) {
+        if (user.books.favorite.filter(b => b.id === book.id).length === 0) {
+          return;
+        }
     }
 
     const goBook = (id) => {

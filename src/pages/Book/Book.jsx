@@ -183,9 +183,9 @@ const Book = () => {
               <div className={style.author} >{book.author}</div>
               <div className={style.title}>{book.title}</div>
             </div>
-            {(favoriteStatus === 1) && <Checkbox chacked="true" title="Убрать из избранного" userId={user} bookId={book} />}
-            {(favoriteStatus === 2) && <Checkbox chacked="false" title="Добавить в избранное" userId={user} bookId={book} />}
-            {(favoriteStatus === 3) && <Checkbox chacked="true" title="Добавить в избранное" />}
+            {(favoriteStatus === 1) && <Checkbox checked="false" title="Убрать из избранного" userId={user} bookId={book} />}
+            {(favoriteStatus === 2) && <Checkbox checked="true" title="Добавить в избранное" userId={user} bookId={book} />}
+            {(favoriteStatus === 3) && <Checkbox checked="false" title="Добавить в избранное" />}
           </div>
         </div>
         <div className={style.desc}>{book.description === "" ? "Описание еще не добавили" : book.description}</div>

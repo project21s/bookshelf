@@ -71,7 +71,7 @@ const Header = () => {
         {!isMobile ? (
           <div className={style.user}>
             {user ? (
-              <div className={style.log} >Привет, {user.email}
+              <div className={style.log} >Привет, {user.nickname}
                 <div className={style.out} onClick={() => logOut().then(() => {
                   setUser(null)
                 })} ><AppButton header="выйти" red={true}></AppButton></div>

@@ -24,12 +24,6 @@ function MyBooks() {
       console.log(booksTmp)
   
     };
-  
-    useEffect(() => {
-      if (!books) {
-        getBooks()
-      }
-    }, [books]);
 
 
     // let [openLogin, setOpenLogin] = useState(false);
@@ -46,14 +40,17 @@ function MyBooks() {
     }
 
     useEffect(() => {
-        status()
-      }, [user])
+      if (!books) {
+        getBooks()
+      }
+      status();
+    }, [user, books]);
 
       // console.log(user.nickname);
 
   const [filterText] = useState("");
   const [inStockOnly] = useState(false);
-//   const [favoriteBook] = useState(true);
+  const [favoriteBook] = useState(true);
 //   const [user]  = useState(useUser());
 
 
@@ -64,9 +61,11 @@ function MyBooks() {
         Хочу прочесть!
       </div>
       {books && <BookTable
+        user={user}
         books={books}
         filterText={filterText}
         inStockOnly={inStockOnly}
+        favoriteBook={[favoriteBook]}
       />}
     </div>
   );

@@ -25,11 +25,13 @@ function Checkbox(props) {
     // setUser(null)
   }
 
-  const [isChecked, setIsChecked] = useState(props.checked);
+  let [isChecked, setIsChecked] = useState(props.checked);
   if (props.userId) {
     if (isChecked) outBookFavorite();
     else getBookFavorite();
   }
+
+  console.log("AppFavoriteCheck-isChecked: ", isChecked);
 
   return (
     <label>
