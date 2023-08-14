@@ -11,7 +11,6 @@ import { getBookById } from "../../services/bookApiServes";
 function Book(props) {
 
   let [book, setBook] = useState(props.book);
-  // let book = props.book;
 
   let getBook = async () => {
     let bookTmp = await getBookById(book.id)
@@ -32,7 +31,6 @@ function Book(props) {
   
     let status = async () => {
       let userData = await userStatus()
-      // console.log(userData)
       if (!user) {
         setUser(userData)
       } else if (userData.id !== user.id) {
@@ -44,7 +42,6 @@ function Book(props) {
       status();
     }, [user])
 
-  // пока как заглушка по четному id книги
   let [isFavorite, setIsFavorite] = useState(false);
   let isFavoriteFunc = () => {
     if (user) {
@@ -66,23 +63,29 @@ function Book(props) {
       console.log("getBookFavorite");
       await addToFavorite(user, book)
       await getBook()
-      // setUser(null)
     }
   
     const outBookFavorite = async () => {
       console.log("outBookFavorite");
       await delFromFavorite(user, book)
       await getBook()
-      // setUser(null)
     }
 
     let getBookFavoriteFunc = () => {
-      if (isFavorite) {
-        outBookFavorite();
-        setIsFavorite(false);
+      if (user) {
+        if (isFavorite) {
+          outBookFavorite();
+          setIsFavorite(false);
+        } else {
+          getBookFavorite();
+          setIsFavorite(true);
+        }
       } else {
-        getBookFavorite();
-        setIsFavorite(true);
+        if (isFavorite) {
+          setIsFavorite(false);
+        } else {
+          setIsFavorite(true);
+        }
       }
     }
 

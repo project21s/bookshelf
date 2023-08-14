@@ -15,7 +15,7 @@ import Checkbox from "../../components/AppFavoriteCheck/AppFavoriteCheck";
 import { getBookById, onHandBook, onFreeBook } from "../../services/bookApiServes";
 import { addToFavorite, delFromFavorite } from "../../services/userApiServes";
 import { userStatus } from "../../services/authApiServes";
-// import { async } from "@firebase/util";
+import { async } from "@firebase/util";
 
 
 const Book = () => {
@@ -126,6 +126,7 @@ const Book = () => {
     await onFreeBook(user, book)
     await getBook()
     // setUser(null)
+    /// это точно нужно????
   }
 
   const getBookFavorite = async () => {
@@ -141,14 +142,24 @@ const Book = () => {
   }
 
   let getBookFavoriteFunc = () => {
-    if (isFavorite) {
-      outBookFavorite();
-      setTitleFavorite("Добавить в избранное");
-      setIsFavorite(false);
+    if (user) {
+      if (isFavorite) {
+        outBookFavorite();
+        setTitleFavorite("Добавить в избранное");
+        setIsFavorite(false);
+      } else {
+        getBookFavorite();
+        setTitleFavorite("Убрать из избранного");
+        setIsFavorite(true);
+      }
     } else {
-      getBookFavorite();
-      setTitleFavorite("Убрать из избранного");
-      setIsFavorite(true);
+      if (isFavorite) {
+        setTitleFavorite("Добавить в избранное");
+        setIsFavorite(false);
+      } else {
+        setTitleFavorite("Убрать из избранного");
+        setIsFavorite(true);
+      }
     }
   }
 

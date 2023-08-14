@@ -60,6 +60,7 @@ function Home() {
         books={books}
         filterText={filterText}
         inStockOnly={inStockOnly}
+        page="home"
       />}
 
     </div>

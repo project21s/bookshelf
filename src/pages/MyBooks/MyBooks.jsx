@@ -13,10 +13,7 @@ import { getAllBook } from "../../services/bookApiServes";
 
 function MyBooks() {
 
-    // console.log("hi");
-
     let [books, setBooks] = useState(null);
-
 
     let getBooks = async () => {
       let booksTmp = await getAllBook()
@@ -24,9 +21,6 @@ function MyBooks() {
       console.log(booksTmp)
   
     };
-
-
-    // let [openLogin, setOpenLogin] = useState(false);
 
     let [user, setUser] = useState(null);
 
@@ -66,6 +60,7 @@ function MyBooks() {
         filterText={filterText}
         inStockOnly={inStockOnly}
         favoriteBook={[favoriteBook]}
+        page="mybook"
       />}
     </div>
   );

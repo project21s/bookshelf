@@ -3,7 +3,7 @@ import Book from "../AppBook/Book";
 import { useNavigate } from "react-router-dom";
 import style from "./style.module.css";
 
-function BookTable({ user, books, filterText, inStockOnly, favoriteBook = false }) {
+function BookTable({ user, books, filterText, inStockOnly, page, favoriteBook = false}) {
 
   const rows = [];
   let navigate = useNavigate();
@@ -52,9 +52,10 @@ function BookTable({ user, books, filterText, inStockOnly, favoriteBook = false 
     ) :
     (
       <div className={style.noResult}>
-        Поиск не дал результатов
+        {page === "home" ?  "Поиск не дал результата" : ""}
+        {page === "mybook" ?  "Вы еще не добавили книги в избрнное" : ""}
       </div>
-    );
+    )
 }
 
 export default BookTable;
