@@ -8,14 +8,14 @@ import { AppButton } from "../../components/AppButton/AppButton";
 // import GetBook from "../../components/GetBook";
 // import ReturnBook from "../../components/ReturnBook";
 import HistoryTable from "../../components/HistoryTable/HistoryTable";
-import AppReviews from "../../components/AppReviews/AppReviews";
+// import AppReviews from "../../components/AppReviews/AppReviews";
 import Checkbox from "../../components/AppFavoriteCheck/AppFavoriteCheck";
 // import GetBook from "../../components/GetBook";
 
 import { getBookById, onHandBook, onFreeBook } from "../../services/bookApiServes";
 import { addToFavorite, delFromFavorite } from "../../services/userApiServes";
 import { userStatus } from "../../services/authApiServes";
-import { async } from "@firebase/util";
+// import { async } from "@firebase/util";
 
 
 const Book = () => {
@@ -25,7 +25,7 @@ const Book = () => {
   //   navigate("/");
   // };
 
-  const [textareaValue, setTextareaValue] = useState("");
+  // const [textareaValue, setTextareaValue] = useState("");
 
   const { id } = useParams();
 
@@ -80,32 +80,17 @@ const Book = () => {
     }
   }
 
-  let [favoriteStatus, setfavoriteStatus] = useState(null);
-
-  let isFavorite = false;
+  let [isFavorite, setIsFavorite] = useState(false);
+  let [titleFavorite, setTitleFavorite] = useState("Добавить в избранное");
 
   let isFavoriteFunc = () => {
     if (user) {
-      isFavorite = user.books.favorite.filter(b => b.id === book.id).length > 0;
-      // console.log("isFavorite", isFavorite);
+      if (user.books.favorite.filter(b => b.id === book.id).length > 0) {
+        setIsFavorite(true);
+        setTitleFavorite("Убрать из избраного");
+      }
     }
   }
-
-  let favoriteStatusFunc = () => {
-    console.log("favoriteStatusFunc", user);
-    if (isFavorite === true && user) {
-      setfavoriteStatus(1)
-    }
-     if (isFavorite === false && user) {
-      setfavoriteStatus(2)
-    }
-     if (!user) {
-      setfavoriteStatus(3)
-    } 
-  }
-
-
-
 
   useEffect(() => {
     if (!book.id) {
@@ -113,7 +98,6 @@ const Book = () => {
     }
     status();
     bookStatusFunc();
-    favoriteStatusFunc();
     isFavoriteFunc();
   }, [book, user])
   // const [ShowReturnBook, setShowReturnBook] = useState(!books[bookid].isFree);
@@ -130,22 +114,45 @@ const Book = () => {
   const noFreeImage = (book.status === "free")
     ? style.bookImg
     : style.bookImg + " " + style.grayscale;
-    if (user) {
-    }
 
   const getBookOnHand = async () => {
     await onHandBook(user, book)
     await getBook()
-    setUser(null)
+    // setUser(null) 
+    /// это точно нужно????
   }
 
   const setBookBeFree = async () => {
     await onFreeBook(user, book)
     await getBook()
-    setUser(null)
+    // setUser(null)
   }
 
+  const getBookFavorite = async () => {
+    console.log("getBookFavorite");
+    await addToFavorite(user, book)
+    await getBook()
+  }
 
+  const outBookFavorite = async () => {
+    console.log("outBookFavorite");
+    await delFromFavorite(user, book)
+    await getBook()
+  }
+
+  let getBookFavoriteFunc = () => {
+    if (isFavorite) {
+      outBookFavorite();
+      setTitleFavorite("Добавить в избранное");
+      setIsFavorite(false);
+    } else {
+      getBookFavorite();
+      setTitleFavorite("Убрать из избранного");
+      setIsFavorite(true);
+    }
+  }
+
+  console.log("before return isFavorite: ", isFavorite);
   return (
     <div className={style.main}>
       <div className={style.historyTable}>
@@ -183,9 +190,7 @@ const Book = () => {
               <div className={style.author} >{book.author}</div>
               <div className={style.title}>{book.title}</div>
             </div>
-            {(favoriteStatus === 1) && <Checkbox checked="false" title="Убрать из избранного" userId={user} bookId={book} />}
-            {(favoriteStatus === 2) && <Checkbox checked="true" title="Добавить в избранное" userId={user} bookId={book} />}
-            {(favoriteStatus === 3) && <Checkbox checked="false" title="Добавить в избранное" />}
+            <Checkbox checked={isFavorite} title={titleFavorite} onClick={getBookFavoriteFunc} />
           </div>
         </div>
         <div className={style.desc}>{book.description === "" ? "Описание еще не добавили" : book.description}</div>

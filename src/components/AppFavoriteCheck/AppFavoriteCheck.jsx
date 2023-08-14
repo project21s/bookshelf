@@ -2,45 +2,25 @@ import React,{ useState } from "react";
 import style from "./style.module.css";
 import favoriteChecked  from "../../assets/baseline-star.svg"
 import favoriteNoChecked from "../../assets/baseline-star-border.svg"
-// import { userStatus } from "../../services/authApiServes";
-import { addToFavorite, delFromFavorite } from "../../services/userApiServes";
-
 
 
 function Checkbox(props) {
 
-
-
-  const getBookFavorite = async () => {
-    console.log("getBookFavorite");
-    await addToFavorite(props.userId, props.bookId)
-    // await getBook()
-    // setUser(null)
-  }
-
-  const outBookFavorite = async () => {
-    console.log("outBookFavorite");
-    await delFromFavorite(props.userId, props.bookId)
-    // await getBook()
-    // setUser(null)
-  }
-
-  let [isChecked, setIsChecked] = useState(props.checked);
-  if (props.userId) {
-    if (isChecked) outBookFavorite();
-    else getBookFavorite();
-  }
-
-  console.log("AppFavoriteCheck-isChecked: ", isChecked);
+  let isChecked = props.checked;
+  console.log("props.checked: ", isChecked)
 
   return (
     <label>
       <input className={style.favoriteCheck}
         type="checkbox"
         onChange={() => {
-          setIsChecked(!isChecked);
+          console.log("setIsChecked: ", isChecked);
+          isChecked = !isChecked;
+          console.log("setIsChecked: ", isChecked);
         }}
+        onClick={props.onClick ? props.onClick : null}
       />
+      {console.log("////////: ", isChecked)}
         <img className={style.checkbox} alt="" src={isChecked ? favoriteChecked : favoriteNoChecked} />
         {props.title}
     </label>

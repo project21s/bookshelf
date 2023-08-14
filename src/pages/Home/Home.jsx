@@ -30,6 +30,7 @@ function Home() {
   const [filterText, setFilterText] = useState("");
   const [inStockOnly, setInStockOnly] = useState(false);
 
+  
   return (
     <div className={style.main}>
       <div className={style.blockLeft}>
