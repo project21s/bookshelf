@@ -2,26 +2,44 @@ import React from "react";
 import style from "./style.module.css";
 
 const HistoryTable = ({ readBefore }) => {
-
   const rows = [];
   if (readBefore) {
     for (let i = 0; i < readBefore.length; i++) {
-      rows.push(
-        <tr key={i}>
-          <td>{readBefore[i].nickname}</td>
-          <td>{readBefore[i].dateStart.toDate().getDate()}:{readBefore[i].dateStart.toDate().getMonth() + 1}:{readBefore[i].dateStart.toDate().getFullYear()}</td>
-          <td>{readBefore[i].dateFinish.toDate().getDate()}:{readBefore[i].dateFinish.toDate().getMonth() + 1}:{readBefore[i].dateFinish.toDate().getFullYear()}</td>
-        </tr>
-      )
-    };
+      if (readBefore[i].nickname !== "") {
+        rows.push(
+          <tr key={i}>
+            <td>{readBefore[i].nickname}</td>
+            <td>
+              {readBefore[i].dateStart.toDate().getDate() < 10
+                ? "0" + readBefore[i].dateStart.toDate().getDate()
+                : readBefore[i].dateStart.toDate().getDate()}
+              .
+              {readBefore[i].dateStart.toDate().getMonth() + 1 < 10
+                ? "0" + (readBefore[i].dateStart.toDate().getMonth() + 1)
+                : readBefore[i].dateStart.toDate().getMonth() + 1}
+              .{readBefore[i].dateStart.toDate().getFullYear()}
+            </td>
+            <td>
+              {readBefore[i].dateFinish.toDate().getDate() < 10
+                ? "0" + readBefore[i].dateFinish.toDate().getDate()
+                : readBefore[i].dateFinish.toDate().getDate()}
+              .
+              {readBefore[i].dateFinish.toDate().getMonth() + 1 < 10
+                ? "0" + (readBefore[i].dateFinish.toDate().getMonth() + 1)
+                : readBefore[i].dateFinish.toDate().getMonth() + 1}
+              .{readBefore[i].dateFinish.toDate().getFullYear()}
+            </td>
+          </tr>
+        );
+      }
+    }
   }
-
 
   return (
     <div>
       <div className={style.prev}>Ранее брали</div>
       <div className={style.history}>
-        {rows.length > 0 ?
+        {rows.length > 0 ? (
           <table width={"100%"}>
             <thead>
               <tr>
@@ -36,10 +54,11 @@ const HistoryTable = ({ readBefore }) => {
                 </th>
               </tr>
             </thead>
-            <tbody>
-              {rows.map(row => row)}
-            </tbody>
-          </table> : "Книгу еще не брали"}
+            <tbody>{rows.map((row) => row)}</tbody>
+          </table>
+        ) : (
+          "Книгу еще не брали"
+        )}
       </div>
     </div>
   );

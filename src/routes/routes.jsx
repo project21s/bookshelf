@@ -1,7 +1,8 @@
 import Home from "../pages/Home/Home";
 import React from "react";
-import Book from "../pages/Book/Book";
+// import Book from "../pages/Book/Book";
 import AddBook from "../pages/AddBook/AddBook";
+import MyBooks from "../pages/MyBooks/MyBooks";
 
 export const routes = [
   {
@@ -11,13 +12,13 @@ export const routes = [
     element: <Home />,
     isDisplay: true,
   },
-  // {
-  //   path: "/book",
-  //   label: "Твои книги",
-  //   param: ":id",
-  //   element: <Book />,
-  //   isDisplay: true,
-  // },
+  {
+    path: "/mybook",
+    label: "Твои книги",
+    param: "",
+    element: <MyBooks />,
+    isDisplay: true,
+  },
   // {
   //   path: "/rules",
   //   label: "Правила",

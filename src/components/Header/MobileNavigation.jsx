@@ -48,10 +48,14 @@ const MobileNavigation = ({ user, setUser, setOpenLogin, openLogin }) => {
         >
           <div className={style.mobileUser}>
             <div className={style.usernameContainer}>
-              {user ? (<div><p>Привет,</p>
-                <h2>{user.email}</h2></div>)
-                : ("")}
-
+              {user ? (
+                <div>
+                  <p>Привет,</p>
+                  <h2>{user.nickname}</h2>
+                </div>
+              ) : (
+                ""
+              )}
             </div>
             <button onClick={() => handleToggleNavigation(false)}>
               <SvgSelector id="close" />
@@ -75,11 +79,19 @@ const MobileNavigation = ({ user, setUser, setOpenLogin, openLogin }) => {
                 ))}
             </div>
             <div className={style.auth}>
-              {user
-                ? (<p onClick={() => logOut().then(() => {
-                  setUser(null)
-                })}>Выйти</p>)
-                : (<p onClick={() => setOpenLogin(true)}>Войти</p>)}
+              {user ? (
+                <p
+                  onClick={() =>
+                    logOut().then(() => {
+                      setUser(null);
+                    })
+                  }
+                >
+                  Выйти
+                </p>
+              ) : (
+                <p onClick={() => setOpenLogin(true)}>Войти</p>
+              )}
             </div>
             <div className={style.footer}>
               <p>Powered by</p>

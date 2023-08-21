@@ -8,14 +8,18 @@ import { AppButton } from "../../components/AppButton/AppButton";
 // import GetBook from "../../components/GetBook";
 // import ReturnBook from "../../components/ReturnBook";
 import HistoryTable from "../../components/HistoryTable/HistoryTable";
-import AppReviews from "../../components/AppReviews/AppReviews";
+// import AppReviews from "../../components/AppReviews/AppReviews";
 import Checkbox from "../../components/AppFavoriteCheck/AppFavoriteCheck";
 // import GetBook from "../../components/GetBook";
 
-import { getBookById, onHandBook, onFreeBook } from "../../services/bookApiServes";
+import {
+  getBookById,
+  onHandBook,
+  onFreeBook,
+} from "../../services/bookApiServes";
+import { addToFavorite, delFromFavorite } from "../../services/userApiServes";
 import { userStatus } from "../../services/authApiServes";
 import { async } from "@firebase/util";
-
 
 const Book = () => {
   // let navigate = useNavigate();
@@ -24,68 +28,80 @@ const Book = () => {
   //   navigate("/");
   // };
 
-  const [textareaValue, setTextareaValue] = useState("");
+  // const [textareaValue, setTextareaValue] = useState("");
 
   const { id } = useParams();
 
   const nullBook = {
-    id: '',
+    id: "",
     number: 0,
-    author: 'book.author',
+    author: "book.author",
     title: "",
     description: "",
     img: "",
     status: "free",
     RFID: "",
-  }
+  };
   let [book, setBook] = useState(nullBook);
 
   let getBook = async () => {
-    let bookTmp = await getBookById(id)
+    let bookTmp = await getBookById(id);
     setBook(bookTmp);
-    console.log(bookTmp)
-  }
+    console.log(bookTmp);
+  };
 
   let [user, setUser] = useState(null);
 
   let status = async () => {
-    let userData = await userStatus()
-    console.log(userData)
+    let userData = await userStatus();
+    console.log(userData);
     if (!user) {
-      setUser(userData)
+      setUser(userData);
     } else if (userData.id !== user.id) {
-      setUser(userData)
+      setUser(userData);
     }
-  }
+  };
 
   let [bookStatus, setBookStatus] = useState(null);
-
 
   let bookStatusFunc = () => {
     let onMyHand = false;
     if (user) {
-      onMyHand = user.books.read.filter(b => b.id === book.id).length > 0
+      onMyHand = user.books.read.filter((b) => b.id === book.id).length > 0;
     }
     if (book.status === "free" && user) {
-      setBookStatus(1)
+      setBookStatus(1);
     }
     if (book.status === "free" && !user) {
-      setBookStatus(2)
+      setBookStatus(2);
     }
     if (book.status !== "free" && onMyHand) {
-      setBookStatus(3)
+      setBookStatus(3);
     } else if (book.status !== "free") {
-      setBookStatus(4)
+      setBookStatus(4);
     }
-  }
+  };
+
+  let [isFavorite, setIsFavorite] = useState(false);
+  let [titleFavorite, setTitleFavorite] = useState("Добавить в избранное");
+
+  let isFavoriteFunc = () => {
+    if (user) {
+      if (user.books.favorite.filter((b) => b.id === book.id).length > 0) {
+        setIsFavorite(true);
+        setTitleFavorite("Убрать из избраного");
+      }
+    }
+  };
 
   useEffect(() => {
     if (!book.id) {
-      getBook()
+      getBook();
     }
     status();
     bookStatusFunc();
-  }, [book, user])
+    isFavoriteFunc();
+  }, [book, user]);
   // const [ShowReturnBook, setShowReturnBook] = useState(!books[bookid].isFree);
 
   // const Click = () => {
@@ -93,34 +109,83 @@ const Book = () => {
   //   console.log(books);
   // };
 
-  const bookId = (book.status === "free") ?
-    [style.bookId, style.bookIdFree].join(" ") :
-    [style.bookId, style.bookIdNoFree].join(" ");
+  const bookId =
+    book.status === "free"
+      ? [style.bookId, style.bookIdFree].join(" ")
+      : [style.bookId, style.bookIdNoFree].join(" ");
+  const bookId =
+    book.status === "free"
+      ? [style.bookId, style.bookIdFree].join(" ")
+      : [style.bookId, style.bookIdNoFree].join(" ");
 
-  const noFreeImage = (book.status === "free")
-    ? style.bookImg
-    : style.bookImg + " " + style.grayscale;
-
-  const isFavorite = (book.id % 2 === 0) ? true : false;
+  const noFreeImage =
+    book.status === "free"
+      ? style.bookImg
+      : style.bookImg + " " + style.grayscale;
+  const noFreeImage =
+    book.status === "free"
+      ? style.bookImg
+      : style.bookImg + " " + style.grayscale;
 
   const getBookOnHand = async () => {
-    await onHandBook(user, book)
-    await getBook()
-    setUser(null)
-  }
+    await onHandBook(user, book);
+    await getBook();
+    // setUser(null)
+    /// это точно нужно????
+  };
 
   const setBookBeFree = async () => {
-    await onFreeBook(user, book)
-    await getBook()
-    setUser(null)
-  }
+    await onFreeBook(user, book);
+    await getBook();
+    // setUser(null)
+    /// это точно нужно????
+  };
 
+  const getBookFavorite = async () => {
+    console.log("getBookFavorite");
+    await addToFavorite(user, book);
+    await getBook();
+  };
+
+  const outBookFavorite = async () => {
+    console.log("outBookFavorite");
+    await delFromFavorite(user, book);
+    await getBook();
+  };
+
+  let getBookFavoriteFunc = () => {
+    if (user) {
+      if (isFavorite) {
+        outBookFavorite();
+        setTitleFavorite("Добавить в избранное");
+        setIsFavorite(false);
+      } else {
+        getBookFavorite();
+        setTitleFavorite("Убрать из избранного");
+        setIsFavorite(true);
+      }
+    } else {
+      if (isFavorite) {
+        setTitleFavorite("Добавить в избранное");
+        setIsFavorite(false);
+      } else {
+        setTitleFavorite("Убрать из избранного");
+        setIsFavorite(true);
+      }
+    }
+  };
+
+  console.log("before return isFavorite: ", isFavorite);
   return (
     <div className={style.main}>
       <div className={style.historyTable}>
-        <div >
+        <div>
+          <HistoryTable readBefore={book.readBefore} />
           <HistoryTable readBefore={book.readBefore} />
         </div>
+        {/* TODO ниже блок с комментариями, добавить позже */}
+        {/* <div >
+          <AppReviews id={2} />
         {/* TODO ниже блок с комментариями, добавить позже */}
         {/* <div >
           <AppReviews id={2} />
@@ -148,21 +213,42 @@ const Book = () => {
           </div>
           <div className={style.info}>
             <div>
-              <div className={bookId} >{book.number}</div>
-              <div className={style.author} >{book.author}</div>
+              <div className={bookId}>{book.number}</div>
+              <div className={style.author}>{book.author}</div>
               <div className={style.title}>{book.title}</div>
             </div>
-            <Checkbox checked={isFavorite} title="Добавить в избранное" />
+            <Checkbox
+              checked={isFavorite}
+              title={titleFavorite}
+              onClick={getBookFavoriteFunc}
+            />
           </div>
         </div>
-        <div className={style.desc}>{book.description === "" ? "Описание еще не добавили" : book.description}</div>
+        <div className={style.desc}>
+          {book.description === ""
+            ? "Описание еще не добавили"
+            : book.description}
+        </div>
         <div className={style.getBook}>
           {/* <GetBook /> */}
-          {(bookStatus === 1) && <AppButton header="Взять книгу" onClick={getBookOnHand} />}
-          {(bookStatus === 2) && <AppButton header="Книга свободна, войдите в систему, чтобы взять книгу" disabled="disabled" />}
-          {(bookStatus === 3) && <AppButton header="Сдать книгу" onClick={setBookBeFree} />}
-          {(bookStatus === 4) && (<AppButton header="Книга занята" disabled="disabled" />)}
-          {(bookStatus === 4) && (<div>Сейчас читает: {book.readNow.nickname}</div>)}
+          {bookStatus === 1 && (
+            <AppButton header="Взять книгу" onClick={getBookOnHand} />
+          )}
+          {bookStatus === 2 && (
+            <AppButton
+              header="Книга свободна, войдите в систему, чтобы взять книгу"
+              disabled="disabled"
+            />
+          )}
+          {bookStatus === 3 && (
+            <AppButton header="Сдать книгу" onClick={setBookBeFree} />
+          )}
+          {bookStatus === 4 && (
+            <AppButton header="Книга занята" disabled="disabled" />
+          )}
+          {bookStatus === 4 && (
+            <div>Сейчас читает: {book.readNow.nickname}</div>
+          )}
         </div>
       </div>
     </div>
@@ -194,6 +280,5 @@ const Book = () => {
 
 //   <HistoryTable />
 //  </div>
-
 
 export default Book;

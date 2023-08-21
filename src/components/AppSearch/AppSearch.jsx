@@ -16,7 +16,7 @@ function AppSearch({
   const goToTop = () => {
    
     if (isMobile) {
-      window.scrollTo ({top: 292 , behavior: "smooth",});
+      window.scrollTo ({top: 220 , behavior: "smooth",});
     } else {
       window.scrollTo ({top: 0, behavior: "smooth",});
     }

@@ -1,0 +1,115 @@
+:global(.dekstop) .main {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    padding: 30px 20px;
+    max-width: 1280px;
+    margin-bottom: 20px;
+    /* flex-direction: row; */
+    flex-direction: column;
+    align-content: flex-start;
+  }
+  
+  :global(.mobile) .main {
+    max-width: 850px;
+    flex-direction: column;
+    min-height: 1000px;
+    padding: 30px 20px;
+  }
+  
+  :global(.dekstop) .search {
+    position: fixed;
+    top: 390px;
+    width: 340px;
+    }
+  
+  @media screen and (width < 850px) {
+    :global(.mobile) .search {
+      position: sticky;
+      top: 90px;
+      z-index: 100;
+      margin: 10px auto;
+      max-width: 680px;
+    }
+  
+    :global(.mobile) .blockLeft {
+      max-width: 680px;
+      display: flex;
+      flex-direction: column;
+      margin: 0 auto;
+    }
+  }
+  
+  @media screen and (width < 737px) {
+    :global(.mobile) .search {
+      position: sticky;
+      top: 90px;
+      z-index: 100;
+      margin: 10px auto;
+      max-width: 505px;
+    }
+  
+    :global(.mobile) .blockLeft {
+      max-width: 505px;
+      display: flex;
+      flex-direction: column;
+      margin: 0 auto;
+    }
+  }
+  
+  @media screen and (width < 560px) {
+    :global(.mobile) .search {
+      position: sticky;
+      top: 90px;
+      z-index: 100;
+      margin: 10px auto;
+      max-width: 340px;
+    }
+  
+    :global(.mobile) .blockLeft {
+      max-width: 340px;
+      display: flex;
+      flex-direction: column;
+      margin: 0 auto;
+    }
+  }
+  
+  :global(.dekstop) .blockLeft {
+    display: flex;
+    position: fixed;
+    flex-direction: row;
+    max-width: 340px;
+    height: auto;
+    flex-wrap: wrap;
+    margin: 0 auto;
+  }
+  
+  .hello {
+    display: flex;
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 35px;
+    letter-spacing: 0em;
+    text-align: left;
+  }
+  
+  .info {
+    display: flex;
+    flex-direction: column;
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 19px;
+    letter-spacing: 0em;
+    text-align: left;
+    margin-top: 20px;
+  }
+
+  .favorites {
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-weight: 500;
+    font-size: 24px;
+    margin-left: 20px;
+  }
