@@ -21,7 +21,6 @@ function BookTable({
       book.author.toLowerCase() +
       " " +
       book.number;
-    book.number;
 
     if (bookSearchString.indexOf(filterText.toLowerCase()) === -1) {
       return;

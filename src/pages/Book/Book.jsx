@@ -113,15 +113,7 @@ const Book = () => {
     book.status === "free"
       ? [style.bookId, style.bookIdFree].join(" ")
       : [style.bookId, style.bookIdNoFree].join(" ");
-  const bookId =
-    book.status === "free"
-      ? [style.bookId, style.bookIdFree].join(" ")
-      : [style.bookId, style.bookIdNoFree].join(" ");
 
-  const noFreeImage =
-    book.status === "free"
-      ? style.bookImg
-      : style.bookImg + " " + style.grayscale;
   const noFreeImage =
     book.status === "free"
       ? style.bookImg

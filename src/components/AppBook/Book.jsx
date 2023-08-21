@@ -19,10 +19,6 @@ function Book(props) {
     book.status === "free"
       ? [style.bookId, style.bookIdFree].join(" ")
       : [style.bookId, style.bookIdNoFree].join(" ");
-  const bookId =
-    book.status === "free"
-      ? [style.bookId, style.bookIdFree].join(" ")
-      : [style.bookId, style.bookIdNoFree].join(" ");
 
   const StatusFree =
     book.status === "free"

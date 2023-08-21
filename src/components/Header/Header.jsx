@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import React, { useState, useEffect } from "react";
 import style from "./style.module.css";
 import { routes } from "../../routes/routes";
 import { NavLink } from "react-router-dom";

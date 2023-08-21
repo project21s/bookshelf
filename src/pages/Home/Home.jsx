@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from "react";
-import React, { useState, useEffect } from "react";
 
 import style from "./style.module.css";
 
 import BookTable from "../../components/BookTabke/BookTable";
 import AppSearch from "../../components/AppSearch/AppSearch";
 import AppScrollToUp from "../../components/AppScrollToUp/AppScrollToUp";
-
-import { getAllBook } from "../../services/bookApiServes";
 
 import { getAllBook } from "../../services/bookApiServes";
 
@@ -25,14 +22,6 @@ function Home() {
       getBooks();
     }
   }, [books]);
-
-  let [books, setBooks] = useState(null);
-
-  let getBooks = async () => {
-    let booksTmp = await getAllBook();
-    setBooks(booksTmp);
-    console.log(booksTmp);
-  };
 
   useEffect(() => {
     if (!books) {
