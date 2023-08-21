@@ -1,36 +1,48 @@
 import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 import style from "./style.module.css";
 
 import BookTable from "../../components/BookTabke/BookTable";
 import AppSearch from "../../components/AppSearch/AppSearch";
-import AppScrollToUp from "../../components/AppScrollToUp/AppScrollToUp"
+import AppScrollToUp from "../../components/AppScrollToUp/AppScrollToUp";
+
+import { getAllBook } from "../../services/bookApiServes";
 
 import { getAllBook } from "../../services/bookApiServes";
 
 function Home() {
   let [books, setBooks] = useState(null);
 
-
   let getBooks = async () => {
-    let booksTmp = await getAllBook()
+    let booksTmp = await getAllBook();
     setBooks(booksTmp);
-    console.log(booksTmp)
-
-  }
+    console.log(booksTmp);
+  };
 
   useEffect(() => {
     if (!books) {
-      getBooks()
+      getBooks();
     }
-  }, [books])
+  }, [books]);
 
+  let [books, setBooks] = useState(null);
 
+  let getBooks = async () => {
+    let booksTmp = await getAllBook();
+    setBooks(booksTmp);
+    console.log(booksTmp);
+  };
+
+  useEffect(() => {
+    if (!books) {
+      getBooks();
+    }
+  }, [books]);
 
   const [filterText, setFilterText] = useState("");
   const [inStockOnly, setInStockOnly] = useState(false);
 
-  
   return (
     <div className={style.main}>
       <div className={style.blockLeft}>
@@ -56,13 +68,14 @@ function Home() {
         />
       </div>
       <AppScrollToUp />
-      {books && <BookTable
-        books={books}
-        filterText={filterText}
-        inStockOnly={inStockOnly}
-        page="home"
-      />}
-
+      {books && (
+        <BookTable
+          books={books}
+          filterText={filterText}
+          inStockOnly={inStockOnly}
+          page="home"
+        />
+      )}
     </div>
   );
 }

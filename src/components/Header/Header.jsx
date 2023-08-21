@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import style from "./style.module.css";
 import { routes } from "../../routes/routes";
 import { NavLink } from "react-router-dom";
@@ -13,7 +14,6 @@ import MobileNavigation from "./MobileNavigation";
 import { PopUp } from "../PopUp/PopUp";
 import AppButton from "../AppButton/AppButton";
 import { userStatus, logOut } from "../../services/authApiServes";
-
 
 const Header = () => {
   const { isMobile } = useScreen();
@@ -30,23 +30,21 @@ const Header = () => {
   let [user, setUser] = useState(null);
 
   let status = async () => {
-    let userData = await userStatus()
+    let userData = await userStatus();
     if (!user) {
-      setUser(userData)
+      setUser(userData);
     } else if (userData.id !== user.id) {
-      setUser(userData)
+      setUser(userData);
     }
-  }
+  };
 
   useEffect(() => {
-    status()
-  }, [user, openLogin])
+    status();
+  }, [user, openLogin]);
 
   return (
     <>
-      {openLogin && <PopUp
-        close={setOpenLogin}
-      />}
+      {openLogin && <PopUp close={setOpenLogin} />}
       <div className={style.container}>
         <div className={style.logo}>
           <NavLink to="/">
@@ -71,10 +69,18 @@ const Header = () => {
         {!isMobile ? (
           <div className={style.user}>
             {user ? (
-              <div className={style.log} >Привет, {user.nickname}
-                <div className={style.out} onClick={() => logOut().then(() => {
-                  setUser(null)
-                })} ><AppButton header="выйти" red={true}></AppButton></div>
+              <div className={style.log}>
+                Привет, {user.nickname}
+                <div
+                  className={style.out}
+                  onClick={() =>
+                    logOut().then(() => {
+                      setUser(null);
+                    })
+                  }
+                >
+                  <AppButton header="выйти" red={true}></AppButton>
+                </div>
               </div>
             ) : (
               <h1 onClick={() => setOpenLogin(true)}>Войти</h1>
@@ -85,7 +91,12 @@ const Header = () => {
             <SvgSelector id="burger" />
           </button>
         )}
-        <MobileNavigation user={user} setUser={setUser} setOpenLogin={setOpenLogin} openLogin={openLogin} />
+        <MobileNavigation
+          user={user}
+          setUser={setUser}
+          setOpenLogin={setOpenLogin}
+          openLogin={openLogin}
+        />
       </div>
     </>
   );

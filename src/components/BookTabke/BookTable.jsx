@@ -3,8 +3,14 @@ import Book from "../AppBook/Book";
 import { useNavigate } from "react-router-dom";
 import style from "./style.module.css";
 
-function BookTable({ user, books, filterText, inStockOnly, page, favoriteBook = false}) {
-
+function BookTable({
+  user,
+  books,
+  filterText,
+  inStockOnly,
+  page,
+  favoriteBook = false,
+}) {
   const rows = [];
   let navigate = useNavigate();
 
@@ -15,6 +21,7 @@ function BookTable({ user, books, filterText, inStockOnly, page, favoriteBook = 
       book.author.toLowerCase() +
       " " +
       book.number;
+    book.number;
 
     if (bookSearchString.indexOf(filterText.toLowerCase()) === -1) {
       return;
@@ -25,9 +32,9 @@ function BookTable({ user, books, filterText, inStockOnly, page, favoriteBook = 
     }
 
     if (favoriteBook && user) {
-        if (user.books.favorite.filter(b => b.id === book.id).length === 0) {
-          return;
-        }
+      if (user.books.favorite.filter((b) => b.id === book.id).length === 0) {
+        return;
+      }
     }
 
     const goBook = (id) => {
@@ -44,18 +51,14 @@ function BookTable({ user, books, filterText, inStockOnly, page, favoriteBook = 
       />
     );
   });
-  return rows.length > 0 ?
-    (
-      <div className={style.bookTabke} >
-        {rows}
-      </div>
-    ) :
-    (
-      <div className={style.noResult}>
-        {page === "home" ?  "Поиск не дал результата" : ""}
-        {page === "mybook" ?  "Вы еще не добавили книги в избрнное" : ""}
-      </div>
-    )
+  return rows.length > 0 ? (
+    <div className={style.bookTabke}>{rows}</div>
+  ) : (
+    <div className={style.noResult}>
+      {page === "home" ? "Поиск не дал результата" : ""}
+      {page === "mybook" ? "Вы еще не добавили книги в избрнное" : ""}
+    </div>
+  );
 }
 
 export default BookTable;

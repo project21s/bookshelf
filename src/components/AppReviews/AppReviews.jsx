@@ -8,7 +8,7 @@ import { useParams } from "react-router-dom";
 const AppReviews = () => {
 
   const { id } = useParams();
-  const book = id - 1;
+  const book = 2;
 
   const rows = [];
 
