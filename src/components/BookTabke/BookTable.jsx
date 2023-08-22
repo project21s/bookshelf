@@ -55,7 +55,7 @@ function BookTable({
   ) : (
     <div className={style.noResult}>
       {page === "home" ? "Поиск не дал результата" : ""}
-      {page === "mybook" ? "Вы еще не добавили книги в избрнное" : ""}
+      {page === "mybook" ? "Вы еще не добавили книги в избранное" : ""}
     </div>
   );
 }

@@ -7,6 +7,7 @@ import { clsx } from "clsx";
 import { useScreen } from "./hooks";
 import Header from "./components/Header/Header";
 import MyBooks from "./pages/MyBooks/MyBooks";
+import Feedback from "./pages/Feedback/Feedback";
 
 import AppAlert from "./components/AppAlert/AppAlert";
 
@@ -56,6 +57,7 @@ export const App = () => {
               <Route path="/mybook" element={<MyBooks />} />
               <Route path="/book/:id" element={<Book />} />
               <Route path="/addbook" element={<AddBook />} />
+              <Route path="/feedback" element={<Feedback />} />
               <Route path="*" element={<Home />} />
             </Routes>
           </BrowserRouter>
