@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import style from "./style.module.css";
 import { SvgSelector } from "../SvgSelector/SvgSelector";
 import { AppInput } from "../AppInput/AppInput";
@@ -6,17 +6,31 @@ import AppButton from "../AppButton/AppButton";
 import { useState } from "react";
 
 import { createUser, logIn } from "../../services/authApiServes";
+import { UserContext } from "../../contexts/UserContext";
+import { InfoContext } from "../../contexts/InfoContext";
 
 export const PopUp = (props) => {
   let [mail, setMail] = useState("");
   let [password, setPassword] = useState("");
 
-  const login = async () => {
-    let user = await logIn(mail, password);
-    props.close(false)
-  }
+  const { user, userDispatch } = useContext(UserContext);
+  const showAlert = useContext(InfoContext);
 
-  let [reg, setReg] = useState(false)
+  const login = async () => {
+    let userTemp = await logIn(mail, password);
+    if (userTemp.user) {
+      userDispatch({
+        type: "update",
+        user: userTemp.user,
+      });
+    } else {
+      showAlert(userTemp.error);
+    }
+
+    props.close(false);
+  };
+
+  let [reg, setReg] = useState(false);
   return !reg ? (
     <>
       <div className={style.background}></div>
@@ -30,22 +44,27 @@ export const PopUp = (props) => {
           </div>
           <AppInput title="email" setInput={setMail}></AppInput>
           <br />
-          <AppInput title="пароль" setInput={setPassword}></AppInput>
+          <AppInput
+            title="пароль"
+            type="password"
+            setInput={setPassword}
+          ></AppInput>
           <br />
           <div className={style.header}>
-            <AppButton header="Войти"
-              onClick={login}
-            ></AppButton>
-            <AppButton header="Регистрация"
-              onClick={() => { setReg(true) }}
+            <AppButton header="Войти" onClick={login}></AppButton>
+            <AppButton
+              header="Регистрация"
+              onClick={() => {
+                setReg(true);
+              }}
             ></AppButton>
           </div>
         </div>
       </div>
     </>
-  ) :
-    (<PopUpReg close={props.close}
-      newUser={props.newUser} ></PopUpReg>)
+  ) : (
+    <PopUpReg close={props.close} newUser={props.newUser}></PopUpReg>
+  );
 };
 
 export const PopUpReg = (props) => {
@@ -53,13 +72,26 @@ export const PopUpReg = (props) => {
   let [password, setPassword] = useState("");
   let [repeatePass, setRepeatePass] = useState("");
 
+  const { user, userDispatch } = useContext(UserContext);
+  const showAlert = useContext(InfoContext);
+
   const create = async () => {
     if (password !== repeatePass) {
-      return
+      return;
     }
-    let user = await createUser(mail, password);
-    props.close(false)
-  }
+    let userTemp = await createUser(mail, password);
+
+    if (userTemp.user) {
+      userDispatch({
+        type: "update",
+        user: userTemp.user,
+      });
+    } else {
+      showAlert(userTemp.error);
+    }
+
+    props.close(false);
+  };
 
   return (
     <>
@@ -74,14 +106,16 @@ export const PopUpReg = (props) => {
           </div>
           <AppInput title="email" setInput={setMail}></AppInput>
           <br />
-          <AppInput title="пароль" setInput={setPassword}></AppInput>
+          <AppInput
+            title="пароль"
+            type="password"
+            setInput={setPassword}
+          ></AppInput>
           <br />
           <AppInput title="повтори пароль" setInput={setRepeatePass}></AppInput>
           <br />
           <div className={style.header}>
-            <AppButton header="Регистрация"
-              onClick={create}
-            ></AppButton>
+            <AppButton header="Регистрация" onClick={create}></AppButton>
           </div>
         </div>
       </div>

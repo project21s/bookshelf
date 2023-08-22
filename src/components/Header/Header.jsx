@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import style from "./style.module.css";
 import { routes } from "../../routes/routes";
 import { NavLink } from "react-router-dom";
@@ -13,6 +13,7 @@ import MobileNavigation from "./MobileNavigation";
 import { PopUp } from "../PopUp/PopUp";
 import AppButton from "../AppButton/AppButton";
 import { userStatus, logOut } from "../../services/authApiServes";
+import { UserContext } from "../../contexts/UserContext";
 
 const Header = () => {
   const { isMobile } = useScreen();
@@ -26,20 +27,7 @@ const Header = () => {
 
   let [openLogin, setOpenLogin] = useState(false);
 
-  let [user, setUser] = useState(null);
-
-  let status = async () => {
-    let userData = await userStatus();
-    if (!user) {
-      setUser(userData);
-    } else if (userData.id !== user.id) {
-      setUser(userData);
-    }
-  };
-
-  useEffect(() => {
-    status();
-  }, [user, openLogin]);
+  const { user, userDispatch } = useContext(UserContext);
 
   return (
     <>
@@ -74,7 +62,10 @@ const Header = () => {
                   className={style.out}
                   onClick={() =>
                     logOut().then(() => {
-                      setUser(null);
+                      userDispatch({
+                        type: "delete",
+                        user: null,
+                      });
                     })
                   }
                 >
@@ -92,7 +83,6 @@ const Header = () => {
         )}
         <MobileNavigation
           user={user}
-          setUser={setUser}
           setOpenLogin={setOpenLogin}
           openLogin={openLogin}
         />

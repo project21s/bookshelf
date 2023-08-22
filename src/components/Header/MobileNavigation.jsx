@@ -1,6 +1,6 @@
 import { clsx } from "clsx";
 import { NavLink } from "react-router-dom";
-import React from "react";
+import React, { useContext } from "react";
 import style from "./style.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useScreen } from "../../hooks";
@@ -14,7 +14,9 @@ import { CSSTransition } from "react-transition-group";
 import { PopUp } from "../PopUp/PopUp";
 import { logOut } from "../../services/authApiServes";
 
-const MobileNavigation = ({ user, setUser, setOpenLogin, openLogin }) => {
+import { UserContext } from "../../contexts/UserContext";
+
+const MobileNavigation = ({ setOpenLogin, openLogin }) => {
   const { isMobile } = useScreen();
   const currentPage = useLocation().pathname;
   const title = getRoute(currentPage)?.label;
@@ -26,6 +28,9 @@ const MobileNavigation = ({ user, setUser, setOpenLogin, openLogin }) => {
   const handleToggleNavigation = (open) => {
     dispatch(appActions.setOpenNavigation(open));
   };
+
+  const { user, userDispatch } = useContext(UserContext);
+
   return (
     <>
       {openLogin && <PopUp close={setOpenLogin} />}
@@ -83,7 +88,9 @@ const MobileNavigation = ({ user, setUser, setOpenLogin, openLogin }) => {
                 <p
                   onClick={() =>
                     logOut().then(() => {
-                      setUser(null);
+                      userDispatch({
+                        type: "delete",
+                      });
                     })
                   }
                 >

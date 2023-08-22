@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import style from "./style.module.css";
 import Checkbox from "../AppFavoriteCheck/AppFavoriteCheck";
 import { userStatus } from "../../services/authApiServes";
-import { async } from "@firebase/util";
 import { addToFavorite, delFromFavorite } from "../../services/userApiServes";
 import { getBookById } from "../../services/bookApiServes";
 

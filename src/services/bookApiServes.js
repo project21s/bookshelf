@@ -8,16 +8,14 @@ import {
   collection,
   addDoc,
   updateDoc,
-  getDocs
+  getDocs,
 } from "firebase/firestore";
 import { uploadBookImg } from "./fileApiServes";
-
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-let books = []
-
+let books = [];
 
 // создать книгу в бд
 export const createBookData = async (book, user, file) => {
@@ -48,7 +46,7 @@ export const createBookData = async (book, user, file) => {
     });
 
     // загружаем обложку
-    let url = await uploadBookImg(file, docRef.id)
+    let url = await uploadBookImg(file, docRef.id);
 
     // добавляем в базу книги id и ссылку на картинку книги
     await updateDoc(docRef, {
@@ -56,43 +54,47 @@ export const createBookData = async (book, user, file) => {
       img: url,
     });
   } catch (e) {
-    console.log(e)
+    console.log(e);
   }
-}
+};
 
 // получить список всех книг
 export const getAllBook = async () => {
-  if (books.length) {
-    return books;
-  }
+  // if (books.length) {
+  //   return books;
+  // }
   const querySnapshot = await getDocs(collection(db, "books"));
+  books = [];
   querySnapshot.forEach((doc) => {
-    books.push(doc.data())
-  })
+    books.push(doc.data());
+  });
   return books;
-}
+};
 
 // получить книгу по id
 export const getBookById = async (id) => {
-  if (books.length) {
-    let book = books.filter((book) => book.id === id)
-    return book[0];
-  }
+  // if (books.length) {
+  //   let book = books.filter((book) => book.id === id);
+  //   return book[0];
+  // }
   const docSnap = await getDoc(doc(db, "books", id));
   if (docSnap.exists()) {
-    return docSnap.data()
+    return docSnap.data();
   } else {
     console.log("No such document!");
   }
-}
-
+};
 
 // взять книгу
 export const onHandBook = async (user, book) => {
   const docRefBook = doc(db, "books", book.id);
   let date = new Date();
   let dateStart = date;
-  let dateFinish = new Date(date.getFullYear(), date.getMonth(), (date.getDate() + 7))
+  let dateFinish = new Date(
+    date.getFullYear(),
+    date.getMonth(),
+    date.getDate() + 7
+  );
   await updateDoc(docRefBook, {
     status: "onHands",
     readNow: {
@@ -100,22 +102,19 @@ export const onHandBook = async (user, book) => {
       nickname: user.nickname,
       dateStart: dateStart,
       dateFinish: dateFinish,
-    }
-  })
-
+    },
+  });
   const docRefUser = doc(db, "users", user.id);
   user.books.read.push({
     id: book.id,
     dateStart: dateStart,
     dateFinish: dateFinish,
-  })
+  });
 
   await updateDoc(docRefUser, {
-    books: user.books
-  })
-}
-
-
+    books: user.books,
+  });
+};
 
 // сдать книгу
 export const onFreeBook = async (user, book) => {
@@ -127,7 +126,7 @@ export const onFreeBook = async (user, book) => {
     nickname: book.readNow.nickname,
     dateStart: book.readNow.dateStart,
     dateFinish: dateFinish,
-  })
+  });
   await updateDoc(docRefBook, {
     status: "free",
     readBefore: book.readBefore,
@@ -136,12 +135,12 @@ export const onFreeBook = async (user, book) => {
       nickname: "",
       dateStart: "",
       dateFinish: "",
-    }
-  })
+    },
+  });
 
   const docRefUser = doc(db, "users", user.id);
-  user.books.read = user.books.read.filter(b => b.id !== book.id)
+  user.books.read = user.books.read.filter((b) => b.id !== book.id);
   await updateDoc(docRefUser, {
-    books: user.books
-  })
-}
+    books: user.books,
+  });
+};

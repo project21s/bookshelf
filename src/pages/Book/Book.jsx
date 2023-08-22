@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import style from "./style.module.css";
 import { AppButton } from "../../components/AppButton/AppButton";
@@ -19,7 +19,8 @@ import {
 } from "../../services/bookApiServes";
 import { addToFavorite, delFromFavorite } from "../../services/userApiServes";
 import { userStatus } from "../../services/authApiServes";
-import { async } from "@firebase/util";
+
+import { UserContext } from "../../contexts/UserContext";
 
 const Book = () => {
   // let navigate = useNavigate();
@@ -50,21 +51,11 @@ const Book = () => {
     console.log(bookTmp);
   };
 
-  let [user, setUser] = useState(null);
-
-  let status = async () => {
-    let userData = await userStatus();
-    console.log(userData);
-    if (!user) {
-      setUser(userData);
-    } else if (userData.id !== user.id) {
-      setUser(userData);
-    }
-  };
+  const { user, userDispatch } = useContext(UserContext);
 
   let [bookStatus, setBookStatus] = useState(null);
 
-  let bookStatusFunc = () => {
+  let bookStatusFunc = async () => {
     let onMyHand = false;
     if (user) {
       onMyHand = user.books.read.filter((b) => b.id === book.id).length > 0;
@@ -95,13 +86,10 @@ const Book = () => {
   };
 
   useEffect(() => {
-    if (!book.id) {
-      getBook();
-    }
-    status();
+    getBook();
     bookStatusFunc();
     isFavoriteFunc();
-  }, [book, user]);
+  }, [book.status, user]);
   // const [ShowReturnBook, setShowReturnBook] = useState(!books[bookid].isFree);
 
   // const Click = () => {
@@ -122,15 +110,23 @@ const Book = () => {
   const getBookOnHand = async () => {
     await onHandBook(user, book);
     await getBook();
-    // setUser(null)
-    /// это точно нужно????
+    const userTemp = await userStatus();
+
+    userDispatch({
+      type: "update",
+      user: userTemp,
+    });
   };
 
   const setBookBeFree = async () => {
     await onFreeBook(user, book);
     await getBook();
-    // setUser(null)
-    /// это точно нужно????
+    const userTemp = await userStatus();
+
+    userDispatch({
+      type: "update",
+      user: userTemp,
+    });
   };
 
   const getBookFavorite = async () => {
@@ -173,25 +169,28 @@ const Book = () => {
       <div className={style.historyTable}>
         <div>
           <HistoryTable readBefore={book.readBefore} />
-          <HistoryTable readBefore={book.readBefore} />
         </div>
         {/* TODO ниже блок с комментариями, добавить позже */}
         {/* <div >
           <AppReviews id={2} />
         {/* TODO ниже блок с комментариями, добавить позже */}
-        {/* <div >
+        {/* <div>
           <AppReviews id={2} />
         </div>
         <div>
           <div className={style.countReview}> {textareaValue.length}/500</div>
-          <textarea className={style.comment}
+          <textarea
+            className={style.comment}
             placeholder="Оставить отзыв о книге"
             value={textareaValue}
-            onChange={(event) => setTextareaValue(prevTextareaValue => {
-              const newTextareaValue = event.target.value;
-              if (newTextareaValue.length > 500) return prevTextareaValue;
-              return newTextareaValue;
-            })} />
+            onChange={(event) =>
+              setTextareaValue((prevTextareaValue) => {
+                const newTextareaValue = event.target.value;
+                if (newTextareaValue.length > 500) return prevTextareaValue;
+                return newTextareaValue;
+              })
+            }
+          />
         </div>
         <div className={style.addReviewButton}>
           <AppButton header="Добавить" />

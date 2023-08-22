@@ -9,7 +9,7 @@ import {
   signOut,
 } from "firebase/auth";
 
-import { createUserData, getUserData } from "./userApiServes"
+import { createUserData, getUserData } from "./userApiServes";
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
@@ -18,35 +18,46 @@ export let userData;
 
 // регистрация нового пользователя
 export const createUser = async (email, password) => {
+  const answer = {};
   try {
-    let userCredential = await createUserWithEmailAndPassword(auth, email, password)
+    let userCredential = await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
     const user = userCredential.user;
     await createUserData(user.uid, email);
+    userData = await getUserData(user.uid);
+    answer.user = userData;
     console.log("user done");
   } catch (error) {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    console.log(errorCode);
-    console.log(errorMessage);
-  };
+    answer.error = error;
+  } finally {
+    return answer;
+  }
 };
 
 // выполнить вход
 export const logIn = async (email, password) => {
+  const answer = {};
   try {
-    let userCredential = await signInWithEmailAndPassword(auth, email, password)
+    let userCredential = await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
     const user = userCredential.user;
-    console.log(user);
+    userData = await getUserData(user.uid);
+    answer.user = userData;
   } catch (error) {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    console.log(errorCode);
-    console.log(errorMessage);
+    answer.error = error;
+  } finally {
+    return answer;
   }
 };
 
 export const logOut = () => {
-  return signOut(auth)
+  return signOut(auth);
 };
 
 // статус авторизации
@@ -62,9 +73,9 @@ export const userStatus = async () => {
         console.log("log-out");
       }
     });
-  })
+  });
   if (user) {
-    userData = await getUserData(user.uid)
+    userData = await getUserData(user.uid);
     return userData;
   }
 };

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-
 import style from "./style.module.css";
 
 import BookTable from "../../components/BookTabke/BookTable";
@@ -13,21 +12,14 @@ function Home() {
 
   let getBooks = async () => {
     let booksTmp = await getAllBook();
+    booksTmp.sort((a, b) => a.number - b.number);
     setBooks(booksTmp);
     console.log(booksTmp);
   };
 
   useEffect(() => {
-    if (!books) {
-      getBooks();
-    }
-  }, [books]);
-
-  useEffect(() => {
-    if (!books) {
-      getBooks();
-    }
-  }, [books]);
+    getBooks();
+  }, []);
 
   const [filterText, setFilterText] = useState("");
   const [inStockOnly, setInStockOnly] = useState(false);
