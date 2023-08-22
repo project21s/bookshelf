@@ -1,0 +1,23 @@
+.main {
+  margin: 0 auto;
+  padding: 30px 20px;
+  max-width: 600px;
+  height: 100%;
+  margin-bottom: 20px;
+}
+
+.in {
+  margin: 0 auto;
+  display: block;
+  max-width: 90%;
+  min-height: 200px;
+  margin-bottom: 20px;
+}
+
+.btn {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+}

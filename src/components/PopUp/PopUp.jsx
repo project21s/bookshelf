@@ -17,7 +17,7 @@ export const PopUp = (props) => {
   const showAlert = useContext(InfoContext);
 
   const login = async () => {
-    let userTemp = await logIn(mail, password);
+    let userTemp = await logIn(mail.toLocaleLowerCase(), password);
     if (userTemp.user) {
       userDispatch({
         type: "update",
@@ -77,9 +77,10 @@ export const PopUpReg = (props) => {
 
   const create = async () => {
     if (password !== repeatePass) {
+      showAlert("Пароли должны совпадать ");
       return;
     }
-    let userTemp = await createUser(mail, password);
+    let userTemp = await createUser(mail.toLocaleLowerCase(), password);
 
     if (userTemp.user) {
       userDispatch({
@@ -106,11 +107,7 @@ export const PopUpReg = (props) => {
           </div>
           <AppInput title="email" setInput={setMail}></AppInput>
           <br />
-          <AppInput
-            title="пароль"
-            type="password"
-            setInput={setPassword}
-          ></AppInput>
+          <AppInput title="пароль" setInput={setPassword}></AppInput>
           <br />
           <AppInput title="повтори пароль" setInput={setRepeatePass}></AppInput>
           <br />

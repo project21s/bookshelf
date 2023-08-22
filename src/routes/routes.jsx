@@ -3,6 +3,7 @@ import React from "react";
 // import Book from "../pages/Book/Book";
 import AddBook from "../pages/AddBook/AddBook";
 import MyBooks from "../pages/MyBooks/MyBooks";
+import Feedback from "../pages/Feedback/Feedback";
 
 export const routes = [
   {
@@ -31,6 +32,13 @@ export const routes = [
     label: "Добавить книгу",
     param: "",
     element: <AddBook />,
+    isDisplay: true,
+  },
+  {
+    path: "/feedback",
+    label: "Обратная связь",
+    param: "",
+    element: <Feedback />,
     isDisplay: true,
   },
 ];
