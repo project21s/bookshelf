@@ -11,5 +11,5 @@ export const useScreen = () => {
       window.removeEventListener("resize", handleResize);
     };
   });
-  return { width: width, isMobile: width < 912 };
+  return { width: width, isMobile: width <= 850 };
 };

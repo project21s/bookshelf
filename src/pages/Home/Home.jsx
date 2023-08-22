@@ -1,26 +1,32 @@
-import React from "react";
-import { useState, useRef } from "react";
-
+import React, { useState, useEffect } from "react";
 import style from "./style.module.css";
-import { books } from "../../services/bookMockAPI";
 
 import BookTable from "../../components/BookTabke/BookTable";
 import AppSearch from "../../components/AppSearch/AppSearch";
-import AppButton from "../../components/AppButton/AppButton";
+import AppScrollToUp from "../../components/AppScrollToUp/AppScrollToUp";
+
+import { getAllBook } from "../../services/bookApiServes";
 
 function Home() {
-  const ref = useRef(null);
+  let [books, setBooks] = useState(null);
 
-  const handleClick = () => {
-    ref.current?.scrollIntoView({ behavior: "smooth", position: "fixed" });
+  let getBooks = async () => {
+    let booksTmp = await getAllBook();
+    booksTmp.sort((a, b) => a.number - b.number);
+    setBooks(booksTmp);
+    console.log(booksTmp);
   };
+
+  useEffect(() => {
+    getBooks();
+  }, []);
 
   const [filterText, setFilterText] = useState("");
   const [inStockOnly, setInStockOnly] = useState(false);
 
   return (
-    <div ref={ref} className={style.main}>
-      <div ref={ref} className={style.blockLeft}>
+    <div className={style.main}>
+      <div className={style.blockLeft}>
         <div className={style.hello}>
           <span>Рады видеть тебя в нашей школьной библиотеке</span>
         </div>
@@ -42,12 +48,15 @@ function Home() {
           onInStockOnlyChange={setInStockOnly}
         />
       </div>
-      <AppButton scrollUp onClick={handleClick} />
-      <BookTable
-        books={books}
-        filterText={filterText}
-        inStockOnly={inStockOnly}
-      />
+      <AppScrollToUp />
+      {books && (
+        <BookTable
+          books={books}
+          filterText={filterText}
+          inStockOnly={inStockOnly}
+          page="home"
+        />
+      )}
     </div>
   );
 }

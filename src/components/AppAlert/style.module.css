@@ -1,0 +1,12 @@
+.main {
+  position: fixed;
+  left: -200px;
+  top: 100px;
+  transition: all ease 1s;
+  z-index: 300;
+  width: 200px;
+  border-radius: 10px;
+  padding: 10px 25px;
+  font-size: 20px;
+  background: white;
+}

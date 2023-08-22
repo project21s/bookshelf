@@ -14,7 +14,7 @@ textarea {
   border-radius: 10px;
   padding: 10px 45px;
   font-size: 20px;
-  border: 1px solid black;
+  border: none;
   background: white;
   color: var(--text-main);
   font-weight: 400;

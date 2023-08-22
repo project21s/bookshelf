@@ -1,48 +1,65 @@
 import React from "react";
-// import style from "./style.module.css";
+import style from "./style.module.css";
 
-const HistoryTable = (props) => {
-  // const [rows, setRows] = useState(props.initialRows);
-
-  // const addRow = () => {
-  //   if (rows.length < 5) {
-  //     setRows([
-  //       ...rows,
-  //       <tr>
-  //         <td>Lowellda</td>
-  //         <td>20.01.2022</td>
-  //         <td>27.01.2022</td>
-  //       </tr>,
-  //     ]);
-  //   }
-  // };
+const HistoryTable = ({ readBefore }) => {
+  const rows = [];
+  if (readBefore) {
+    for (let i = 0; i < readBefore.length; i++) {
+      if (readBefore[i].nickname !== "") {
+        rows.push(
+          <tr key={i}>
+            <td>{readBefore[i].nickname}</td>
+            <td>
+              {readBefore[i].dateStart.toDate().getDate() < 10
+                ? "0" + readBefore[i].dateStart.toDate().getDate()
+                : readBefore[i].dateStart.toDate().getDate()}
+              .
+              {readBefore[i].dateStart.toDate().getMonth() + 1 < 10
+                ? "0" + (readBefore[i].dateStart.toDate().getMonth() + 1)
+                : readBefore[i].dateStart.toDate().getMonth() + 1}
+              .{readBefore[i].dateStart.toDate().getFullYear()}
+            </td>
+            <td>
+              {readBefore[i].dateFinish.toDate().getDate() < 10
+                ? "0" + readBefore[i].dateFinish.toDate().getDate()
+                : readBefore[i].dateFinish.toDate().getDate()}
+              .
+              {readBefore[i].dateFinish.toDate().getMonth() + 1 < 10
+                ? "0" + (readBefore[i].dateFinish.toDate().getMonth() + 1)
+                : readBefore[i].dateFinish.toDate().getMonth() + 1}
+              .{readBefore[i].dateFinish.toDate().getFullYear()}
+            </td>
+          </tr>
+        );
+      }
+    }
+  }
 
   return (
-    <div className="history">
-      <h2>Ранее брали</h2>
-      <table width={"100%"}>
-        <thead>
-          <tr>
-            <th align="left" width={"40%"}>
-              nickname
-            </th>
-            <th align="left" width={"30%"}>
-              взял
-            </th>
-            <th align="left" width={"30%"}>
-              сдал
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Lowellda</td>
-            <td>20.01.2022</td>
-            <td>27.01.2022</td>
-          </tr>
-          {/* {rows.map(row => row)} */}
-        </tbody>
-      </table>
+    <div>
+      <div className={style.prev}>Ранее брали</div>
+      <div className={style.history}>
+        {rows.length > 0 ? (
+          <table width={"100%"}>
+            <thead>
+              <tr>
+                <th align="left" width={"30%"}>
+                  nickname
+                </th>
+                <th align="left" width={"35%"}>
+                  взял
+                </th>
+                <th align="left" width={"35%"}>
+                  сдал
+                </th>
+              </tr>
+            </thead>
+            <tbody>{rows.map((row) => row)}</tbody>
+          </table>
+        ) : (
+          "Книгу еще не брали"
+        )}
+      </div>
     </div>
   );
 };
