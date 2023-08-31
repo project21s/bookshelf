@@ -47,8 +47,6 @@
   position: relative;
   top: -18px;
   padding: auto;
-  /* height: 170px; */
-  /* mobile */
   height: 145px;
   width: 129;
   background: none;
@@ -58,14 +56,14 @@
 .bookImg {
   display: flex;
   height: auto;
-  width: auto;
+  max-width: 128px;
+  min-width: 110px;
   margin: 0 auto;
   box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.4);
   z-index: 1;
 }
 
 .author {
-  height: 16px;
   font-size: 16px;
   font-weight: bold;
   text-overflow: ellipsis;
