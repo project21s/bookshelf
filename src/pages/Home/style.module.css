@@ -1,10 +1,12 @@
 :global(.dekstop) .main {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 30px;
   margin: 0 auto;
   padding: 30px 20px;
   max-width: 1280px;
   margin-bottom: 20px;
+  justify-content: center;
 }
 
 :global(.mobile) .main {
@@ -15,10 +17,10 @@
 }
 
 :global(.dekstop) .search {
-  position: fixed;
+  position: sticky;
   top: 390px;
   width: 340px;
-  }
+}
 
 @media screen and (width < 850px) {
   :global(.mobile) .search {
@@ -72,8 +74,9 @@
 }
 
 :global(.dekstop) .blockLeft {
+  position: sticky;
+  top: 110px;
   display: flex;
-  position: fixed;
   flex-direction: row;
   max-width: 340px;
   height: auto;
