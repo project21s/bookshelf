@@ -10,8 +10,8 @@
 }
 
 :global(.mobile) .main {
-    padding: 30px 20px 30px 20px;
-    flex-direction: column-reverse;
+  padding: 30px 20px 30px 20px;
+  flex-direction: column-reverse;
 }
 
 .about {
@@ -46,12 +46,12 @@
   position: relative;
   background: none;
   z-index: 1;
+  box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.4);
 }
 
 .bookImg {
   display: flex;
   margin: 0 auto;
-  box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.4);
   z-index: 1;
 }
 
@@ -61,29 +61,29 @@
 
 :global(.dekstop) .divImage {
   height: 250px;
-  width: auto;
+  max-width: 200px;
   margin-right: 20px;
+  overflow: hidden;
 }
 
 :global(.dekstop) .bookImg {
-  height: auto;
-  width: auto;
+  max-height: 250px;
 }
 
 @media screen and (width <= 850px) and (width > 560px) {
   :global(.mobile) .wrapper {
-  flex-direction: row;
+    flex-direction: row;
   }
 
   :global(.mobile) .divImage {
     height: 250px;
-    width: auto;
+    max-width: 200px;
     margin-right: 20px;
+    overflow: hidden;
   }
 
   :global(.mobile) .bookImg {
-    height: auto;
-    width: auto;
+    max-height: 250px;
   }
 }
 
@@ -93,14 +93,14 @@
   }
 
   :global(.mobile) .divImage {
-    height: auto;
-    width: 150px;
+    height: 220px;
+    max-width: 200px;
     margin: 0 auto;
+    overflow: hidden;
   }
 
   :global(.mobile) .bookImg {
-    width: 150px;
-    height: auto;
+    max-height: 220px;
   }
 }
 
