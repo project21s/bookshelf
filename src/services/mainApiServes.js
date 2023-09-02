@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { firebaseConfig } from "./firebaseConfig";
-import { getFirestore, doc, getDoc } from "firebase/firestore";
+import { getFirestore, doc, getDoc, updateDoc } from "firebase/firestore";
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
@@ -16,4 +16,18 @@ export const getAppConf = async () => {
   } else {
     console.log("No such document!");
   }
+};
+
+/**
+ * Добавить в список подозрительных пользователей
+ * @param uid id пользователя
+ */
+export const addSuspectUser = async (uid) => {
+  const docSnap = await getDoc(doc(db, "tools", "conf"));
+
+  let tempArr = docSnap.data().suspectUser;
+  tempArr.push({ id: uid, date: Date() });
+  await updateDoc(doc(db, "tools", "conf"), {
+    suspectUser: tempArr,
+  });
 };

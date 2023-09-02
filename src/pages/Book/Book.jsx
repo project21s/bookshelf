@@ -21,15 +21,10 @@ import { addToFavorite, delFromFavorite } from "../../services/userApiServes";
 import { userStatus } from "../../services/authApiServes";
 
 import { UserContext } from "../../contexts/UserContext";
+import { useNavigate } from "react-router-dom";
 
 const Book = () => {
-  // let navigate = useNavigate();
-
-  // const goHome = () => {
-  //   navigate("/");
-  // };
-
-  // const [textareaValue, setTextareaValue] = useState("");
+  let navigate = useNavigate();
 
   const { id } = useParams();
 
@@ -47,11 +42,16 @@ const Book = () => {
 
   let getBook = async () => {
     let bookTmp = await getBookById(id);
+    if (!bookTmp) {
+      navigate("*");
+    }
     setBook(bookTmp);
     console.log(bookTmp);
   };
 
   const { user, userDispatch } = useContext(UserContext);
+
+  console.log(user);
 
   let [bookStatus, setBookStatus] = useState(null);
 
@@ -70,6 +70,15 @@ const Book = () => {
       setBookStatus(3);
     } else if (book.status !== "free") {
       setBookStatus(4);
+    }
+
+    if (user) {
+      if (!user.isEmailVerified) {
+        setBookStatus(6);
+      }
+      if (!user.isVerified) {
+        setBookStatus(5);
+      }
     }
   };
 
@@ -238,7 +247,26 @@ const Book = () => {
             <AppButton header="Книга занята" disabled="disabled" />
           )}
           {bookStatus === 4 && (
-            <div>Сейчас читает: {book.readNow.nickname}</div>
+            <div>
+              <br />
+              Сейчас читает: {book.readNow.nickname}
+            </div>
+          )}
+          {(bookStatus === 5 || bookStatus === 6) && (
+            <AppButton header="Подтвердите email" disabled="disabled" />
+          )}
+          {bookStatus === 5 && (
+            <div>
+              <br />
+              Не можете взять книгу - Вы зарегистрировались не со школьной
+              почты, дождитесь подтверждения
+            </div>
+          )}
+          {bookStatus === 6 && (
+            <div>
+              <br />
+              Не можете взять книгу - Вы не подтвердили свой email
+            </div>
           )}
         </div>
       </div>

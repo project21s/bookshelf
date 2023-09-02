@@ -8,18 +8,27 @@ import {
   updateDoc,
 } from "firebase/firestore";
 
+import { addSuspectUser } from "./mainApiServes";
+
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 // создать профиль пользователя в бд
 export const createUserData = async (id, email) => {
-  let [nickname] = email.split("@");
+  let [nickname, domen] = email.split("@");
+  let verified = true;
+  if (domen !== "student.21-school.ru") {
+    verified = false;
+    await addSuspectUser(id);
+  }
   try {
     await setDoc(doc(db, "users", id), {
       id: id,
       nickname: nickname,
       email: email,
       role: "reader",
+      isVerified: verified,
+      isEmailVerified: false,
       books: {
         favorite: [],
         read: [],
@@ -38,6 +47,13 @@ export const getUserData = async (id) => {
   } else {
     console.log("No such document!");
   }
+};
+
+export const updEmailVarifiedStatus = async (user) => {
+  const docRefUser = doc(db, "users", user.uid);
+  await updateDoc(docRefUser, {
+    isEmailVerified: true,
+  });
 };
 
 export const addToFavorite = async (user, book) => {
