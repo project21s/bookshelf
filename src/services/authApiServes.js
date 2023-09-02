@@ -7,9 +7,14 @@ import {
   onAuthStateChanged,
   updatePassword,
   signOut,
+  sendEmailVerification,
 } from "firebase/auth";
 
-import { createUserData, getUserData } from "./userApiServes";
+import {
+  createUserData,
+  getUserData,
+  updEmailVarifiedStatus,
+} from "./userApiServes";
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
@@ -29,9 +34,11 @@ export const createUser = async (email, password) => {
     await createUserData(user.uid, email);
     userData = await getUserData(user.uid);
     answer.user = userData;
+    await sendEmailVerification(user);
     console.log("user done");
   } catch (error) {
     answer.error = error;
+    console.log(error);
   } finally {
     return answer;
   }
@@ -66,7 +73,7 @@ export const userStatus = async () => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         const uid = user.uid;
-        console.log("log-", uid);
+        console.log("log-", user);
         resolve(user);
       } else {
         resolve(null);
@@ -76,6 +83,12 @@ export const userStatus = async () => {
   });
   if (user) {
     userData = await getUserData(user.uid);
+    if (user.emailVerified) {
+      if (!userData.isEmailVerified) {
+        await updEmailVarifiedStatus(user);
+        userData.isEmailVerified = true;
+      }
+    }
     return userData;
   }
 };
