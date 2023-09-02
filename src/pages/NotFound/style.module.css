@@ -1,0 +1,14 @@
+.main {
+  height: 70vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  border-radius: 10px;
+  background: #fff;
+  padding: 16px;
+  max-width: 400px;
+}
