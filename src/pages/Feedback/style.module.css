@@ -21,3 +21,10 @@
   align-items: center;
   justify-content: center;
 }
+
+.flex {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
