@@ -112,6 +112,7 @@ export const PopUpReg = (props) => {
           <AppInput title="повтори пароль" setInput={setRepeatePass}></AppInput>
           <br />
           <div className={style.header}>
+            <p>На ваш email придет ссылка для подтверждения регистрация</p>
             <AppButton header="Регистрация" onClick={create}></AppButton>
           </div>
         </div>

@@ -31,7 +31,13 @@ const AddBook = () => {
             <p>Выполни вход, чтобы добавить книгу</p>
           )}
         </div>
-        {user && <AppImageDownload file={file} setFile={setFile} />}{" "}
+        {user && (
+          <AppImageDownload
+            file={file}
+            setFile={setFile}
+            title="Загрузить фото книги"
+          />
+        )}{" "}
       </div>
       {user && (
         <div className={style.container}>

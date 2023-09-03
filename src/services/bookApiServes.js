@@ -88,6 +88,11 @@ export const getBookById = async (id) => {
 // взять книгу
 export const onHandBook = async (user, book) => {
   const docRefBook = doc(db, "books", book.id);
+  const docSnap = await getDoc(docRefBook);
+  if (docSnap.data().status !== "free") {
+    console.log("книгу только что заняли");
+    return;
+  }
   let date = new Date();
   let dateStart = date;
   let dateFinish = new Date(

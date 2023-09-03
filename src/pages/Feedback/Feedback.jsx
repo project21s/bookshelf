@@ -3,17 +3,16 @@ import style from "./style.module.css";
 
 import AppButton from "../../components/AppButton/AppButton";
 
-import { UserContext } from "../../contexts/UserContext";
-
 import { addFeedback } from "../../services/feedbackServes";
+import { AppImageDownload } from "../../components/AppImageDownload/AppImageDownload";
 
 function Feedback() {
-  const { user, userDispatch } = useContext(UserContext);
   const [text, setText] = useState("");
   const [statusSend, setStatusSend] = useState(false);
+  const [file, setFile] = useState();
 
   const handler = async () => {
-    let status = await addFeedback(text);
+    let status = await addFeedback(text, file);
     if (status.status) {
       setStatusSend(true);
     }
@@ -38,14 +37,23 @@ function Feedback() {
 
       {!statusSend && (
         <div>
-          <textarea
-            className={style.in}
-            value={text}
-            placeholder="Текст сообщения"
-            onChange={(event) => {
-              setText(event.target.value);
-            }}
-          />
+          <div className={style.flex}>
+            <div className={style.dwl}>
+              <AppImageDownload
+                file={file}
+                setFile={setFile}
+                title="Прикрепить фото"
+              />
+            </div>
+            <textarea
+              className={style.in}
+              value={text}
+              placeholder="Текст сообщения"
+              onChange={(event) => {
+                setText(event.target.value);
+              }}
+            />
+          </div>
           <div className={style.btn}>
             <AppButton
               header="Отправить"
@@ -65,6 +73,7 @@ function Feedback() {
               onClick={() => {
                 setStatusSend(false);
                 setText("");
+                setFile();
               }}
             ></AppButton>
           </div>
